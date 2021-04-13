@@ -5,11 +5,29 @@
  */
 package OMS.Roles;
 
+import OMS.EcoSystem;
+import OMS.Enterprise.Enterprise;
+import OMS.Organizations.Organization;
+import OMS.UserAccount.UserAccount;
+import javax.swing.JPanel;
+import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
+
 /**
  * @author ajayp
  * @author nakul
  * @author palak
+ * 
+ * Revision History:
+ * 
+ * Date(MM/DD/YYYY)      Author              Comment
+ * 04/12/2021            @author palak       Added system admin role
+ * 
  */
-public class SystemAdminRole {
+
+public class SystemAdminRole extends Roles{
+
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem system) {
+        return new SystemAdminWorkAreaJPanel(userProcessContainer, system);
+    }
     
 }

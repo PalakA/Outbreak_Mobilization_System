@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package OMS.Organizations;
+package OMS.WorkQueue;
 
 /**
  * @author ajayp
@@ -16,6 +16,6 @@ package OMS.Organizations;
  * 
  */
 
-public class SampleCollectionsOrganization {
+public class WorkQueue {
     
 }
