@@ -3,51 +3,66 @@
 // * To change this template file, choose Tools | Templates
 // * and open the template in the editor.
 // */
-//package OMS;
-//
-//import OMS.Roles.SystemAdminRole;
-//import java.util.ArrayList;
-//
+package OMS;
+
+import OMS.Organizations.Organization;
+import OMS.Roles.Roles;
+import OMS.Roles.SystemAdminRole;
+import java.util.ArrayList;
+
 /**
  * @author ajayp
  * @author nakul
  * @author palak
+ * 
+ * Revision History:
+ * 
+ * Date(MM/DD/YYYY)      Author              Comment
+ * 04/12/2021            @author palak       Added directories to EcoSystem
+ * 
  */
-//public class EcoSystem extends Organization{
-//    
-//    private static EcoSystem business;
-//    private RestaurantDirectory restaurantDirectory;
-//    private CustomerDirectory customerDirectory;
-//    private DeliveryManDirectory deliveryManDirectory;
-//
-//    public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory) {
-//
-//        this.restaurantDirectory = restaurantDirectory;
-//        this.customerDirectory = customerDirectory;
-//        this.deliveryManDirectory = deliveryManDirectory;
-//    }
-//    
-//    public static EcoSystem getInstance(){
-//        if(business==null){
-//            business=new EcoSystem();
-//        }
-//        return business;
-//    }
-//    
-//    @Override
-//    public ArrayList<Role> getSupportedRole() {
-//        ArrayList<Role> roleList=new ArrayList<Role>();
-//        roleList.add(new SystemAdminRole());
-//        return roleList;
-//    }
-//    private EcoSystem(){
-//        super(null);
-//       // networkList=new ArrayList<Network>();
-//    }
-//
-//    
-//    public boolean checkIfUserIsUnique(String userName){
-//       //
-//       return false;
-//    }
-//}
+
+public class EcoSystem extends Organization{
+    
+    private static EcoSystem business;
+    private ArrayList<Network> networkList;
+    public static EcoSystem getInstance(){
+        if(business==null){
+            business=new EcoSystem();
+        }
+        return business;
+    }
+    
+    public Network createAndAddNetwork(){
+        Network network=new Network();
+        networkList.add(network);
+        return network;
+    }
+    public ArrayList<Roles> getSupportedRole() {
+        ArrayList<Roles> roleList=new ArrayList<Roles>();
+        roleList.add(new SystemAdminRole());
+        return roleList;
+    }
+    private EcoSystem(){
+        super(null);
+        networkList=new ArrayList<Network>();
+    }
+
+    public ArrayList<Network> getNetworkList() {
+        return networkList;
+    }
+
+    public void setNetworkList(ArrayList<Network> networkList) {
+        this.networkList = networkList;
+    }
+    
+    public boolean checkIfUserIsUnique(String userName){
+        if(!this.getUserAccountDirectory().checkIfUsernameIsUnique(userName)){
+            return false;
+        }
+        for(Network network:networkList){
+            
+        }
+        return true;
+    }
+}

@@ -1,10 +1,21 @@
 package OMS;
 
+import OMS.Employee.Employee;
+import OMS.Roles.SystemAdminRole;
+import OMS.UserAccount.UserAccount;
+
 /**
  * @author ajayp
  * @author nakul
  * @author palak
+ * 
+ * Revision History:
+ * 
+ * Date(MM/DD/YYYY)      Author              Comment
+ * 04/12/2021            @author palak       Added dConfigureASystem
+ * 
  */
+
 public class ConfigureASystem {
     
     public static EcoSystem configure(){
@@ -18,9 +29,9 @@ public class ConfigureASystem {
         //create user account
         
         
-        //Employee employee = system.getEmployeeDirectory().createEmployee("RRH");
+        Employee employee = system.getEmployeeDirectory().createEmployee("RRH");
         
-        //UserAccount ua = system.getUserAccountDirectory().createUserAccount("sysadmin", "sysadmin", employee, new SystemAdminRole());
+        UserAccount ua = system.getUserAccountDirectory().createUserAccount("sysadmin", "sysadmin", employee, new SystemAdminRole());
         
         return system;
     }
