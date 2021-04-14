@@ -5,6 +5,14 @@
  */
 package Business.Roles;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organizations.Organization;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+import ui.MedicalDeviceCompaniesWorkArea.ManageMedicalDevicesJPanel;
+import ui.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
+
 /**
  * @author ajayp
  * @author nakul
@@ -13,9 +21,13 @@ package Business.Roles;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 
+ * 04/13/2021            @author nakul       Added Manufacturer role
  */
 
-public class ManufacturerRole {
+public class ManufacturerRole extends Roles{
+
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem system) {
+        return new ManageMedicalDevicesJPanel(userProcessContainer, system);
+    }
     
 }
