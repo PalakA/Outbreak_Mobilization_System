@@ -14,18 +14,24 @@ package Business.Pharmacist;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author ajayp       Added Pharmacist Information
- * 
+ * 04/14/2021            @author ajayp       Added counter for pharmacist id
  */
 
 public class Pharmacist {
     
-    public String pharmacistId;
+    private static int count = 1;
+    public int pharmacistId;
     public String pharmacistName;
     public String pharmacistUsername;
     public String pharmacistPassword;
     public String pharmacistNumber;
+    
+    public Pharmacist() {
+        this.pharmacistId = count;
+        count++;
+    }
 
-    public Pharmacist(String pharmacistId, String pharmacistName, String pharmacistUsername, String pharmacistPassword, String pharmacistNumber) {
+    public Pharmacist(int pharmacistId, String pharmacistName, String pharmacistUsername, String pharmacistPassword, String pharmacistNumber) {
         this.pharmacistId = pharmacistId;
         this.pharmacistName = pharmacistName;
         this.pharmacistUsername = pharmacistUsername;
@@ -33,11 +39,11 @@ public class Pharmacist {
         this.pharmacistNumber = pharmacistNumber;
     }
 
-    public String getPharmacistId() {
+    public int getPharmacistId() {
         return pharmacistId;
     }
 
-    public void setPharmacistId(String pharmacistId) {
+    public void setPharmacistId(int pharmacistId) {
         this.pharmacistId = pharmacistId;
     }
 
@@ -75,6 +81,6 @@ public class Pharmacist {
 
     @Override
     public String toString() {
-        return pharmacistId;
+        return pharmacistName;
     }
 }
