@@ -16,6 +16,6 @@ package OMS.Roles;
  * 
  */
 
-public class PathologistRole {
+public class LabAssistantRole {
     
 }

@@ -5,6 +5,9 @@
  */
 package OMS.Enterprise;
 
+import OMS.Roles.Roles;
+import java.util.ArrayList;
+
 /**
  * @author ajayp
  * @author nakul
@@ -17,6 +20,13 @@ package OMS.Enterprise;
  * 
  */
 
-public class MedicalDeviceCompaniesEnterprise {
+public class MedicalDeviceCompaniesEnterprise extends Enterprise{
     
+    public MedicalDeviceCompaniesEnterprise(String name){
+        super(name,Enterprise.EnterpriseType.MedicalDeviceCompanies);
+    }
+    @Override
+    public ArrayList<Roles> getSupportedRole() {
+        return null;
+    } 
 }

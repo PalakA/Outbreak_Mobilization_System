@@ -5,6 +5,9 @@
  */
 package OMS.Organizations;
 
+import OMS.Roles.Roles;
+import java.util.ArrayList;
+
 /**
  * @author ajayp
  * @author nakul
@@ -16,6 +19,16 @@ package OMS.Organizations;
  * 
  */
 
-public class LaboratoriesOrganization {
+public class LaboratoriesOrganization extends Organization{
     
+    public LaboratoriesOrganization() {
+        super(Organization.Type.Laboratories.getValue());
+    }
+    
+    @Override
+    public ArrayList<Roles> getSupportedRole() {
+        ArrayList<Roles> roles = new ArrayList();
+        //roles.add(new Admin());
+        return roles;
+    }
 }

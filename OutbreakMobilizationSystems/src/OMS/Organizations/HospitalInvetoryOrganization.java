@@ -5,6 +5,12 @@
  */
 package OMS.Organizations;
 
+import OMS.Roles.CareTakerRole;
+import OMS.Roles.DoctorRole;
+import OMS.Roles.ManagerRole;
+import OMS.Roles.Roles;
+import java.util.ArrayList;
+
 /**
  * @author ajayp
  * @author nakul
@@ -16,6 +22,19 @@ package OMS.Organizations;
  * 
  */
 
-public class HospitalInvetoryOrganization {
+public class HospitalInvetoryOrganization extends Organization{
+        
+    public HospitalInvetoryOrganization() {
+        super(Organization.Type.Hospital.getValue());
+    }
     
+    @Override
+    public ArrayList<Roles> getSupportedRole() {
+        ArrayList<Roles> roles = new ArrayList();
+//        roles.add(new ManagerRole());
+//        roles.add(new DoctorRole());
+//        roles.add(new CareTakerRole());
+//        roles.add(new PatientRole());
+        return roles;
+    }
 }

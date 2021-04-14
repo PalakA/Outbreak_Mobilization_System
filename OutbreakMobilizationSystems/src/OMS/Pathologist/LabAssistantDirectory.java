@@ -16,6 +16,6 @@ package OMS.Pathologist;
  * 
  */
 
-public class Pathologist {
+public class LabAssistantDirectory {
     
 }

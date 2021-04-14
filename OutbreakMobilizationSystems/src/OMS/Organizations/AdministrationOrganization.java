@@ -5,6 +5,10 @@
  */
 package OMS.Organizations;
 
+import OMS.Roles.Roles;
+import OMS.Roles.SystemAdminRole;
+import java.util.ArrayList;
+
 /**
  * @author ajayp
  * @author nakul
@@ -13,9 +17,19 @@ package OMS.Organizations;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 
+ * 04/13/2021            @author palak       Added custructor
  */
 
-public class AdministrationOrganization {
+public class AdministrationOrganization extends Organization{
+        
+    public AdministrationOrganization() {
+        super(Type.Admin.getValue());
+    }
     
+    @Override
+    public ArrayList<Roles> getSupportedRole() {
+        ArrayList<Roles> roles = new ArrayList();
+        roles.add(new SystemAdminRole());
+        return roles;
+    }
 }
