@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author ajayp       Added Patient Directory Information
- * 
+ * 04/14/2021            @author ajayp       Updated Line 58 for incrementing id using counter
  */
 
 public class PatientDirectory {
@@ -53,9 +53,9 @@ public class PatientDirectory {
         return null;
     }
     
-    public Patient createPatient(String patientId, String patientName, String patientAge, String patientUsername, String patientPassword, String patientAddress, String patientNumber, 
+    public Patient createPatient(int patientId, String patientName, String patientAge, String patientUsername, String patientPassword, String patientAddress, String patientNumber, 
             String patientGender, String symptom1, String symptom2, String symptom3) {
-        patient = new Patient(patientId, patientName, patientAge, patientUsername, patientPassword, patientAddress, patientNumber, patientGender, symptom1, symptom2, symptom3);
+        patient = new Patient(patient.getPatientId(), patientName, patientAge, patientUsername, patientPassword, patientAddress, patientNumber, patientGender, symptom1, symptom2, symptom3);
         patientList.add(patient);
         return patient;
     }

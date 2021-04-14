@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author ajayp       Added Supplychain Directory Information
- * 
+ * 04/14/2021            @author ajayp       Updated Line 57 for incrementing id using counter
  */
 
 public class SupplyChainDirectory {
@@ -53,8 +53,8 @@ public class SupplyChainDirectory {
         return null;
     }
     
-    public SupplyChain createSupplyChain(String supplyChainId, String supplyChainName, String supplyChainUsername, String supplyChainPassword, String supplyChainAddress, String supplyChainNumber) {
-        supplyChain = new SupplyChain(supplyChainId, supplyChainName, supplyChainUsername, supplyChainPassword, supplyChainAddress, supplyChainNumber);
+    public SupplyChain createSupplyChain(int supplyChainId, String supplyChainName, String supplyChainUsername, String supplyChainPassword, String supplyChainAddress, String supplyChainNumber) {
+        supplyChain = new SupplyChain(supplyChain.getSupplyChainId(), supplyChainName, supplyChainUsername, supplyChainPassword, supplyChainAddress, supplyChainNumber);
         supplyChainList.add(supplyChain);
         return supplyChain;
     }

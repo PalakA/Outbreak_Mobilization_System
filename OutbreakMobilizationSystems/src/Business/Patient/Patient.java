@@ -14,12 +14,13 @@ package Business.Patient;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author ajayp       Added Patient Information
- * 
+ * 04/14/2021            @author ajayp       Added counter for patient id
  */
 
 public class Patient {
     
-    public String patientId;
+    private static int count = 1;
+    public int patientId;
     public String patientName;
     public String patientAge;
     public String patientUsername;
@@ -30,8 +31,13 @@ public class Patient {
     public String symptom1;
     public String symptom2;
     public String symptom3;
+    
+    public Patient() {
+        this.patientId = count;
+        count++;
+    }
 
-    public Patient(String patientId, String patientName, String patientAge, String patientUsername, String patientPassword, String patientAddress, String patientNumber, String patientGender, String symptom1, String symptom2, String symptom3) {
+    public Patient(int patientId, String patientName, String patientAge, String patientUsername, String patientPassword, String patientAddress, String patientNumber, String patientGender, String symptom1, String symptom2, String symptom3) {
         this.patientId = patientId;
         this.patientName = patientName;
         this.patientAge = patientAge;
@@ -45,11 +51,11 @@ public class Patient {
         this.symptom3 = symptom3;
     }
 
-    public String getPatientId() {
+    public int getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(String patientId) {
+    public void setPatientId(int patientId) {
         this.patientId = patientId;
     }
 
@@ -135,6 +141,6 @@ public class Patient {
     
     @Override
     public String toString() {
-        return patientId;
+        return patientName;
     }
 }
