@@ -5,6 +5,9 @@
  */
 package ui.HospitalWorkArea;
 
+import Business.EcoSystem;
+import javax.swing.JPanel;
+
 /**
  * @author ajayp
  * @author nakul
@@ -13,15 +16,20 @@ package ui.HospitalWorkArea;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 
+ * 04/13/2021            @author nakul       Added ManagerWorkArea JPanel
  */
 public class ManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManagerWorkAreaJPanel
      */
-    public ManagerWorkAreaJPanel() {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    public ManagerWorkAreaJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.ecosystem=ecosystem;
+        //populateTree();
     }
 
     /**

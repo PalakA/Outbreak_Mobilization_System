@@ -5,6 +5,9 @@
  */
 package ui.DiagnosticCenterWorkArea;
 
+import Business.EcoSystem;
+import javax.swing.JPanel;
+
 /**
  * @author ajayp
  * @author nakul
@@ -13,15 +16,20 @@ package ui.DiagnosticCenterWorkArea;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 
+ * 04/13/2021            @author nakul       Added DiagnosticCenter JPanel
  */
 public class DiagnosticCenterJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form DiagnosticCenterJPanel
      */
-    public DiagnosticCenterJPanel() {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    public DiagnosticCenterJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.ecosystem=ecosystem;
+        //populateTree();
     }
 
     /**
