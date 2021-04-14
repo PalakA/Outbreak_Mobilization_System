@@ -5,6 +5,9 @@
  */
 package ui.LogisticsWorkArea;
 
+import Business.EcoSystem;
+import javax.swing.JPanel;
+
 /**
  * @author ajayp
  * @author nakul
@@ -13,15 +16,20 @@ package ui.LogisticsWorkArea;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 
+ * 04/13/2021            @author nakul       Added ManageSupplyChain JPanel
  */
 public class ManageSupplyChainJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageSupplyChainJPanel
      */
-    public ManageSupplyChainJPanel() {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    public ManageSupplyChainJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.ecosystem=ecosystem;
+        //populateTree();
     }
 
     /**
