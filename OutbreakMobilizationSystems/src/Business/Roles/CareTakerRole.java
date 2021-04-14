@@ -11,7 +11,6 @@ import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import ui.HospitalWorkArea.CaretakerWorkAreaJPanel;
-import ui.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
  * @author ajayp
@@ -26,6 +25,7 @@ import ui.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 public class CareTakerRole extends Roles{
 
+    @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem system) {
         return new CaretakerWorkAreaJPanel(userProcessContainer, system);
     }

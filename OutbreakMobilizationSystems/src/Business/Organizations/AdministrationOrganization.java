@@ -5,8 +5,8 @@
  */
 package Business.Organizations;
 
-import OMS.Roles.Roles;
-import OMS.Roles.SystemAdminRole;
+import Business.Roles.Roles;
+import Business.Roles.SystemAdminRole;
 import java.util.ArrayList;
 
 /**
@@ -18,6 +18,7 @@ import java.util.ArrayList;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author palak       Added custructor
+ * 04/14/2021            @author palak       Added getSuuportedRole function
  */
 
 public class AdministrationOrganization extends Organization{

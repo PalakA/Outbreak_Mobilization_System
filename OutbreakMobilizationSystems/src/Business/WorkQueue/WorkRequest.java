@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package OMS.WorkQueue;
+package Business.WorkQueue;
 
-import OMS.UserAccount.UserAccount;
+import Business.UserAccount.UserAccount;
 import java.util.Date;
 
 /**
@@ -16,7 +16,7 @@ import java.util.Date;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 
+ * 04/14/2021            @author             Updated Packages
  */
 
 public abstract class WorkRequest {

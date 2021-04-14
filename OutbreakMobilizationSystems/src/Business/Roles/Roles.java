@@ -5,10 +5,10 @@
  */
 package Business.Roles;
 
-import OMS.EcoSystem;
-import OMS.Enterprise.Enterprise;
-import OMS.Organizations.Organization;
-import OMS.UserAccount.UserAccount;
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organizations.Organization;
+import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
 /**

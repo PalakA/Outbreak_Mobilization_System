@@ -5,7 +5,8 @@
  */
 package Business.Organizations;
 
-import OMS.Roles.Roles;
+import Business.Roles.LabAssistantRole;
+import Business.Roles.Roles;
 import java.util.ArrayList;
 
 /**
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 
+ * 04/14/2021            @author palak       Added getSuuportedRole function
  */
 
 public class LaboratoriesOrganization extends Organization{
@@ -28,7 +29,7 @@ public class LaboratoriesOrganization extends Organization{
     @Override
     public ArrayList<Roles> getSupportedRole() {
         ArrayList<Roles> roles = new ArrayList();
-        //roles.add(new Admin());
+        roles.add(new LabAssistantRole());
         return roles;
     }
 }

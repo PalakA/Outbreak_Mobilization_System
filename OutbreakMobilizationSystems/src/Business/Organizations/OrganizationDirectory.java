@@ -5,7 +5,7 @@
  */
 package Business.Organizations;
 
-import OMS.Organizations.Organization.Type;
+import Business.Organizations.Organization.Type;
 import java.util.ArrayList;
 
 /**
@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 
+ * 04/14/2021            @author palak       Added getSuuportedRole function
  */
 
 public class OrganizationDirectory {
@@ -57,14 +57,14 @@ public class OrganizationDirectory {
             organization = new PharmacyDistributionOrganization();
             organizationList.add(organization);
         }
-//        else if (type.getValue().equals(Type.SampleCollections.getValue())){
-//            organization = new SampleCollectionsOrganization();
-//            organizationList.add(organization);
-//        }
-//        else if (type.getValue().equals(Type.SupplyChain.getValue())){
-//            organization = new SupplyChainOrganization();
-//            organizationList.add(organization);
-//        }
+        else if (type.getValue().equals(Type.SampleCollections.getValue())){
+            organization = new SampleCollectionsOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.SupplyChain.getValue())){
+            organization = new SupplyChainOrganization();
+            organizationList.add(organization);
+        }
         return organization;
     }
 }

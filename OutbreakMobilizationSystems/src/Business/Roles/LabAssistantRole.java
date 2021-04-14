@@ -5,6 +5,14 @@
  */
 package Business.Roles;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organizations.Organization;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+import ui.DiagnosticCenterWorkArea.DiagnosticCenterJPanel;
+import ui.HospitalWorkArea.CaretakerWorkAreaJPanel;
+
 /**
  * @author ajayp
  * @author nakul
@@ -16,6 +24,9 @@ package Business.Roles;
  * 
  */
 
-public class LabAssistantRole {
+public class LabAssistantRole extends Roles{
     
+        public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem system) {
+        return new DiagnosticCenterJPanel(userProcessContainer, system);
+    }
 }

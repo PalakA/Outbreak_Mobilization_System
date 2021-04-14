@@ -5,8 +5,8 @@
  */
 package Business.Enterprise;
 
-import OMS.Organizations.Organization;
-import OMS.Organizations.OrganizationDirectory;
+import Business.Organizations.Organization;
+import Business.Organizations.OrganizationDirectory;
 
 /**
  * @author ajayp
@@ -16,7 +16,7 @@ import OMS.Organizations.OrganizationDirectory;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 
+ * 04/14/2021            @author palak       Updated package names
  */
 
 public abstract class Enterprise extends Organization{

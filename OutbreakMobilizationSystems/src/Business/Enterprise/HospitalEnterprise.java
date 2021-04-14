@@ -5,7 +5,7 @@
  */
 package Business.Enterprise;
 
-import OMS.Roles.Roles;
+import Business.Roles.Roles;
 import java.util.ArrayList;
 
 /**
@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 
+ * 04/14/2021            @author palak       Updated package names
  * 
  */
 
