@@ -10,6 +10,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import ui.DiagnosticCenterWorkArea.DiagnosticCenterJPanel;
 import ui.HospitalWorkArea.CaretakerWorkAreaJPanel;
 
 /**
@@ -20,15 +21,12 @@ import ui.HospitalWorkArea.CaretakerWorkAreaJPanel;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 04/13/2021            @author nakul       Added CareTaker role
+ * 
  */
 
-public class CareTakerRole extends Roles{
-
-    @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem system) {
-        return new CaretakerWorkAreaJPanel(userProcessContainer, system);
+public class LabAssistantRole extends Roles{
+    
+        public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem system) {
+        return new DiagnosticCenterJPanel(userProcessContainer, system);
     }
-    
-    
 }

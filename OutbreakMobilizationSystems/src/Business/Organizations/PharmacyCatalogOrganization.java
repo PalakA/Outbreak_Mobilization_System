@@ -5,6 +5,10 @@
  */
 package Business.Organizations;
 
+import Business.Roles.PharmacistRole;
+import Business.Roles.Roles;
+import java.util.ArrayList;
+
 /**
  * @author ajayp
  * @author nakul
@@ -13,9 +17,19 @@ package Business.Organizations;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 
+ * 04/14/2021            @author palak       Added getSuuportedRole function
  */
 
-public class PharmacyCatalogOrganization {
+public class PharmacyCatalogOrganization extends Organization{
     
+    public PharmacyCatalogOrganization() {
+        super(Organization.Type.PharmacyCatalog.getValue());
+    }
+    
+    @Override
+    public ArrayList<Roles> getSupportedRole() {
+        ArrayList<Roles> roles = new ArrayList();
+        roles.add(new PharmacistRole());
+        return roles;
+    }
 }

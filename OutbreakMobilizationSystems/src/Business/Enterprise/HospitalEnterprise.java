@@ -5,6 +5,9 @@
  */
 package Business.Enterprise;
 
+import Business.Roles.Roles;
+import java.util.ArrayList;
+
 /**
  * @author ajayp
  * @author nakul
@@ -13,10 +16,18 @@ package Business.Enterprise;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 
+ * 04/14/2021            @author palak       Updated package names
  * 
  */
 
-public class HospitalEnterprise {
+public class HospitalEnterprise extends Enterprise {
+    
+    public HospitalEnterprise(String name){
+        super(name,EnterpriseType.Hospital);
+    }
+    @Override
+    public ArrayList<Roles> getSupportedRole() {
+        return null;
+    }
     
 }

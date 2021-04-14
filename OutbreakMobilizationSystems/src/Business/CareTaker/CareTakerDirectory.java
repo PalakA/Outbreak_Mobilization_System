@@ -17,7 +17,7 @@ import java.util.Date;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author ajayp       Added Caretaker Directory Information
- * 
+ * 04/14/2021            @author palak       Updated Line 50 with equals sign
  */
 
 public class CareTakerDirectory {
@@ -62,7 +62,7 @@ public class CareTakerDirectory {
     
     public void deleteCareTaker(String caretakerUsername) {
         for(int i=0; i<careTakerList.size(); i++) {
-            if(careTakerList.get(i).getCaretakerUsername() == caretakerUsername) {
+            if(careTakerList.get(i).getCaretakerUsername().equals(caretakerUsername)) {
                 careTakerList.remove(i);
             }
         }

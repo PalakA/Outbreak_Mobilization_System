@@ -16,6 +16,7 @@ import java.util.ArrayList;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author ajayp       Added Diagnostician Directory Information
+ * 04/14/2021            @author palak       Updated Line 65 with equals sign
  * 
  */
 
@@ -61,7 +62,7 @@ public class DiagnosticianDirectory {
     
     public void deleteDiagnostician(String diagnosticianUsername) {
         for(int i=0; i<diagnosticianList.size(); i++) {
-            if(diagnosticianList.get(i).getDiagnosticianUsername() == diagnosticianUsername) {
+            if(diagnosticianList.get(i).getDiagnosticianUsername().equals(diagnosticianUsername)) {
                 diagnosticianList.remove(i);
             }
         }

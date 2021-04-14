@@ -62,7 +62,7 @@ public class PatientDirectory {
     
     public void deletePatient(String patientUsername) {
         for(int i=0; i<patientList.size(); i++) {
-            if(patientList.get(i).getPatientUsername() == patientUsername) {
+            if(patientList.get(i).getPatientUsername().equals(patientUsername)) {
                 patientList.remove(i);
             }
         }

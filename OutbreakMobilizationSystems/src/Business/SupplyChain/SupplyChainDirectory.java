@@ -61,7 +61,7 @@ public class SupplyChainDirectory {
     
     public void deleteSupplyChain(String supplyChainUsername) {
         for(int i=0; i<supplyChainList.size(); i++) {
-            if(supplyChainList.get(i).getSupplyChainUsername() == supplyChainUsername) {
+            if(supplyChainList.get(i).getSupplyChainUsername().equals(supplyChainUsername)) {
                 supplyChainList.remove(i);
             }
         }

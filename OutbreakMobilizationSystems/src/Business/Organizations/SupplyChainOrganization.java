@@ -5,6 +5,10 @@
  */
 package Business.Organizations;
 
+import Business.Roles.Roles;
+import Business.Roles.SupplyChainRole;
+import java.util.ArrayList;
+
 /**
  * @author ajayp
  * @author nakul
@@ -13,9 +17,19 @@ package Business.Organizations;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 
+ * 04/14/2021            @author palak       Added getSuuportedRole function
  */
 
-public class SupplyChainOrganization {
+public class SupplyChainOrganization extends Organization{
     
+    public SupplyChainOrganization() {
+        super(Organization.Type.SupplyChain.getValue());
+    }
+    
+    @Override
+    public ArrayList<Roles> getSupportedRole() {
+        ArrayList<Roles> roles = new ArrayList();
+        roles.add(new SupplyChainRole());
+        return roles;
+    }
 }
