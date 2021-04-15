@@ -6,8 +6,11 @@
 package ui.HospitalWorkArea;
 
 import Business.EcoSystem;
-import Business.Network;
+import Business.Employee.Employee;
+import Business.Patient.Patient;
+import Business.Roles.PatientRole;
 import Business.UserAccount.UserAccount;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -18,26 +21,19 @@ import javax.swing.JPanel;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 04/13/2021            @author nakul       Added PatientWorkArea JPanel
- * 04/14/2021            @author palak       Added UserAccount, network
+ * 
  */
-public class PatientWorkAreaJPanel extends javax.swing.JPanel {
+public class PatientResgistrationJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form PatientWorkAreaJPanel
+     * Creates new form PatientJPanel
      */
-    JPanel userProcessContainer;
-    EcoSystem ecosystem;
-    UserAccount user;
-    Network network;
     
-    public PatientWorkAreaJPanel(JPanel userProcessContainer,UserAccount user, Network network, EcoSystem ecosystem) {
+    private JPanel userProcessContainer;
+    private EcoSystem ecosystem;
+    
+    public PatientResgistrationJPanel() {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.user = user;
-        this.network = network;
-        this.ecosystem=ecosystem;
-        //populateTree();
     }
 
     /**
@@ -49,6 +45,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGender = new javax.swing.ButtonGroup();
         header = new javax.swing.JPanel();
         maxIcon = new javax.swing.JPanel();
         buttonClose = new javax.swing.JPanel();
@@ -68,6 +65,29 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         homeBtn = new javax.swing.JLabel();
         slidingMenu = new javax.swing.JPanel();
         dashboard = new javax.swing.JPanel();
+        lblTitle = new javax.swing.JLabel();
+        lblPatientName = new javax.swing.JLabel();
+        txtPatientName = new javax.swing.JTextField();
+        lblPatientGender = new javax.swing.JLabel();
+        txtPatientAge = new javax.swing.JTextField();
+        lblPatientUsername = new javax.swing.JLabel();
+        txtPatientUsername = new javax.swing.JTextField();
+        lblPatientPassword = new javax.swing.JLabel();
+        txtPatientPassword = new javax.swing.JTextField();
+        lblPatientAddress = new javax.swing.JLabel();
+        txtPatientAddress = new javax.swing.JTextField();
+        lblPatientAge = new javax.swing.JLabel();
+        txtPatientMale = new javax.swing.JRadioButton();
+        txtPatientFemale = new javax.swing.JRadioButton();
+        txtPatientSymptoms2 = new javax.swing.JTextField();
+        lblPatientSymptoms2 = new javax.swing.JLabel();
+        lblPatientSymptoms1 = new javax.swing.JLabel();
+        txtPatientSymptoms1 = new javax.swing.JTextField();
+        lblPatientSymptoms3 = new javax.swing.JLabel();
+        txtPatientSymptoms3 = new javax.swing.JTextField();
+        btnSubmit = new javax.swing.JButton();
+        lblPatientNumber = new javax.swing.JLabel();
+        txtPatientNumber = new javax.swing.JTextField();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -239,7 +259,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         );
         slidingMenuLayout.setVerticalGroup(
             slidingMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 552, Short.MAX_VALUE)
+            .addGap(0, 567, Short.MAX_VALUE)
         );
 
         sideMenu.add(slidingMenu, java.awt.BorderLayout.CENTER);
@@ -248,6 +268,77 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
         dashboard.setBackground(new java.awt.Color(153, 153, 0));
         dashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Patient Registration Panel");
+        dashboard.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 40, 710, -1));
+
+        lblPatientName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPatientName.setText("Patient Name:");
+        dashboard.add(lblPatientName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
+        dashboard.add(txtPatientName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 220, -1));
+
+        lblPatientGender.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPatientGender.setText("Patient Gender:");
+        dashboard.add(lblPatientGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
+        dashboard.add(txtPatientAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, -1));
+
+        lblPatientUsername.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPatientUsername.setText("Patient Username:");
+        dashboard.add(lblPatientUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
+        dashboard.add(txtPatientUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 220, -1));
+
+        lblPatientPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPatientPassword.setText("Patient Password:");
+        dashboard.add(lblPatientPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, -1));
+        dashboard.add(txtPatientPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 220, -1));
+
+        lblPatientAddress.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPatientAddress.setText("Patient Address:");
+        dashboard.add(lblPatientAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, -1, -1));
+        dashboard.add(txtPatientAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 220, -1));
+
+        lblPatientAge.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPatientAge.setText("Patient Age:");
+        dashboard.add(lblPatientAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, -1));
+
+        btnGender.add(txtPatientMale);
+        txtPatientMale.setText("Male");
+        dashboard.add(txtPatientMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 70, -1));
+
+        btnGender.add(txtPatientFemale);
+        txtPatientFemale.setText("Female");
+        dashboard.add(txtPatientFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 80, -1));
+        dashboard.add(txtPatientSymptoms2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 220, -1));
+
+        lblPatientSymptoms2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPatientSymptoms2.setText("Patient Symptoms:");
+        dashboard.add(lblPatientSymptoms2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, -1, -1));
+
+        lblPatientSymptoms1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPatientSymptoms1.setText("Patient Symptoms:");
+        dashboard.add(lblPatientSymptoms1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, -1, -1));
+        dashboard.add(txtPatientSymptoms1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 220, -1));
+
+        lblPatientSymptoms3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPatientSymptoms3.setText("Patient Symptoms:");
+        dashboard.add(lblPatientSymptoms3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, -1, -1));
+        dashboard.add(txtPatientSymptoms3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 220, -1));
+
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+        dashboard.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 510, 100, -1));
+
+        lblPatientNumber.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPatientNumber.setText("Patient Phone Number:");
+        dashboard.add(lblPatientNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
+        dashboard.add(txtPatientNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 220, -1));
+
         add(dashboard, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -271,7 +362,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_maxBtnMouseExited
 
     private void minBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minBtnMouseClicked
-        
+       
     }//GEN-LAST:event_minBtnMouseClicked
 
     private void minBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minBtnMouseEntered
@@ -299,9 +390,39 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private void homeBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMouseExited
     }//GEN-LAST:event_homeBtnMouseExited
 
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+        
+        Employee e = ecosystem.getEmployeeDirectory().createEmployee(txtPatientName.getText(), txtPatientAddress.getText(), txtPatientNumber.getText());
+        if(e == null)
+        {
+            JOptionPane.showMessageDialog(null,"Patient " + txtPatientName.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        UserAccount ua = ecosystem.getUserAccountDirectory().createUserAccount(txtPatientUsername.getText(), txtPatientPassword.getText(), e, new PatientRole());
+        if(ua != null)
+        {
+            Patient patient = ecosystem.getPatientDirectory().createPatient(TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
+            JOptionPane.showMessageDialog(null, "Customer account created successfully for " + patient.getPatientName());
+        }
+        else
+        {
+            ecosystem.getEmployeeDirectory().deleteEmployee(e);
+            JOptionPane.showMessageDialog(null,"Username " + txtPatientUsername.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backMenu;
+    private javax.swing.ButtonGroup btnGender;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.JPanel buttonClose;
     private javax.swing.JPanel buttonMax;
     private javax.swing.JPanel buttonMin;
@@ -312,6 +433,17 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel home;
     private javax.swing.JLabel homeBtn;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblPatientAddress;
+    private javax.swing.JLabel lblPatientAge;
+    private javax.swing.JLabel lblPatientGender;
+    private javax.swing.JLabel lblPatientName;
+    private javax.swing.JLabel lblPatientNumber;
+    private javax.swing.JLabel lblPatientPassword;
+    private javax.swing.JLabel lblPatientSymptoms1;
+    private javax.swing.JLabel lblPatientSymptoms2;
+    private javax.swing.JLabel lblPatientSymptoms3;
+    private javax.swing.JLabel lblPatientUsername;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel lineHideMenu;
     private javax.swing.JPanel lineSetting;
     private javax.swing.JLabel maxBtn;
@@ -320,5 +452,16 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel minBtn;
     private javax.swing.JPanel sideMenu;
     private javax.swing.JPanel slidingMenu;
+    private javax.swing.JTextField txtPatientAddress;
+    private javax.swing.JTextField txtPatientAge;
+    private javax.swing.JRadioButton txtPatientFemale;
+    private javax.swing.JRadioButton txtPatientMale;
+    private javax.swing.JTextField txtPatientName;
+    private javax.swing.JTextField txtPatientNumber;
+    private javax.swing.JTextField txtPatientPassword;
+    private javax.swing.JTextField txtPatientSymptoms1;
+    private javax.swing.JTextField txtPatientSymptoms2;
+    private javax.swing.JTextField txtPatientSymptoms3;
+    private javax.swing.JTextField txtPatientUsername;
     // End of variables declaration//GEN-END:variables
 }

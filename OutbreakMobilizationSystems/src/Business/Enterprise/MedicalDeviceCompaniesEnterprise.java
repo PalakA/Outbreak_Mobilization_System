@@ -5,6 +5,7 @@
  */
 package Business.Enterprise;
 
+import Business.Roles.ManufacturerRole;
 import Business.Roles.Roles;
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ import java.util.ArrayList;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/14/2021            @author palak       Updated package names
+ * 04/15/2021            @author palak       Added roles in function
  * 
  */
 
@@ -25,8 +27,11 @@ public class MedicalDeviceCompaniesEnterprise extends Enterprise{
     public MedicalDeviceCompaniesEnterprise(String name){
         super(name,Enterprise.EnterpriseType.MedicalDeviceCompanies);
     }
+    
     @Override
     public ArrayList<Roles> getSupportedRole() {
-        return null;
+        
+        roles.add(new ManufacturerRole());
+        return roles;
     } 
 }

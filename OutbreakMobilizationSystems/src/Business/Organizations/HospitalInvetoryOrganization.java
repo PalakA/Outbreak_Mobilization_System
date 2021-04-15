@@ -5,6 +5,10 @@
  */
 package Business.Organizations;
 
+import Business.Roles.CareTakerRole;
+import Business.Roles.DoctorRole;
+import Business.Roles.ManagerRole;
+import Business.Roles.PatientRole;
 import Business.Roles.Roles;
 import java.util.ArrayList;
 
@@ -28,10 +32,10 @@ public class HospitalInvetoryOrganization extends Organization{
     @Override
     public ArrayList<Roles> getSupportedRole() {
         ArrayList<Roles> roles = new ArrayList();
-//        roles.add(new ManagerRole());
-//        roles.add(new DoctorRole());
-//        roles.add(new CareTakerRole());
-//        roles.add(new PatientRole());
+        roles.add(new ManagerRole());
+        roles.add(new DoctorRole());
+        roles.add(new CareTakerRole());
+        roles.add(new PatientRole());
         return roles;
     }
 }

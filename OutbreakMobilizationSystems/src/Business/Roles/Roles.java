@@ -7,6 +7,7 @@ package Business.Roles;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network;
 import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
@@ -20,6 +21,7 @@ import javax.swing.JPanel;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author palak       Added Roles class
+ * 04/15/2021            @author palak       Added network in createWorkArea class
  */
 
 public abstract class Roles {
@@ -54,7 +56,8 @@ public abstract class Roles {
     public abstract JPanel createWorkArea(JPanel userProcessContainer, 
             UserAccount account, 
             Organization organization, 
-            Enterprise enterprise, 
+            Enterprise enterprise,
+            Network network,
             EcoSystem business);
 
     @Override

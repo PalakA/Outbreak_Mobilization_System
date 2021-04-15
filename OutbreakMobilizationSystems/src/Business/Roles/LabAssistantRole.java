@@ -7,11 +7,11 @@ package Business.Roles;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network;
 import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import ui.DiagnosticCenterWorkArea.DiagnosticCenterJPanel;
-import ui.HospitalWorkArea.CaretakerWorkAreaJPanel;
 
 /**
  * @author ajayp
@@ -21,12 +21,17 @@ import ui.HospitalWorkArea.CaretakerWorkAreaJPanel;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 
+ * 04/14/2021            @author palak       Added UserAccount and constructor
  */
 
 public class LabAssistantRole extends Roles{
     
-        public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem system) {
-        return new DiagnosticCenterJPanel(userProcessContainer, system);
+    private RoleType roleType;
+    public LabAssistantRole() {
+        RoleType roleType = RoleType.CareTaker;
+    }
+    
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
+        return new DiagnosticCenterJPanel(userProcessContainer, account, network, system);
     }
 }
