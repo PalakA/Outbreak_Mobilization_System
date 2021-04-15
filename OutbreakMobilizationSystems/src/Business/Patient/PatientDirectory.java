@@ -53,7 +53,7 @@ public class PatientDirectory {
         return null;
     }
     
-    public Patient createPatient(int patientId, String patientName, String patientAge, String patientUsername, String patientPassword, String patientAddress, String patientNumber, 
+    public Patient createPatient(String patientName, String patientAge, String patientUsername, String patientPassword, String patientAddress, String patientNumber, 
             String patientGender, String symptom1, String symptom2, String symptom3) {
         patient = new Patient(patient.getPatientId(), patientName, patientAge, patientUsername, patientPassword, patientAddress, patientNumber, patientGender, symptom1, symptom2, symptom3);
         patientList.add(patient);

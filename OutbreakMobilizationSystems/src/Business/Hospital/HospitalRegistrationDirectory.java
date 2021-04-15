@@ -45,7 +45,7 @@ public class HospitalRegistrationDirectory {
         this.hospitalRegistrationList = hospitalRegistrationList;
     }
     
-    public HospitalRegistration createHospitalRegistration(int hospitalId, String hospitalName, String hospitalCity, String hospitalState, String hospitalLocation) {
+    public HospitalRegistration createHospitalRegistration(String hospitalName, String hospitalCity, String hospitalState, String hospitalLocation) {
         hospitalRegistration = new HospitalRegistration(hospitalRegistration.getHospitalId(), hospitalName, hospitalCity, hospitalState, hospitalLocation);
         hospitalRegistrationList.add(hospitalRegistration);
         return hospitalRegistration;

@@ -54,7 +54,7 @@ public class DoctorDirectory {
         return null;
     }
     
-    public Doctor createDoctor(int doctorId, String doctorName, String doctorUsername, String doctorPassword, String doctorNumber, String specialization) {
+    public Doctor createDoctor(String doctorName, String doctorUsername, String doctorPassword, String doctorNumber, String specialization) {
         doctor = new Doctor(doctor.getDoctorId(), doctorName, doctorUsername, doctorPassword, doctorNumber, specialization);
         doctorList.add(doctor);
         return doctor;

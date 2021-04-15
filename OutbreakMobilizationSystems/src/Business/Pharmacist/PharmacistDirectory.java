@@ -53,7 +53,7 @@ public class PharmacistDirectory {
         return null;
     }
     
-    public Pharmacist createPharmacist(int pharmacistId, String pharmacistName, String pharmacistUsername, String pharmacistPassword, String pharmacistNumber) {
+    public Pharmacist createPharmacist(String pharmacistName, String pharmacistUsername, String pharmacistPassword, String pharmacistNumber) {
         pharmacist = new Pharmacist(pharmacist.getPharmacistId(), pharmacistName, pharmacistUsername, pharmacistPassword, pharmacistNumber);
         pharmacistList.add(pharmacist);
         return pharmacist;

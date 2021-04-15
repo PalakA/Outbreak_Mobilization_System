@@ -55,7 +55,7 @@ public class CareTakerDirectory {
         return null;
     }
     
-    public CareTaker createCareTaker(int caretakerId, String caretakerName, String caretakerUsername, String caretakerPassword, String caretakerAddress, String caretakerNumber, Date dutyHours) {
+    public CareTaker createCareTaker(String caretakerName, String caretakerUsername, String caretakerPassword, String caretakerAddress, String caretakerNumber, Date dutyHours) {
         careTaker = new CareTaker(careTaker.getCaretakerId(), caretakerName, caretakerUsername, caretakerPassword, caretakerAddress, caretakerNumber, dutyHours);
         careTakerList.add(careTaker);
         return careTaker;
