@@ -14,19 +14,25 @@ package Business.SupplyChain;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author ajayp       Added SupplyChain Information
- * 
+ * 04/14/2021            @author ajayp       Added counter for supply chain id
  */
 
 public class SupplyChain {
     
-    public String supplyChainId;
+    private static int count = 1;
+    public int supplyChainId;
     public String supplyChainName;
     public String supplyChainUsername;
     public String supplyChainPassword;
     public String supplyChainAddress;
     public String supplyChainNumber;
+    
+    public SupplyChain() {
+        this.supplyChainId = count;
+        count++;
+    }
 
-    public SupplyChain(String supplyChainId, String supplyChainName, String supplyChainUsername, String supplyChainPassword, String supplyChainAddress, String supplyChainNumber) {
+    public SupplyChain(int supplyChainId, String supplyChainName, String supplyChainUsername, String supplyChainPassword, String supplyChainAddress, String supplyChainNumber) {
         this.supplyChainId = supplyChainId;
         this.supplyChainName = supplyChainName;
         this.supplyChainUsername = supplyChainUsername;
@@ -35,11 +41,11 @@ public class SupplyChain {
         this.supplyChainNumber = supplyChainNumber;
     }
 
-    public String getSupplyChainId() {
+    public int getSupplyChainId() {
         return supplyChainId;
     }
 
-    public void setSupplyChainId(String supplyChainId) {
+    public void setSupplyChainId(int supplyChainId) {
         this.supplyChainId = supplyChainId;
     }
 
@@ -85,6 +91,6 @@ public class SupplyChain {
 
     @Override
     public String toString() {
-        return supplyChainId;
+        return supplyChainName;
     }
 }

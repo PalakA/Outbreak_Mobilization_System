@@ -54,8 +54,8 @@ public class DiagnosticianDirectory {
         return null;
     }
     
-    public Diagnostician createDiagnostician(String diagnosticianId, String diagnosticianName, String diagnosticianUsername, String diagnosticianPassword, String diagnosticianNumber) {
-        diagnostician = new Diagnostician(diagnosticianId, diagnosticianName, diagnosticianUsername, diagnosticianPassword, diagnosticianNumber);
+    public Diagnostician createDiagnostician(int diagnosticianId, String diagnosticianName, String diagnosticianUsername, String diagnosticianPassword, String diagnosticianNumber) {
+        diagnostician = new Diagnostician(diagnostician.getDiagnosticianId(), diagnosticianName, diagnosticianUsername, diagnosticianPassword, diagnosticianNumber);
         diagnosticianList.add(diagnostician);
         return diagnostician;
     }

@@ -19,13 +19,19 @@ package Business.Diagnostician;
 
 public class Diagnostician {
     
-    public String diagnosticianId;
+    private static int count = 1;
+    public int diagnosticianId;
     public String diagnosticianName;
     public String diagnosticianUsername;
     public String diagnosticianPassword;
     public String diagnosticianNumber;
+    
+    public Diagnostician() {
+        this.diagnosticianId = count;
+        count++;
+    }
 
-    public Diagnostician(String diagnosticianId, String diagnosticianName, String diagnosticianUsername, String diagnosticianPassword, String diagnosticianNumber) {
+    public Diagnostician(int diagnosticianId, String diagnosticianName, String diagnosticianUsername, String diagnosticianPassword, String diagnosticianNumber) {
         this.diagnosticianId = diagnosticianId;
         this.diagnosticianName = diagnosticianName;
         this.diagnosticianUsername = diagnosticianUsername;
@@ -33,11 +39,11 @@ public class Diagnostician {
         this.diagnosticianNumber = diagnosticianNumber;
     }
 
-    public String getDiagnosticianId() {
+    public int getDiagnosticianId() {
         return diagnosticianId;
     }
 
-    public void setDiagnosticianId(String diagnosticianId) {
+    public void setDiagnosticianId(int diagnosticianId) {
         this.diagnosticianId = diagnosticianId;
     }
 
@@ -75,6 +81,6 @@ public class Diagnostician {
 
     @Override
     public String toString() {
-        return diagnosticianId;
+        return diagnosticianName;
     }
 }

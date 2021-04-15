@@ -18,6 +18,7 @@ import java.util.Date;
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author ajayp       Added Caretaker Directory Information
  * 04/14/2021            @author palak       Updated Line 50 with equals sign
+ * 04/14/2021            @author ajayp       Updated Line 59 for incrementing id using counter
  */
 
 public class CareTakerDirectory {
@@ -54,8 +55,8 @@ public class CareTakerDirectory {
         return null;
     }
     
-    public CareTaker createCareTaker(String caretakerId, String caretakerName, String caretakerUsername, String caretakerPassword, String caretakerAddress, String caretakerNumber, Date dutyHours) {
-        careTaker = new CareTaker(caretakerId, caretakerName, caretakerUsername, caretakerPassword, caretakerAddress, caretakerNumber, dutyHours);
+    public CareTaker createCareTaker(int caretakerId, String caretakerName, String caretakerUsername, String caretakerPassword, String caretakerAddress, String caretakerNumber, Date dutyHours) {
+        careTaker = new CareTaker(careTaker.getCaretakerId(), caretakerName, caretakerUsername, caretakerPassword, caretakerAddress, caretakerNumber, dutyHours);
         careTakerList.add(careTaker);
         return careTaker;
     }
