@@ -7,6 +7,7 @@ package Business.Roles;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network;
 import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
@@ -22,12 +23,18 @@ import ui.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author nakul       Added Pharmacist role
+ * 04/14/2021            @author palak       Added UserAccount, network and constructor
  */
 
 public class PharmacistRole extends Roles{
 
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem system) {
-        return new ManageMedicinesJPanel(userProcessContainer, system);
+    private RoleType roleType;
+    public PharmacistRole() {
+        RoleType roleType = RoleType.CareTaker;
+    }
+    
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
+        return new ManageMedicinesJPanel(userProcessContainer, account, network, system);
     }
     
 }

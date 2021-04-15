@@ -5,12 +5,27 @@
  */
 package ui;
 
+import Business.DB4OUtil.DB4OUtil;
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Network;
+import Business.Organizations.Organization;
+import Business.Roles.CareTakerRole;
+import Business.Roles.DiagnosticianRole;
+import Business.Roles.DoctorRole;
+import Business.Roles.LabAssistantRole;
+import Business.Roles.ManagerRole;
+import Business.Roles.ManufacturerRole;
+import Business.Roles.PatientRole;
+import Business.Roles.PharmacistRole;
+import Business.Roles.SupplyChainRole;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -30,9 +45,19 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    
+    private EcoSystem system;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    UserAccount userAccount;
+    Enterprise inEnterprise;
+    Organization inOrganization;
+    Network network;
+    
     boolean a = true;
     public MainJFrame() {
+        this.setUndecorated(true);
         initComponents();
+        system = dB4OUtil.retrieveSystem();
     }
 
     /**
@@ -63,14 +88,14 @@ public class MainJFrame extends javax.swing.JFrame {
         homeBtn = new javax.swing.JLabel();
         slidingMenu = new javax.swing.JPanel();
         dashboard = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        lblUsername = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        lblPassword = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
+        btnSignIn = new javax.swing.JButton();
+        picLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -180,7 +205,7 @@ public class MainJFrame extends javax.swing.JFrame {
         hideMenu.setLayout(new java.awt.BorderLayout());
 
         backMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        backMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_back_to_32px.png"))); // NOI18N
+        backMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/backbutton.png"))); // NOI18N
         backMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMenuMouseClicked(evt);
@@ -254,58 +279,58 @@ public class MainJFrame extends javax.swing.JFrame {
         dashboard.setBackground(new java.awt.Color(153, 153, 0));
         dashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setBackground(new java.awt.Color(153, 153, 0));
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtUsername.setBackground(new java.awt.Color(153, 153, 0));
+        txtUsername.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtUsername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtUsernameActionPerformed(evt);
             }
         });
-        dashboard.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 178, 32));
+        dashboard.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 178, 32));
 
-        jLabel1.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("UserName :");
-        dashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, -1, -1));
+        lblUsername.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
+        lblUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUsername.setText("UserName :");
+        dashboard.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(204, 204, 0));
         dashboard.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 178, 13));
 
-        jPasswordField1.setBackground(new java.awt.Color(153, 153, 0));
-        jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        txtPassword.setBackground(new java.awt.Color(153, 153, 0));
+        txtPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                txtPasswordActionPerformed(evt);
             }
         });
-        dashboard.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, 178, 32));
+        dashboard.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, 178, 32));
 
-        jLabel4.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
-        jLabel4.setText("Password : ");
-        dashboard.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 117, -1));
+        lblPassword.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
+        lblPassword.setText("Password : ");
+        dashboard.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 117, -1));
 
-        jLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 48)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Login Page");
-        dashboard.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 280, -1));
+        lblTitle.setFont(new java.awt.Font("Berlin Sans FB", 0, 48)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Login Page");
+        dashboard.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 280, -1));
 
-        jButton2.setBackground(new java.awt.Color(102, 102, 0));
-        jButton2.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        jButton2.setText("Sign In");
-        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(102, 102, 0), new java.awt.Color(204, 204, 204), new java.awt.Color(102, 102, 0)));
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSignIn.setBackground(new java.awt.Color(102, 102, 0));
+        btnSignIn.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        btnSignIn.setText("Sign In");
+        btnSignIn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(102, 102, 0), new java.awt.Color(204, 204, 204), new java.awt.Color(102, 102, 0)));
+        btnSignIn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSignInActionPerformed(evt);
             }
         });
-        dashboard.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 310, 60));
+        dashboard.add(btnSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 310, 60));
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_clinic_96px.png"))); // NOI18N
-        dashboard.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 180, 140));
+        picLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        picLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_clinic_96px.png"))); // NOI18N
+        dashboard.add(picLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 180, 140));
 
         getContentPane().add(dashboard, java.awt.BorderLayout.CENTER);
 
@@ -430,17 +455,75 @@ public class MainJFrame extends javax.swing.JFrame {
     
     }//GEN-LAST:event_minBtnMouseClicked
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+        String userName = txtUsername.getText();
+        char[] passwordCharArray = txtPassword.getPassword();
+        String password = String.valueOf(passwordCharArray);
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
+        inEnterprise = null;
+        inOrganization = null;
+        network = null;
+
+        if (userAccount == null) {
+            for (Network networks : system.getNetworkList()) {
+                //Step 2.a: check against each enterprise
+                System.out.println("Network name --->> " + networks.getName());
+                for (Enterprise enterprise : networks.getEnterpriseDirectory().getEnterpriseList()) {
+                    System.out.println("Enterprise name --->> " + enterprise.getName());
+                    userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
+                    network = networks;
+                    if (userAccount == null) {
+                        //Step 3:check against each organization for each enterprise
+                        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                            userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
+                            if (userAccount != null) {
+                                inEnterprise = enterprise;
+                                inOrganization = organization;
+                                network = networks;
+                                break;
+                            }
+                        }
+
+                    } else {
+                        inEnterprise = enterprise;
+                        break;
+                    }
+                    if (inOrganization != null) {
+                        break;
+                    }
+                }
+                if (inEnterprise != null) {
+                    break;
+                }
+                /*if (networks != null) {//changed
+                    break;
+                }*/
+            }
+        }
+        if (userAccount == null) {
+            JOptionPane.showMessageDialog(null, "Invalid credentials");
+            return;
+        } else {
+            btnSignIn.setVisible(false);
+            dashboard.setVisible(true);
+            txtUsername.setText("");
+            txtPassword.setText("");
+            setWorkArea();
+        }
+        
+    }//GEN-LAST:event_btnSignInActionPerformed
+
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+        
+    }//GEN-LAST:event_txtUsernameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -479,6 +562,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backMenu;
+    private javax.swing.JButton btnSignIn;
     private javax.swing.JPanel buttonClose;
     private javax.swing.JPanel buttonMax;
     private javax.swing.JPanel buttonMin;
@@ -488,22 +572,63 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel hideMenu;
     private javax.swing.JPanel home;
     private javax.swing.JLabel homeBtn;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblUsername;
     private javax.swing.JPanel lineHideMenu;
     private javax.swing.JPanel lineSetting;
     private javax.swing.JLabel maxBtn;
     private javax.swing.JPanel maxIcon;
     private javax.swing.JPanel menuOption;
     private javax.swing.JLabel minBtn;
+    private javax.swing.JLabel picLogo;
     private javax.swing.JPanel sideMenu;
     private javax.swing.JPanel slidingMenu;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
+
+    private void setWorkArea() {
+      
+        if (userAccount != null && userAccount.getRole() != null) {
+            String greetings = "Hello";
+            if (userAccount.getRole() instanceof CareTakerRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                dashboard.add("workArea", userAccount.getRole().createWorkArea(dashboard, userAccount, inOrganization, inEnterprise, network, system));
+            } else if (userAccount.getRole() instanceof DiagnosticianRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                dashboard.add("workArea", userAccount.getRole().createWorkArea(dashboard, userAccount, inOrganization, inEnterprise, network, system));
+            } else if (userAccount.getRole() instanceof DoctorRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                dashboard.add("workArea", userAccount.getRole().createWorkArea(dashboard, userAccount, inOrganization, inEnterprise, network, system));
+            } else if (userAccount.getRole() instanceof LabAssistantRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                dashboard.add("workArea", userAccount.getRole().createWorkArea(dashboard, userAccount, inOrganization, inEnterprise, network, system));
+            } else if (userAccount.getRole() instanceof ManagerRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                dashboard.add("workArea", userAccount.getRole().createWorkArea(dashboard, userAccount, inOrganization, inEnterprise, network, system));
+            }else if (userAccount.getRole() instanceof ManufacturerRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                dashboard.add("workArea", userAccount.getRole().createWorkArea(dashboard, userAccount, inOrganization, inEnterprise, network, system)); 
+            }else if (userAccount.getRole() instanceof PatientRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                dashboard.add("workArea", userAccount.getRole().createWorkArea(dashboard, userAccount, inOrganization, inEnterprise, network, system)); 
+            }else if (userAccount.getRole() instanceof PharmacistRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                dashboard.add("workArea", userAccount.getRole().createWorkArea(dashboard, userAccount, inOrganization, inEnterprise, network, system)); 
+            }else if (userAccount.getRole() instanceof SupplyChainRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                dashboard.add("workArea", userAccount.getRole().createWorkArea(dashboard, userAccount, inOrganization, inEnterprise, network, system)); 
+            }else {
+                greetings = greetings + " " + userAccount.getUsername();
+                dashboard.add("workArea", userAccount.getRole().createWorkArea(dashboard, userAccount, inOrganization, inEnterprise, network, system));
+            }
+            //greetingUserLabel.setText(greetings + " !!!");
+            JOptionPane.showMessageDialog(null, greetings);
+            CardLayout layout = (CardLayout) dashboard.getLayout();
+            layout.next(dashboard);
+        }
+    }
 }
