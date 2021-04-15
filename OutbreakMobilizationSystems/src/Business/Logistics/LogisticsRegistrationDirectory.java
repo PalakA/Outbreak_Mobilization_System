@@ -45,7 +45,7 @@ public class LogisticsRegistrationDirectory {
         this.logisticsRegistrationList = logisticsRegistrationList;
     }
     
-    public LogisticsRegistration createLogisticsRegistration(int logisticsId, String logisticsName, String logisticsCity, String logisticsState, String logisticsLocation) {
+    public LogisticsRegistration createLogisticsRegistration(String logisticsName, String logisticsCity, String logisticsState, String logisticsLocation) {
         logisticsRegistration = new LogisticsRegistration(logisticsRegistration.getLogisticsId(), logisticsName, logisticsCity, logisticsState, logisticsLocation);
         logisticsRegistrationList.add(logisticsRegistration);
         return logisticsRegistration;

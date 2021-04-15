@@ -45,7 +45,7 @@ public class MedicalDevicesCompanyRegistrationDirectory {
         this.medicalDeviceCompanyRegistrationList = medicalDeviceCompanyRegistrationList;
     }
     
-    public MedicalDeviceCompanyRegistration createMedicalDeviceCompanyRegistration(int medDeviceCompanyId, String medDeviceCompanyName, String medDeviceCompanyCity, String medDeviceCompanyState, String medDeviceCompanyLocation) {
+    public MedicalDeviceCompanyRegistration createMedicalDeviceCompanyRegistration(String medDeviceCompanyName, String medDeviceCompanyCity, String medDeviceCompanyState, String medDeviceCompanyLocation) {
         medicalDeviceCompanyRegistration = new MedicalDeviceCompanyRegistration(medicalDeviceCompanyRegistration.getMedDeviceCompanyId(), medDeviceCompanyName, medDeviceCompanyCity, medDeviceCompanyState, medDeviceCompanyLocation);
         medicalDeviceCompanyRegistrationList.add(medicalDeviceCompanyRegistration);
         return medicalDeviceCompanyRegistration;

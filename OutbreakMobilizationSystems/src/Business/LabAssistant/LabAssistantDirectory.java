@@ -54,7 +54,7 @@ public class LabAssistantDirectory {
         return null;
     }
     
-    public LabAssistant createLabAssistant(int labAssistantId, String labAssistantName, String labAssistantUsername, String labAssistantPassword, String labAssistantNumber) {
+    public LabAssistant createLabAssistant(String labAssistantName, String labAssistantUsername, String labAssistantPassword, String labAssistantNumber) {
         labAssistant = new LabAssistant(labAssistant.getLabAssistantId(), labAssistantName, labAssistantUsername, labAssistantPassword, labAssistantNumber);
         labAssistantList.add(labAssistant);
         return labAssistant;
