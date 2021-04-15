@@ -53,7 +53,7 @@ public class SupplyChainDirectory {
         return null;
     }
     
-    public SupplyChain createSupplyChain(int supplyChainId, String supplyChainName, String supplyChainUsername, String supplyChainPassword, String supplyChainAddress, String supplyChainNumber) {
+    public SupplyChain createSupplyChain(String supplyChainName, String supplyChainUsername, String supplyChainPassword, String supplyChainAddress, String supplyChainNumber) {
         supplyChain = new SupplyChain(supplyChain.getSupplyChainId(), supplyChainName, supplyChainUsername, supplyChainPassword, supplyChainAddress, supplyChainNumber);
         supplyChainList.add(supplyChain);
         return supplyChain;

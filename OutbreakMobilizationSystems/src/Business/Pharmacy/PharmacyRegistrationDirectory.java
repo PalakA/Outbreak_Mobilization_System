@@ -45,7 +45,7 @@ public class PharmacyRegistrationDirectory {
         this.pharmacyRegistrationList = pharmacyRegistrationList;
     }
     
-    public PharmacyRegistration createPharmacyRegistration(int pharmacyId, String pharmacyName, String pharmacyCity, String pharmacyState, String pharmacyLocation) {
+    public PharmacyRegistration createPharmacyRegistration(String pharmacyName, String pharmacyCity, String pharmacyState, String pharmacyLocation) {
         pharmacyRegistration = new PharmacyRegistration(pharmacyRegistration.getPharmacyId(), pharmacyName, pharmacyCity, pharmacyState, pharmacyLocation);
         pharmacyRegistrationList.add(pharmacyRegistration);
         return pharmacyRegistration;

@@ -45,7 +45,7 @@ public class DiagnosticCenterRegistrationDirectory {
         this.diagnosticCenterRegistrationList = diagnosticCenterRegistrationList;
     }
     
-    public DiagnosticCenterRegistration createDiagnosticCenterRegistration(int diagnosticCenterId, String diagnosticCenterName, String diagnosticCenterCity, String diagnosticCenterState, String diagnosticCenterLocation) {
+    public DiagnosticCenterRegistration createDiagnosticCenterRegistration(String diagnosticCenterName, String diagnosticCenterCity, String diagnosticCenterState, String diagnosticCenterLocation) {
         diagnosticCenterRegistration = new DiagnosticCenterRegistration(diagnosticCenterRegistration.getDiagnosticCenterId(), diagnosticCenterName, diagnosticCenterCity, diagnosticCenterState, diagnosticCenterLocation);
         diagnosticCenterRegistrationList.add(diagnosticCenterRegistration);
         return diagnosticCenterRegistration;
