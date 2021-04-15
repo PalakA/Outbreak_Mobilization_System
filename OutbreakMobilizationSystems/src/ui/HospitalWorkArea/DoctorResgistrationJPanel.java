@@ -5,11 +5,6 @@
  */
 package ui.HospitalWorkArea;
 
-import Business.EcoSystem;
-import Business.Network;
-import Business.UserAccount.UserAccount;
-import javax.swing.JPanel;
-
 /**
  * @author ajayp
  * @author nakul
@@ -18,26 +13,15 @@ import javax.swing.JPanel;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 04/13/2021            @author nakul       Added PatientWorkArea JPanel
- * 04/14/2021            @author palak       Added UserAccount, network
+ * 
  */
-public class PatientWorkAreaJPanel extends javax.swing.JPanel {
+public class DoctorResgistrationJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form PatientWorkAreaJPanel
+     * Creates new form PatientJPanel
      */
-    JPanel userProcessContainer;
-    EcoSystem ecosystem;
-    UserAccount user;
-    Network network;
-    
-    public PatientWorkAreaJPanel(JPanel userProcessContainer,UserAccount user, Network network, EcoSystem ecosystem) {
+    public DoctorResgistrationJPanel() {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.user = user;
-        this.network = network;
-        this.ecosystem=ecosystem;
-        //populateTree();
     }
 
     /**
@@ -239,7 +223,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         );
         slidingMenuLayout.setVerticalGroup(
             slidingMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 552, Short.MAX_VALUE)
+            .addGap(0, 567, Short.MAX_VALUE)
         );
 
         sideMenu.add(slidingMenu, java.awt.BorderLayout.CENTER);
@@ -271,7 +255,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_maxBtnMouseExited
 
     private void minBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minBtnMouseClicked
-        
+       
     }//GEN-LAST:event_minBtnMouseClicked
 
     private void minBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minBtnMouseEntered

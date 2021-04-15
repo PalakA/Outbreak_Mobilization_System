@@ -15,12 +15,12 @@ package ui.HospitalWorkArea;
  * Date(MM/DD/YYYY)      Author              Comment
  * 
  */
-public class ResgistrationJPanel extends javax.swing.JPanel {
+public class CareTakerResgistrationJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form PatientJPanel
      */
-    public ResgistrationJPanel() {
+    public CareTakerResgistrationJPanel() {
         initComponents();
     }
 
@@ -159,7 +159,7 @@ public class ResgistrationJPanel extends javax.swing.JPanel {
         hideMenu.setLayout(new java.awt.BorderLayout());
 
         backMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        backMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_back_to_32px.png"))); // NOI18N
+        backMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/backbutton.png"))); // NOI18N
         backMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMenuMouseClicked(evt);

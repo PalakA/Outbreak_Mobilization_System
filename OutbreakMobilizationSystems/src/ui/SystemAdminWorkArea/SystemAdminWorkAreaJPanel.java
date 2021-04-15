@@ -169,7 +169,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         hideMenu.setLayout(new java.awt.BorderLayout());
 
         backMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        backMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_back_to_32px.png"))); // NOI18N
+        backMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/backbutton.png"))); // NOI18N
         backMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMenuMouseClicked(evt);

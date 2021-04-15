@@ -31,6 +31,7 @@ public abstract class Organization {
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private int organizationID;
+    public ArrayList<Roles> roles;
     private static int counter=0;
     
     public enum Type{
@@ -52,6 +53,7 @@ public abstract class Organization {
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
         organizationID = counter;
+        roles = new ArrayList<Roles>();
         ++counter;
     }
 
