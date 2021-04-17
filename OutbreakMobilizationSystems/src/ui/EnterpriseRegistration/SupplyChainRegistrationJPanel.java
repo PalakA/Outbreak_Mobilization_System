@@ -6,8 +6,14 @@
 package ui.EnterpriseRegistration;
 
 /**
- *
  * @author ajayp
+ * @author nakul
+ * @author palak
+ * 
+ * Revision History:
+ * 
+ * Date(MM/DD/YYYY)      Author              Comment
+ * 04/17/2021            @author nakul       Added SupplyChainRegistrationJPanel
  */
 public class SupplyChainRegistrationJPanel extends javax.swing.JPanel {
 
