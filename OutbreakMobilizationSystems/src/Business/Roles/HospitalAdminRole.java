@@ -23,6 +23,7 @@ import ui.EnterpriseRegistration.HospitalAdminRegistrationJPanel;
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/17/2021            @author nakul       Added Hospital Admin Role
  */
+
 public class HospitalAdminRole extends Roles{
     
     private Roles.RoleType roleType;

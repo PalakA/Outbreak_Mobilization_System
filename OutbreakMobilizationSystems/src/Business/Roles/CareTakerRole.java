@@ -36,6 +36,4 @@ public class CareTakerRole extends Roles{
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
         return new CaretakerWorkAreaJPanel(userProcessContainer, account, network, system);
     }
-    
-    
 }

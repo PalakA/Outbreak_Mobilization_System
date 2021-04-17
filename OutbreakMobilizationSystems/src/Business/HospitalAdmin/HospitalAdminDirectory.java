@@ -20,6 +20,7 @@ import java.util.ArrayList;
  * 04/17/2021            @author nakul       Updated function name
  */
 
+
 public class HospitalAdminDirectory {
     
     private HospitalAdmin hospitalAdmin;
@@ -67,7 +68,7 @@ public class HospitalAdminDirectory {
             }
         }
     }
-    
+
     public void updateAdmin(HospitalAdmin hospitalAdmin, String adminName, String adminUsername, String adminPassword) {
         for(HospitalAdmin updateAdmin: hospitalAdminList) {
             if(updateAdmin.getAdminUsername().equalsIgnoreCase(adminUsername)) {
