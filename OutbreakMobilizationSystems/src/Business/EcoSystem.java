@@ -5,8 +5,10 @@
 // */
 package Business;
 
+import Business.Network.Network;
 import Business.CareTaker.CareTakerDirectory;
 import Business.Doctor.DoctorDirectory;
+import Business.Hospital.HospitalRegistrationDirectory;
 import Business.Organizations.Organization;
 import Business.Patient.PatientDirectory;
 import Business.Roles.Roles;
@@ -33,14 +35,24 @@ public class EcoSystem extends Organization{
     private PatientDirectory patientDirectory;
     private CareTakerDirectory careTakerDirectory;
     private DoctorDirectory doctorDirectory;
+    private HospitalRegistrationDirectory hospitalRegistrationDirectory;
 
-    public EcoSystem(PatientDirectory patientDirectory, CareTakerDirectory careTakerDirectory, DoctorDirectory doctorDirectory, String name) {
+    public EcoSystem(PatientDirectory patientDirectory, CareTakerDirectory careTakerDirectory, DoctorDirectory doctorDirectory, String name, HospitalRegistrationDirectory hospitalRegistrationDirectory) {
         super(name);
         this.patientDirectory = patientDirectory;
         this.careTakerDirectory = careTakerDirectory;
         this.doctorDirectory = doctorDirectory;
+        this.hospitalRegistrationDirectory = hospitalRegistrationDirectory;
     }
 
+    public HospitalRegistrationDirectory getHospitalRegistrationDirectory() {
+        return hospitalRegistrationDirectory;
+    }
+
+    public void setHospitalRegistrationDirectory(HospitalRegistrationDirectory hospitalRegistrationDirectory) {
+        this.hospitalRegistrationDirectory = hospitalRegistrationDirectory;
+    }
+        
     public PatientDirectory getPatientDirectory() {
         return patientDirectory;
     }
@@ -94,6 +106,15 @@ public class EcoSystem extends Organization{
         }
         for(Network network:networkList){
             
+        }
+        return true;
+    }
+    
+    public boolean isUnique(String name){
+        for(Network network : networkList){
+            if(network.getName().equalsIgnoreCase(name)){
+                return false;
+            }
         }
         return true;
     }
