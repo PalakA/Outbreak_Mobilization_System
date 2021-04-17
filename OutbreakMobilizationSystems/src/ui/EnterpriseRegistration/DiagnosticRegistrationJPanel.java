@@ -14,6 +14,7 @@ package ui.EnterpriseRegistration;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/17/2021            @author nakul       Added DiagnosticRegistrationJPanel
+ * 
  */
 public class DiagnosticRegistrationJPanel extends javax.swing.JPanel {
 
