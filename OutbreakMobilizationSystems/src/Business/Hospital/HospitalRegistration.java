@@ -31,20 +31,11 @@ public class HospitalRegistration {
         count++;
     }
 
-    public HospitalRegistration(int hospitalId, String hospitalName, String hospitalCity, String hospitalState, String hospitalLocation) {
+    public HospitalRegistration(int hospitalId, String hospitalName, String hospitalCity, String hospitalState) {
         this.hospitalId = hospitalId;
         this.hospitalName = hospitalName;
         this.hospitalCity = hospitalCity;
         this.hospitalState = hospitalState;
-        this.hospitalLocation = hospitalLocation;
-    }
-
-    public static int getCount() {
-        return count;
-    }
-
-    public static void setCount(int count) {
-        HospitalRegistration.count = count;
     }
 
     public int getHospitalId() {

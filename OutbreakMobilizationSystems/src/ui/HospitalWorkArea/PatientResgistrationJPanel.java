@@ -403,8 +403,8 @@ public class PatientResgistrationJPanel extends javax.swing.JPanel {
         UserAccount ua = ecosystem.getUserAccountDirectory().createUserAccount(txtPatientUsername.getText(), txtPatientPassword.getText(), e, new PatientRole());
         if(ua != null)
         {
-            Patient patient = ecosystem.getPatientDirectory().createPatient(TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
-            JOptionPane.showMessageDialog(null, "Customer account created successfully for " + patient.getPatientName());
+            //Patient patient = ecosystem.getPatientDirectory().createPatient(TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
+            //JOptionPane.showMessageDialog(null, "Customer account created successfully for " + patient.getPatientName());
         }
         else
         {
