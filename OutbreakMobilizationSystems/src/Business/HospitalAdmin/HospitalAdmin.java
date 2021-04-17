@@ -6,8 +6,14 @@
 package Business.HospitalAdmin;
 
 /**
- *
  * @author ajayp
+ * @author nakul
+ * @author palak
+ * 
+ * Revision History:
+ * 
+ * Date(MM/DD/YYYY)      Author              Comment
+ * 04/17/2021            @author nakul       Added Hospital Admin
  */
 public class HospitalAdmin {
     
