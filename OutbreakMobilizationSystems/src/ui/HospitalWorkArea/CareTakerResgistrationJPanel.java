@@ -5,6 +5,14 @@
  */
 package ui.HospitalWorkArea;
 
+import Business.CareTaker.CareTaker;
+import Business.EcoSystem;
+import Business.Employee.Employee;
+import Business.Roles.CareTakerRole;
+import Business.UserAccount.UserAccount;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  * @author ajayp
  * @author nakul
@@ -13,15 +21,25 @@ package ui.HospitalWorkArea;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
+ * 04/15/2021            @author palak       Added Patient Registration Panel
  * 
  */
+
 public class CareTakerResgistrationJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form PatientJPanel
      */
-    public CareTakerResgistrationJPanel() {
+    
+    private JPanel userProcessContainer;
+    private EcoSystem ecosystem;
+    
+    public CareTakerResgistrationJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        
     }
 
     /**
@@ -52,6 +70,21 @@ public class CareTakerResgistrationJPanel extends javax.swing.JPanel {
         homeBtn = new javax.swing.JLabel();
         slidingMenu = new javax.swing.JPanel();
         dashboard = new javax.swing.JPanel();
+        dashboard1 = new javax.swing.JPanel();
+        lblTitle = new javax.swing.JLabel();
+        lblCareTakerName = new javax.swing.JLabel();
+        txtCareTakerName = new javax.swing.JTextField();
+        lblCareTakerUsername = new javax.swing.JLabel();
+        txtCareTakerUsername = new javax.swing.JTextField();
+        lblCareTakerPassword = new javax.swing.JLabel();
+        txtCareTakerPassword = new javax.swing.JTextField();
+        lblCareTakerAddress = new javax.swing.JLabel();
+        txtCareTakerAddress = new javax.swing.JTextField();
+        lblCareTakerDutyHrs = new javax.swing.JLabel();
+        txtCareTakerDutyHrs = new javax.swing.JTextField();
+        btnSubmit = new javax.swing.JButton();
+        lblCareTakerNumber = new javax.swing.JLabel();
+        txtCareTakerNumber = new javax.swing.JTextField();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -232,6 +265,55 @@ public class CareTakerResgistrationJPanel extends javax.swing.JPanel {
 
         dashboard.setBackground(new java.awt.Color(153, 153, 0));
         dashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        dashboard1.setBackground(new java.awt.Color(153, 153, 0));
+        dashboard1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Care Taker Registration Panel");
+        dashboard1.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 710, -1));
+
+        lblCareTakerName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblCareTakerName.setText("Name:");
+        dashboard1.add(lblCareTakerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
+        dashboard1.add(txtCareTakerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 220, -1));
+
+        lblCareTakerUsername.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblCareTakerUsername.setText("Username:");
+        dashboard1.add(lblCareTakerUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
+        dashboard1.add(txtCareTakerUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 220, -1));
+
+        lblCareTakerPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblCareTakerPassword.setText("Password:");
+        dashboard1.add(lblCareTakerPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, -1));
+        dashboard1.add(txtCareTakerPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 220, -1));
+
+        lblCareTakerAddress.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblCareTakerAddress.setText("Address:");
+        dashboard1.add(lblCareTakerAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, -1, -1));
+        dashboard1.add(txtCareTakerAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 220, -1));
+
+        lblCareTakerDutyHrs.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblCareTakerDutyHrs.setText("Duty Hours (in hr):");
+        dashboard1.add(lblCareTakerDutyHrs, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, -1, -1));
+        dashboard1.add(txtCareTakerDutyHrs, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 220, -1));
+
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+        dashboard1.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, 100, -1));
+
+        lblCareTakerNumber.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblCareTakerNumber.setText("Phone Number:");
+        dashboard1.add(lblCareTakerNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
+        dashboard1.add(txtCareTakerNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 220, -1));
+
+        dashboard.add(dashboard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         add(dashboard, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -283,19 +365,54 @@ public class CareTakerResgistrationJPanel extends javax.swing.JPanel {
     private void homeBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMouseExited
     }//GEN-LAST:event_homeBtnMouseExited
 
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+
+        Employee e = ecosystem.getEmployeeDirectory().createEmployee(txtCareTakerName.getText(), txtCareTakerAddress.getText(), txtCareTakerNumber.getText());
+        if(e == null)
+        {
+            JOptionPane.showMessageDialog(null,"Care Taker " + txtCareTakerName.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        UserAccount ua = ecosystem.getUserAccountDirectory().createUserAccount(txtCareTakerUsername.getText(), txtCareTakerPassword.getText(), e, new CareTakerRole());
+
+        if(ua != null)
+        {
+            CareTaker careTaker = ecosystem.getCareTakerDirectory().createCareTaker(txtCareTakerName.getText(), txtCareTakerUsername.getText(), txtCareTakerPassword.getText(), txtCareTakerAddress.getText(), txtCareTakerNumber.getText(), txtCareTakerDutyHrs.getText());
+            JOptionPane.showMessageDialog(null, "Care Taker account created successfully for " + careTaker.getCaretakerName());
+        }
+        else
+        {
+            ecosystem.getEmployeeDirectory().deleteEmployee(e);
+            JOptionPane.showMessageDialog(null,"Username " + txtCareTakerUsername.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backMenu;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.JPanel buttonClose;
     private javax.swing.JPanel buttonMax;
     private javax.swing.JPanel buttonMin;
     private javax.swing.JLabel closeBtn;
     private javax.swing.JPanel dashboard;
+    private javax.swing.JPanel dashboard1;
     private javax.swing.JPanel header;
     private javax.swing.JPanel hideMenu;
     private javax.swing.JPanel home;
     private javax.swing.JLabel homeBtn;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblCareTakerAddress;
+    private javax.swing.JLabel lblCareTakerDutyHrs;
+    private javax.swing.JLabel lblCareTakerName;
+    private javax.swing.JLabel lblCareTakerNumber;
+    private javax.swing.JLabel lblCareTakerPassword;
+    private javax.swing.JLabel lblCareTakerUsername;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel lineHideMenu;
     private javax.swing.JPanel lineSetting;
     private javax.swing.JLabel maxBtn;
@@ -304,5 +421,11 @@ public class CareTakerResgistrationJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel minBtn;
     private javax.swing.JPanel sideMenu;
     private javax.swing.JPanel slidingMenu;
+    private javax.swing.JTextField txtCareTakerAddress;
+    private javax.swing.JTextField txtCareTakerDutyHrs;
+    private javax.swing.JTextField txtCareTakerName;
+    private javax.swing.JTextField txtCareTakerNumber;
+    private javax.swing.JTextField txtCareTakerPassword;
+    private javax.swing.JTextField txtCareTakerUsername;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,8 +21,10 @@ import javax.swing.JPanel;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
+ * 04/15/2021            @author palak       Added Patient Registration Panel
  * 
  */
+
 public class PatientResgistrationJPanel extends javax.swing.JPanel {
 
     /**
@@ -32,8 +34,11 @@ public class PatientResgistrationJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem ecosystem;
     
-    public PatientResgistrationJPanel() {
+    public PatientResgistrationJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
     }
 
     /**
@@ -275,33 +280,33 @@ public class PatientResgistrationJPanel extends javax.swing.JPanel {
         dashboard.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 40, 710, -1));
 
         lblPatientName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientName.setText("Patient Name:");
-        dashboard.add(lblPatientName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
+        lblPatientName.setText("Name:");
+        dashboard.add(lblPatientName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
         dashboard.add(txtPatientName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 220, -1));
 
         lblPatientGender.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientGender.setText("Patient Gender:");
-        dashboard.add(lblPatientGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
+        lblPatientGender.setText("Gender:");
+        dashboard.add(lblPatientGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
         dashboard.add(txtPatientAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, -1));
 
         lblPatientUsername.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientUsername.setText("Patient Username:");
-        dashboard.add(lblPatientUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
+        lblPatientUsername.setText("Username:");
+        dashboard.add(lblPatientUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
         dashboard.add(txtPatientUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 220, -1));
 
         lblPatientPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientPassword.setText("Patient Password:");
-        dashboard.add(lblPatientPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, -1));
+        lblPatientPassword.setText("Password:");
+        dashboard.add(lblPatientPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, -1));
         dashboard.add(txtPatientPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 220, -1));
 
         lblPatientAddress.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientAddress.setText("Patient Address:");
-        dashboard.add(lblPatientAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, -1, -1));
+        lblPatientAddress.setText("Address:");
+        dashboard.add(lblPatientAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, -1, -1));
         dashboard.add(txtPatientAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 220, -1));
 
         lblPatientAge.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientAge.setText("Patient Age:");
-        dashboard.add(lblPatientAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, -1));
+        lblPatientAge.setText("Age:");
+        dashboard.add(lblPatientAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
 
         btnGender.add(txtPatientMale);
         txtPatientMale.setText("Male");
@@ -313,17 +318,17 @@ public class PatientResgistrationJPanel extends javax.swing.JPanel {
         dashboard.add(txtPatientSymptoms2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 220, -1));
 
         lblPatientSymptoms2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientSymptoms2.setText("Patient Symptoms:");
-        dashboard.add(lblPatientSymptoms2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, -1, -1));
+        lblPatientSymptoms2.setText("Symptoms:");
+        dashboard.add(lblPatientSymptoms2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, -1, -1));
 
         lblPatientSymptoms1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientSymptoms1.setText("Patient Symptoms:");
-        dashboard.add(lblPatientSymptoms1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, -1, -1));
+        lblPatientSymptoms1.setText("Symptoms:");
+        dashboard.add(lblPatientSymptoms1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, -1, -1));
         dashboard.add(txtPatientSymptoms1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 220, -1));
 
         lblPatientSymptoms3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientSymptoms3.setText("Patient Symptoms:");
-        dashboard.add(lblPatientSymptoms3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, -1, -1));
+        lblPatientSymptoms3.setText("Symptoms:");
+        dashboard.add(lblPatientSymptoms3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, -1, -1));
         dashboard.add(txtPatientSymptoms3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 220, -1));
 
         btnSubmit.setText("Submit");
@@ -335,8 +340,8 @@ public class PatientResgistrationJPanel extends javax.swing.JPanel {
         dashboard.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 510, 100, -1));
 
         lblPatientNumber.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientNumber.setText("Patient Phone Number:");
-        dashboard.add(lblPatientNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
+        lblPatientNumber.setText("Phone Number:");
+        dashboard.add(lblPatientNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
         dashboard.add(txtPatientNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 220, -1));
 
         add(dashboard, java.awt.BorderLayout.CENTER);
@@ -401,10 +406,23 @@ public class PatientResgistrationJPanel extends javax.swing.JPanel {
         }
         
         UserAccount ua = ecosystem.getUserAccountDirectory().createUserAccount(txtPatientUsername.getText(), txtPatientPassword.getText(), e, new PatientRole());
+        
+        String sPatientGender = "";
+        
+        if(txtPatientMale.isSelected())
+        {
+            sPatientGender = txtPatientMale.getText();
+        }
+        else
+        {
+            sPatientGender = txtPatientFemale.getText();
+        }
+        
         if(ua != null)
         {
-            Patient patient = ecosystem.getPatientDirectory().createPatient(TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
-            JOptionPane.showMessageDialog(null, "Customer account created successfully for " + patient.getPatientName());
+            Patient patient = ecosystem.getPatientDirectory().createPatient(txtPatientName.getText(), txtPatientAge.getText(), txtPatientUsername.getText(), txtPatientPassword.getText(),
+                    txtPatientAddress.getText(), txtPatientNumber.getText(), sPatientGender, txtPatientSymptoms1.getText(), txtPatientSymptoms2.getText(), txtPatientSymptoms3.getText());
+            JOptionPane.showMessageDialog(null, "Patient account created successfully for " + patient.getPatientName());
         }
         else
         {

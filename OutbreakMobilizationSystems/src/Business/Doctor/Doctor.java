@@ -15,6 +15,7 @@ package Business.Doctor;
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author ajayp       Added Doctor Information
  * 04/14/2021            @author ajayp       Added counter for doctor id
+ * 04/15/2021            @author palak       Added address variable
  */
 
 public class Doctor {
@@ -25,6 +26,7 @@ public class Doctor {
     public String doctorUsername;
     public String doctorPassword;
     public String doctorNumber;
+    public String doctorAddress;
     public String specialization;
     
     public Doctor() {
@@ -32,13 +34,14 @@ public class Doctor {
         count++;
     }
 
-    public Doctor(int doctorId, String doctorName, String doctorUsername, String doctorPassword, String doctorNumber, String specialization) {
+    public Doctor(int doctorId, String doctorName, String doctorUsername, String doctorPassword, String doctorNumber, String specialization, String doctorAddress) {
         this.doctorId = doctorId;
         this.doctorName = doctorName;
         this.doctorUsername = doctorUsername;
         this.doctorPassword = doctorPassword;
         this.doctorNumber = doctorNumber;
         this.specialization = specialization;
+        this.doctorAddress = doctorAddress;
     }
 
     public int getDoctorId() {
@@ -87,6 +90,14 @@ public class Doctor {
 
     public void setSpecialization(String specialization) {
         this.specialization = specialization;
+    }
+
+    public String getDoctorAddress() {
+        return doctorAddress;
+    }
+
+    public void setDoctorAddress(String doctorAddress) {
+        this.doctorAddress = doctorAddress;
     }
 
     @Override

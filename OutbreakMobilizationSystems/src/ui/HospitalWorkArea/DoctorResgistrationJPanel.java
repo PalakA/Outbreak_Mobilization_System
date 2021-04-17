@@ -5,6 +5,14 @@
  */
 package ui.HospitalWorkArea;
 
+import Business.Doctor.Doctor;
+import Business.EcoSystem;
+import Business.Employee.Employee;
+import Business.Roles.DoctorRole;
+import Business.UserAccount.UserAccount;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  * @author ajayp
  * @author nakul
@@ -13,15 +21,24 @@ package ui.HospitalWorkArea;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
+ * 04/15/2021            @author palak       Added Doctor Registration Panel
  * 
  */
+
 public class DoctorResgistrationJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form PatientJPanel
      */
-    public DoctorResgistrationJPanel() {
+    
+    private JPanel userProcessContainer;
+    private EcoSystem ecosystem;
+    
+    public DoctorResgistrationJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
     }
 
     /**
@@ -52,6 +69,21 @@ public class DoctorResgistrationJPanel extends javax.swing.JPanel {
         homeBtn = new javax.swing.JLabel();
         slidingMenu = new javax.swing.JPanel();
         dashboard = new javax.swing.JPanel();
+        dashboard1 = new javax.swing.JPanel();
+        lblTitle = new javax.swing.JLabel();
+        lblDoctorName = new javax.swing.JLabel();
+        txtDoctorName = new javax.swing.JTextField();
+        lblDoctorUsername = new javax.swing.JLabel();
+        txtDoctorUsername = new javax.swing.JTextField();
+        lblDoctorPassword = new javax.swing.JLabel();
+        txtDoctorPassword = new javax.swing.JTextField();
+        lblDoctorNumber = new javax.swing.JLabel();
+        txtDoctorNumber = new javax.swing.JTextField();
+        btnSubmit = new javax.swing.JButton();
+        lblPatientAddress = new javax.swing.JLabel();
+        txtDoctorSpecialization = new javax.swing.JTextField();
+        lblDoctorAddress = new javax.swing.JLabel();
+        txtDoctorAddress = new javax.swing.JTextField();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -232,6 +264,55 @@ public class DoctorResgistrationJPanel extends javax.swing.JPanel {
 
         dashboard.setBackground(new java.awt.Color(153, 153, 0));
         dashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        dashboard1.setBackground(new java.awt.Color(153, 153, 0));
+        dashboard1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Doctor Registration Panel");
+        dashboard1.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 40, 710, -1));
+
+        lblDoctorName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblDoctorName.setText("Name:");
+        dashboard1.add(lblDoctorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
+        dashboard1.add(txtDoctorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 220, -1));
+
+        lblDoctorUsername.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblDoctorUsername.setText("Username:");
+        dashboard1.add(lblDoctorUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
+        dashboard1.add(txtDoctorUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, -1));
+
+        lblDoctorPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblDoctorPassword.setText("Password:");
+        dashboard1.add(lblDoctorPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, -1, -1));
+        dashboard1.add(txtDoctorPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 220, -1));
+
+        lblDoctorNumber.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblDoctorNumber.setText("Phone Number:");
+        dashboard1.add(lblDoctorNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, -1, -1));
+        dashboard1.add(txtDoctorNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 220, -1));
+
+        dashboard.add(dashboard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, -1));
+
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+        dashboard.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 470, 100, -1));
+
+        lblPatientAddress.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPatientAddress.setText("Specialization:");
+        dashboard.add(lblPatientAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, -1, -1));
+        dashboard.add(txtDoctorSpecialization, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 220, -1));
+
+        lblDoctorAddress.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblDoctorAddress.setText("Address:");
+        dashboard.add(lblDoctorAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, -1, -1));
+        dashboard.add(txtDoctorAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 220, -1));
+
         add(dashboard, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -283,19 +364,54 @@ public class DoctorResgistrationJPanel extends javax.swing.JPanel {
     private void homeBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMouseExited
     }//GEN-LAST:event_homeBtnMouseExited
 
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+
+        Employee e = ecosystem.getEmployeeDirectory().createEmployee(txtDoctorName.getText(), txtDoctorAddress.getText(), txtDoctorNumber.getText());
+        if(e == null)
+        {
+            JOptionPane.showMessageDialog(null,"Doctor " + txtDoctorName.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        UserAccount ua = ecosystem.getUserAccountDirectory().createUserAccount(txtDoctorUsername.getText(), txtDoctorPassword.getText(), e, new DoctorRole());
+
+        if(ua != null)
+        {
+            Doctor doctor = ecosystem.getDoctorDirectory().createDoctor(txtDoctorName.getText(), txtDoctorUsername.getText(), txtDoctorPassword.getText(), txtDoctorNumber.getText(), txtDoctorSpecialization.getText(), txtDoctorAddress.getText());
+            JOptionPane.showMessageDialog(null, "Doctor account created successfully for " + doctor.getDoctorName());
+        }
+        else
+        {
+            ecosystem.getEmployeeDirectory().deleteEmployee(e);
+            JOptionPane.showMessageDialog(null,"Username " + txtDoctorUsername.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backMenu;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.JPanel buttonClose;
     private javax.swing.JPanel buttonMax;
     private javax.swing.JPanel buttonMin;
     private javax.swing.JLabel closeBtn;
     private javax.swing.JPanel dashboard;
+    private javax.swing.JPanel dashboard1;
     private javax.swing.JPanel header;
     private javax.swing.JPanel hideMenu;
     private javax.swing.JPanel home;
     private javax.swing.JLabel homeBtn;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblDoctorAddress;
+    private javax.swing.JLabel lblDoctorName;
+    private javax.swing.JLabel lblDoctorNumber;
+    private javax.swing.JLabel lblDoctorPassword;
+    private javax.swing.JLabel lblDoctorUsername;
+    private javax.swing.JLabel lblPatientAddress;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel lineHideMenu;
     private javax.swing.JPanel lineSetting;
     private javax.swing.JLabel maxBtn;
@@ -304,5 +420,11 @@ public class DoctorResgistrationJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel minBtn;
     private javax.swing.JPanel sideMenu;
     private javax.swing.JPanel slidingMenu;
+    private javax.swing.JTextField txtDoctorAddress;
+    private javax.swing.JTextField txtDoctorName;
+    private javax.swing.JTextField txtDoctorNumber;
+    private javax.swing.JTextField txtDoctorPassword;
+    private javax.swing.JTextField txtDoctorSpecialization;
+    private javax.swing.JTextField txtDoctorUsername;
     // End of variables declaration//GEN-END:variables
 }
