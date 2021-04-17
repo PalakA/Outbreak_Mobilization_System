@@ -7,7 +7,7 @@ package Business.Roles;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Network;
+import Business.Network.Network;
 import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
@@ -28,7 +28,7 @@ public class LabAssistantRole extends Roles{
     
     private RoleType roleType;
     public LabAssistantRole() {
-        RoleType roleType = RoleType.CareTaker;
+        RoleType roleType = RoleType.LabAssistant;
     }
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
