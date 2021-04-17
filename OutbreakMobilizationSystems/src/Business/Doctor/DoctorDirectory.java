@@ -16,7 +16,9 @@ import java.util.ArrayList;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author ajayp       Added Doctor Directory Information
- * 
+ * 04/14/2021            @author palak       Updated Line 64 with equals sign
+ * 04/14/2021            @author ajayp       Updated Line 58 for incrementing id using counter
+ * 04/15/2021            @author palak       Added address variable in createDoctor function
  */
 
 public class DoctorDirectory {
@@ -53,15 +55,15 @@ public class DoctorDirectory {
         return null;
     }
     
-    public Doctor createDoctor(String doctorId, String doctorName, String doctorUsername, String doctorPassword, String doctorNumber, String specialization) {
-        doctor = new Doctor(doctorId, doctorName, doctorUsername, doctorPassword, doctorNumber, specialization);
+    public Doctor createDoctor(String doctorName, String doctorUsername, String doctorPassword, String doctorNumber, String specialization, String doctorAddress) {
+        doctor = new Doctor(doctor.getDoctorId(), doctorName, doctorUsername, doctorPassword, doctorNumber, specialization, doctorAddress);
         doctorList.add(doctor);
         return doctor;
     }
     
     public void deleteDoctor(String doctorUsername) {
         for(int i=0; i<doctorList.size(); i++) {
-            if(doctorList.get(i).getDoctorUsername() == doctorUsername) {
+            if(doctorList.get(i).getDoctorUsername().equals(doctorUsername)) {
                 doctorList.remove(i);
             }
         }

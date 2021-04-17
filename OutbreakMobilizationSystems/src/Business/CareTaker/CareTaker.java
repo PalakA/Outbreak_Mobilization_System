@@ -16,20 +16,26 @@ import java.util.Date;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author ajayp       Added Caretaker Information
- * 
+ * 04/14/2021            @author ajayp       Added counter for caretaker id
  */
 
 public class CareTaker {
     
-    public String caretakerId;
+    private static int count = 1;
+    public int caretakerId;
     public String caretakerName;
     public String caretakerUsername;
     public String caretakerPassword;
     public String caretakerAddress;
     public String caretakerNumber;
-    public Date dutyHours;
+    public String dutyHours;
+    
+    public CareTaker() {
+        this.caretakerId = count;
+        count++;
+    }
 
-    public CareTaker(String caretakerId, String caretakerName, String caretakerUsername, String caretakerPassword, String caretakerAddress, String caretakerNumber, Date dutyHours) {
+    public CareTaker(int caretakerId, String caretakerName, String caretakerUsername, String caretakerPassword, String caretakerAddress, String caretakerNumber, String dutyHours) {
         this.caretakerId = caretakerId;
         this.caretakerName = caretakerName;
         this.caretakerUsername = caretakerUsername;
@@ -39,11 +45,11 @@ public class CareTaker {
         this.dutyHours = dutyHours;
     }
 
-    public String getCaretakerId() {
+    public int getCaretakerId() {
         return caretakerId;
     }
 
-    public void setCaretakerId(String caretakerId) {
+    public void setCaretakerId(int caretakerId) {
         this.caretakerId = caretakerId;
     }
 
@@ -87,16 +93,16 @@ public class CareTaker {
         this.caretakerNumber = caretakerNumber;
     }
 
-    public Date getDutyHours() {
+    public String getDutyHours() {
         return dutyHours;
     }
 
-    public void setDutyHours(Date dutyHours) {
+    public void setDutyHours(String dutyHours) {
         this.dutyHours = dutyHours;
     }
 
     @Override
     public String toString() {
-        return caretakerId;
+        return caretakerName;
     }
 }

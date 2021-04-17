@@ -6,6 +6,8 @@
 package ui.DiagnosticCenterWorkArea;
 
 import Business.EcoSystem;
+import Business.Network.Network;
+import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
 /**
@@ -17,7 +19,9 @@ import javax.swing.JPanel;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author nakul       Added DiagnosticCenter JPanel
+ * 04/14/2021            @author palak       Added UserAccount, network
  */
+
 public class DiagnosticCenterJPanel extends javax.swing.JPanel {
 
     /**
@@ -25,9 +29,15 @@ public class DiagnosticCenterJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-    public DiagnosticCenterJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+    UserAccount user;
+    Network network;
+    
+    
+    public DiagnosticCenterJPanel(JPanel userProcessContainer,UserAccount user, Network network, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
+        this.user = user;
+        this.network = network;
         this.ecosystem=ecosystem;
         //populateTree();
     }
@@ -167,7 +177,7 @@ public class DiagnosticCenterJPanel extends javax.swing.JPanel {
         hideMenu.setLayout(new java.awt.BorderLayout());
 
         backMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        backMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_back_to_32px.png"))); // NOI18N
+        backMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/backbutton.png"))); // NOI18N
         backMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMenuMouseClicked(evt);

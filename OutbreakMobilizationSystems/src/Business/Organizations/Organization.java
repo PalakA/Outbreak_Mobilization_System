@@ -20,7 +20,8 @@ import java.util.ArrayList;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/12/2021            @author palak       Added Organization
- * 
+ * 04/13/2021            @author palak       Added enum Types
+ * 04/14/2021            @author palak       Added getSuuportedRole function
  */
 
 public abstract class Organization {
@@ -30,10 +31,13 @@ public abstract class Organization {
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private int organizationID;
+    public ArrayList<Roles> roles;
     private static int counter=0;
     
     public enum Type{
-        Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization");
+        Admin("Administration Organization"), Hospital("HospitalInventory Organization"), Laboratories("Laboratories Organization"),
+        Manufacturer("Manufacturer Organization"), PharmacyCatalog("PharmacyCatalog Organization"), PharmacyDistribution("PharmacyDistribution Organization"),
+        SampleCollections("SampleCollections Organization"), SupplyChain("SupplyChain Organization");
         private String value;
         private Type(String value) {
             this.value = value;
@@ -49,6 +53,7 @@ public abstract class Organization {
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
         organizationID = counter;
+        roles = new ArrayList<Roles>();
         ++counter;
     }
 

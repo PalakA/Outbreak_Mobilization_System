@@ -6,6 +6,8 @@
 package ui.HospitalWorkArea;
 
 import Business.EcoSystem;
+import Business.Network.Network;
+import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
 /**
@@ -17,6 +19,7 @@ import javax.swing.JPanel;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author nakul       Added PatientWorkArea JPanel
+ * 04/14/2021            @author palak       Added UserAccount, network
  */
 public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
@@ -25,9 +28,14 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-    public PatientWorkAreaJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+    UserAccount user;
+    Network network;
+    
+    public PatientWorkAreaJPanel(JPanel userProcessContainer,UserAccount user, Network network, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
+        this.user = user;
+        this.network = network;
         this.ecosystem=ecosystem;
         //populateTree();
     }
@@ -60,6 +68,9 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         homeBtn = new javax.swing.JLabel();
         slidingMenu = new javax.swing.JPanel();
         dashboard = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblDiagnosticCenter = new javax.swing.JTable();
+        lblSelectDiagnosticCenter = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -167,7 +178,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         hideMenu.setLayout(new java.awt.BorderLayout());
 
         backMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        backMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_back_to_32px.png"))); // NOI18N
+        backMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/backbutton.png"))); // NOI18N
         backMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMenuMouseClicked(evt);
@@ -240,6 +251,26 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
         dashboard.setBackground(new java.awt.Color(153, 153, 0));
         dashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblDiagnosticCenter.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblDiagnosticCenter);
+
+        dashboard.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, 120));
+
+        lblSelectDiagnosticCenter.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblSelectDiagnosticCenter.setText("Select Diagnostic Centre:");
+        dashboard.add(lblSelectDiagnosticCenter, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+
         add(dashboard, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -304,6 +335,8 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel home;
     private javax.swing.JLabel homeBtn;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblSelectDiagnosticCenter;
     private javax.swing.JPanel lineHideMenu;
     private javax.swing.JPanel lineSetting;
     private javax.swing.JLabel maxBtn;
@@ -312,5 +345,6 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel minBtn;
     private javax.swing.JPanel sideMenu;
     private javax.swing.JPanel slidingMenu;
+    private javax.swing.JTable tblDiagnosticCenter;
     // End of variables declaration//GEN-END:variables
 }

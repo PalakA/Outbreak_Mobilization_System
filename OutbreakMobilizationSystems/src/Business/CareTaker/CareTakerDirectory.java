@@ -17,7 +17,8 @@ import java.util.Date;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author ajayp       Added Caretaker Directory Information
- * 
+ * 04/14/2021            @author palak       Updated Line 50 with equals sign
+ * 04/14/2021            @author ajayp       Updated Line 59 for incrementing id using counter
  */
 
 public class CareTakerDirectory {
@@ -54,21 +55,21 @@ public class CareTakerDirectory {
         return null;
     }
     
-    public CareTaker createCareTaker(String caretakerId, String caretakerName, String caretakerUsername, String caretakerPassword, String caretakerAddress, String caretakerNumber, Date dutyHours) {
-        careTaker = new CareTaker(caretakerId, caretakerName, caretakerUsername, caretakerPassword, caretakerAddress, caretakerNumber, dutyHours);
+    public CareTaker createCareTaker(String caretakerName, String caretakerUsername, String caretakerPassword, String caretakerAddress, String caretakerNumber, String dutyHours) {
+        careTaker = new CareTaker(careTaker.getCaretakerId(), caretakerName, caretakerUsername, caretakerPassword, caretakerAddress, caretakerNumber, dutyHours);
         careTakerList.add(careTaker);
         return careTaker;
     }
     
     public void deleteCareTaker(String caretakerUsername) {
         for(int i=0; i<careTakerList.size(); i++) {
-            if(careTakerList.get(i).getCaretakerUsername() == caretakerUsername) {
+            if(careTakerList.get(i).getCaretakerUsername().equals(caretakerUsername)) {
                 careTakerList.remove(i);
             }
         }
     }
     
-    public void updateCareTaker(CareTaker careTaker, String caretakerName, String caretakerUsername, String caretakerPassword, String caretakerAddress, String caretakerNumber, Date dutyHours) {
+    public void updateCareTaker(CareTaker careTaker, String caretakerName, String caretakerUsername, String caretakerPassword, String caretakerAddress, String caretakerNumber, String dutyHours) {
         for(CareTaker updateCaretaker: careTakerList) {
             if(updateCaretaker.getCaretakerUsername().equalsIgnoreCase(caretakerUsername)) {
                 careTaker.caretakerName = caretakerName;

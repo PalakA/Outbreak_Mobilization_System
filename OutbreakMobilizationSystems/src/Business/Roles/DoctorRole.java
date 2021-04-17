@@ -7,11 +7,11 @@ package Business.Roles;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import ui.HospitalWorkArea.DoctorWorkAreaJPanel;
-import ui.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
  * @author ajayp
@@ -22,12 +22,18 @@ import ui.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author nakul       Added Doctor role
+ * 04/14/2021            @author palak       Added UserAccount, network and constructor
  */
 
 public class DoctorRole extends Roles{
 
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem system) {
-        return new DoctorWorkAreaJPanel(userProcessContainer, system);
+    private RoleType roleType;
+    public DoctorRole() {
+        RoleType roleType = RoleType.Doctor;
+    }
+    
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
+        return new DoctorWorkAreaJPanel(userProcessContainer, account, network, system);
     }
     
 }

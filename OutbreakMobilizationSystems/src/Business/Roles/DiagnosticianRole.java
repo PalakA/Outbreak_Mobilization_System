@@ -7,11 +7,11 @@ package Business.Roles;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import ui.DiagnosticCenterWorkArea.DiagnosticCenterJPanel;
-import ui.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
  * @author ajayp
@@ -22,12 +22,18 @@ import ui.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author nakul       Added Diagnostician role
+ * 04/14/2021            @author palak       Added UserAccount and constructor
  */
 
 public class DiagnosticianRole extends Roles{
 
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem system) {
-        return new DiagnosticCenterJPanel(userProcessContainer, system);
+    private RoleType roleType;
+    public DiagnosticianRole() {
+        RoleType roleType = RoleType.Diagnostician;
+    }
+    
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
+        return new DiagnosticCenterJPanel(userProcessContainer, account, network, system);
     }
     
     

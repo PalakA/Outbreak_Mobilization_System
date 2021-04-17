@@ -5,7 +5,12 @@
 // */
 package Business;
 
+import Business.Network.Network;
+import Business.CareTaker.CareTakerDirectory;
+import Business.Doctor.DoctorDirectory;
+import Business.Hospital.HospitalRegistrationDirectory;
 import Business.Organizations.Organization;
+import Business.Patient.PatientDirectory;
 import Business.Roles.Roles;
 import Business.Roles.SystemAdminRole;
 import java.util.ArrayList;
@@ -19,6 +24,7 @@ import java.util.ArrayList;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/12/2021            @author palak       Added directories to EcoSystem
+ * 04/15/2021            @author palak       Added directories
  * 
  */
 
@@ -26,6 +32,39 @@ public class EcoSystem extends Organization{
     
     private static EcoSystem business;
     private ArrayList<Network> networkList;
+    private PatientDirectory patientDirectory;
+    private CareTakerDirectory careTakerDirectory;
+    private DoctorDirectory doctorDirectory;
+    private HospitalRegistrationDirectory hospitalRegistrationDirectory;
+
+    public EcoSystem(PatientDirectory patientDirectory, CareTakerDirectory careTakerDirectory, DoctorDirectory doctorDirectory, String name, HospitalRegistrationDirectory hospitalRegistrationDirectory) {
+        super(name);
+        this.patientDirectory = patientDirectory;
+        this.careTakerDirectory = careTakerDirectory;
+        this.doctorDirectory = doctorDirectory;
+        this.hospitalRegistrationDirectory = hospitalRegistrationDirectory;
+    }
+
+    public HospitalRegistrationDirectory getHospitalRegistrationDirectory() {
+        return hospitalRegistrationDirectory;
+    }
+
+    public void setHospitalRegistrationDirectory(HospitalRegistrationDirectory hospitalRegistrationDirectory) {
+        this.hospitalRegistrationDirectory = hospitalRegistrationDirectory;
+    }
+        
+    public PatientDirectory getPatientDirectory() {
+        return patientDirectory;
+    }
+
+    public CareTakerDirectory getCareTakerDirectory() {
+        return careTakerDirectory;
+    }
+
+    public DoctorDirectory getDoctorDirectory() {
+        return doctorDirectory;
+    }
+    
     public static EcoSystem getInstance(){
         if(business==null){
             business=new EcoSystem();
@@ -38,6 +77,7 @@ public class EcoSystem extends Organization{
         networkList.add(network);
         return network;
     }
+    @Override
     public ArrayList<Roles> getSupportedRole() {
         ArrayList<Roles> roleList=new ArrayList<Roles>();
         roleList.add(new SystemAdminRole());
@@ -48,6 +88,10 @@ public class EcoSystem extends Organization{
         networkList=new ArrayList<Network>();
     }
 
+    public static void setInstance(EcoSystem system) {	
+        business = system;	
+    }
+            
     public ArrayList<Network> getNetworkList() {
         return networkList;
     }
@@ -62,6 +106,15 @@ public class EcoSystem extends Organization{
         }
         for(Network network:networkList){
             
+        }
+        return true;
+    }
+    
+    public boolean isUnique(String name){
+        for(Network network : networkList){
+            if(network.getName().equalsIgnoreCase(name)){
+                return false;
+            }
         }
         return true;
     }

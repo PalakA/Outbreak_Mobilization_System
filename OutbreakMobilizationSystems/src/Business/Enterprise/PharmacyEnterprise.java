@@ -5,6 +5,10 @@
  */
 package Business.Enterprise;
 
+import Business.Roles.PharmacistRole;
+import Business.Roles.Roles;
+import java.util.ArrayList;
+
 /**
  * @author ajayp
  * @author nakul
@@ -13,10 +17,20 @@ package Business.Enterprise;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 
+ * 04/14/2021            @author palak       Updated package names
+ * 04/15/2021            @author palak       Added roles in function
  * 
  */
 
-public class PharmacyEnterprise {
+public class PharmacyEnterprise extends Enterprise{
     
+    public PharmacyEnterprise(String name){
+        super(name,Enterprise.EnterpriseType.Pharmacy);
+    }
+    @Override
+    public ArrayList<Roles> getSupportedRole() {
+        
+        roles.add(new PharmacistRole());
+        return roles;
+    }
 }

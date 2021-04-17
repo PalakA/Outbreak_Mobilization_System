@@ -16,6 +16,7 @@ import java.util.ArrayList;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author ajayp       Added Diagnostician Directory Information
+ * 04/14/2021            @author palak       Updated Line 65 with equals sign
  * 
  */
 
@@ -53,15 +54,15 @@ public class DiagnosticianDirectory {
         return null;
     }
     
-    public Diagnostician createDiagnostician(String diagnosticianId, String diagnosticianName, String diagnosticianUsername, String diagnosticianPassword, String diagnosticianNumber) {
-        diagnostician = new Diagnostician(diagnosticianId, diagnosticianName, diagnosticianUsername, diagnosticianPassword, diagnosticianNumber);
+    public Diagnostician createDiagnostician(String diagnosticianName, String diagnosticianUsername, String diagnosticianPassword, String diagnosticianNumber) {
+        diagnostician = new Diagnostician(diagnostician.getDiagnosticianId(), diagnosticianName, diagnosticianUsername, diagnosticianPassword, diagnosticianNumber);
         diagnosticianList.add(diagnostician);
         return diagnostician;
     }
     
     public void deleteDiagnostician(String diagnosticianUsername) {
         for(int i=0; i<diagnosticianList.size(); i++) {
-            if(diagnosticianList.get(i).getDiagnosticianUsername() == diagnosticianUsername) {
+            if(diagnosticianList.get(i).getDiagnosticianUsername().equals(diagnosticianUsername)) {
                 diagnosticianList.remove(i);
             }
         }
