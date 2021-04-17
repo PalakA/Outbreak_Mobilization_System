@@ -68,6 +68,9 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         homeBtn = new javax.swing.JLabel();
         slidingMenu = new javax.swing.JPanel();
         dashboard = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblDiagnosticCenter = new javax.swing.JTable();
+        lblSelectDiagnosticCenter = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -248,6 +251,26 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
         dashboard.setBackground(new java.awt.Color(153, 153, 0));
         dashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblDiagnosticCenter.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblDiagnosticCenter);
+
+        dashboard.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, 120));
+
+        lblSelectDiagnosticCenter.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblSelectDiagnosticCenter.setText("Select Diagnostic Centre:");
+        dashboard.add(lblSelectDiagnosticCenter, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+
         add(dashboard, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -312,6 +335,8 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel home;
     private javax.swing.JLabel homeBtn;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblSelectDiagnosticCenter;
     private javax.swing.JPanel lineHideMenu;
     private javax.swing.JPanel lineSetting;
     private javax.swing.JLabel maxBtn;
@@ -320,5 +345,6 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel minBtn;
     private javax.swing.JPanel sideMenu;
     private javax.swing.JPanel slidingMenu;
+    private javax.swing.JTable tblDiagnosticCenter;
     // End of variables declaration//GEN-END:variables
 }

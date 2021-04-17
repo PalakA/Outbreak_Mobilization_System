@@ -14,9 +14,16 @@ import javax.swing.JPanel;
 import ui.EnterpriseRegistration.HospitalAdminRegistrationJPanel;
 
 /**
- *
  * @author ajayp
+ * @author nakul
+ * @author palak
+ * 
+ * Revision History:
+ * 
+ * Date(MM/DD/YYYY)      Author              Comment
+ * 04/17/2021            @author nakul       Added Hospital Admin Role
  */
+
 public class HospitalAdminRole extends Roles{
     
     private Roles.RoleType roleType;

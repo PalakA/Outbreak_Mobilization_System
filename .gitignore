@@ -1,4 +1,4 @@
-/OutbreakMobilizationSystems/nbproject/private/
-/OutbreakMobilizationSystems/build/
-/OutbreakMobilizationSystems/dist/
+OutbreakMobilizationSystems/nbproject/private/*
+OutbreakMobilizationSystems/build/*
+OutbreakMobilizationSystems/dist/*
 *.jar

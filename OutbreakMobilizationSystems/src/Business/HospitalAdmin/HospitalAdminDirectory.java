@@ -7,10 +7,19 @@ package Business.HospitalAdmin;
 
 import java.util.ArrayList;
 
+
 /**
- *
  * @author ajayp
+ * @author nakul
+ * @author palak
+ * 
+ * Revision History:
+ * 
+ * Date(MM/DD/YYYY)      Author              Comment
+ * 04/17/2021            @author nakul       Added Hospital Admin Directory
  */
+
+
 public class HospitalAdminDirectory {
     
     private HospitalAdmin hospitalAdmin;
@@ -47,26 +56,24 @@ public class HospitalAdminDirectory {
     
     public HospitalAdmin createHospitalAdmin(String adminName, String adminUsername, String adminPassword) {
         hospitalAdmin = new HospitalAdmin(hospitalAdmin.getAdminId(), adminName, adminUsername, adminPassword);
-        doctorList.add(doctor);
-        return doctor;
+        hospitalAdminList.add(hospitalAdmin);
+        return hospitalAdmin;
     }
     
-    public void deleteDoctor(String doctorUsername) {
-        for(int i=0; i<doctorList.size(); i++) {
-            if(doctorList.get(i).getDoctorUsername().equals(doctorUsername)) {
-                doctorList.remove(i);
+    public void deleteHospitalAdmin(String hospitalAdminUsername) {
+        for(int i=0; i<hospitalAdminList.size(); i++) {
+            if(hospitalAdminList.get(i).getAdminUsername().equals(hospitalAdminUsername)) {
+                hospitalAdminList.remove(i);
             }
         }
     }
-    
-    public void updateDoctor(Doctor doctor, String doctorName, String doctorUsername, String doctorPassword, String doctorNumber, String specialization) {
-        for(Doctor updateDoctor: doctorList) {
-            if(updateDoctor.getDoctorUsername().equalsIgnoreCase(doctorUsername)) {
-                doctor.doctorName = doctorName;
-                doctor.doctorUsername = doctorUsername;
-                doctor.doctorPassword = doctorPassword;
-                doctor.doctorNumber = doctorNumber;
-                doctor.specialization = specialization;
+
+    public void updateAdmin(HospitalAdmin hospitalAdmin, String adminName, String adminUsername, String adminPassword) {
+        for(HospitalAdmin updateAdmin: hospitalAdminList) {
+            if(updateAdmin.getAdminUsername().equalsIgnoreCase(adminUsername)) {
+                updateAdmin.adminName = adminName;
+                updateAdmin.adminUsername = adminUsername;
+                updateAdmin.adminPassword = adminPassword;
             }
         }
     }

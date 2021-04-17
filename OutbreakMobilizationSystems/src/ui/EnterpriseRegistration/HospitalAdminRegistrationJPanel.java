@@ -11,8 +11,14 @@ import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
 /**
- *
  * @author ajayp
+ * @author nakul
+ * @author palak
+ * 
+ * Revision History:
+ * 
+ * Date(MM/DD/YYYY)      Author              Comment
+ * 04/17/2021            @author nakul       Added HospitalAdminRegistrationJPanel
  */
 public class HospitalAdminRegistrationJPanel extends javax.swing.JPanel {
 
