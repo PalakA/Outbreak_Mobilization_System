@@ -36,7 +36,8 @@ public abstract class Roles {
         Patient("Patient"),
         Pharmacist("Pharmacist"),
         SupplyChain("SupplyChain"),
-        CareTaker("CareTaker");
+        CareTaker("CareTaker"),
+        HospitalAdmin("HospitalAdmin");
         
         private String value;
         private RoleType(String value){
