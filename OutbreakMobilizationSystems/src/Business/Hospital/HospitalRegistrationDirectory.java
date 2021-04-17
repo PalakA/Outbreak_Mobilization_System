@@ -11,17 +11,16 @@ import java.util.ArrayList;
  * @author ajayp
  * @author nakul
  * @author palak
- * 
+ *
  * Revision History:
- * 
- * Date(MM/DD/YYYY)      Author              Comment
- * 04/14/2021            @author ajayp       Added Hospital Registration Directory Information
- * 
- * 
+ *
+ * Date(MM/DD/YYYY) Author Comment 04/14/2021 @author ajayp Added Hospital
+ * Registration Directory Information
+ *
+ *
  */
-
 public class HospitalRegistrationDirectory {
-    
+
     private HospitalRegistration hospitalRegistration;
     private ArrayList<HospitalRegistration> hospitalRegistrationList;
 
@@ -44,29 +43,40 @@ public class HospitalRegistrationDirectory {
     public void setHospitalRegistrationList(ArrayList<HospitalRegistration> hospitalRegistrationList) {
         this.hospitalRegistrationList = hospitalRegistrationList;
     }
-    
-    public HospitalRegistration createHospitalRegistration(String hospitalName, String hospitalCity, String hospitalState, String hospitalLocation) {
-        hospitalRegistration = new HospitalRegistration(hospitalRegistration.getHospitalId(), hospitalName, hospitalCity, hospitalState, hospitalLocation);
-        hospitalRegistrationList.add(hospitalRegistration);
-        return hospitalRegistration;
+
+    public HospitalRegistration createHospitalRegistration(String hospitalName, String hospitalCity, String hospitalState) {
+        if (this.checkIfHospitalNameIsUnique(hospitalName)) {
+            hospitalRegistration = new HospitalRegistration(hospitalRegistration.getHospitalId(), hospitalName, hospitalCity, hospitalState);
+            hospitalRegistrationList.add(hospitalRegistration);
+            return hospitalRegistration;
+        }
+        return null;
     }
-    
+
     public void deleteHospitalRegistration(int hospitalId) {
-        for(int i=0; i<hospitalRegistrationList.size(); i++) {
-            if(hospitalRegistrationList.get(i).getHospitalId() == hospitalId) {
+        for (int i = 0; i < hospitalRegistrationList.size(); i++) {
+            if (hospitalRegistrationList.get(i).getHospitalId() == hospitalId) {
                 hospitalRegistrationList.remove(i);
             }
         }
     }
-    
-    public void updateHospitalRegistration(HospitalRegistration hospitalRegistration, String hospitalName, String hospitalCity, String hospitalState, String hospitalLocation) {
-        for(HospitalRegistration updateHospitalRegistration: hospitalRegistrationList) {
-            if(updateHospitalRegistration.getHospitalId() == hospitalRegistration.getHospitalId()) {
+
+    public void updateHospitalRegistration(HospitalRegistration hospitalRegistration, String hospitalName, String hospitalCity, String hospitalState) {
+        for (HospitalRegistration updateHospitalRegistration : hospitalRegistrationList) {
+            if (updateHospitalRegistration.getHospitalId() == hospitalRegistration.getHospitalId()) {
                 hospitalRegistration.hospitalName = hospitalName;
                 hospitalRegistration.hospitalCity = hospitalCity;
                 hospitalRegistration.hospitalState = hospitalState;
-                hospitalRegistration.hospitalLocation = hospitalLocation;
             }
         }
+    }
+
+    public boolean checkIfHospitalNameIsUnique(String hospitalName) {
+        for (HospitalRegistration hospitalRegName : hospitalRegistrationList) {
+            if (hospitalRegName.getHospitalName().equalsIgnoreCase(hospitalName)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

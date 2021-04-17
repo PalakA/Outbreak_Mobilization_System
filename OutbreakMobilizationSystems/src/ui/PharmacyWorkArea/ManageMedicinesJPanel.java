@@ -6,7 +6,7 @@
 package ui.PharmacyWorkArea;
 
 import Business.EcoSystem;
-import Business.Network;
+import Business.Network.Network;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 

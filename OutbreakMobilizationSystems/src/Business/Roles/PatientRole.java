@@ -7,7 +7,7 @@ package Business.Roles;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Network;
+import Business.Network.Network;
 import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
@@ -29,7 +29,7 @@ public class PatientRole extends Roles{
 
     private RoleType roleType;
     public PatientRole() {
-        RoleType roleType = RoleType.CareTaker;
+        RoleType roleType = RoleType.Patient;
     }
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
