@@ -26,5 +26,5 @@ public class Manufacturer {
     public String companyName;
     public String manufacturerUsername;
     public String manufacturerPassword;
-    public String manufacturerAddress;
+    public String manufacturerNumber;
 }

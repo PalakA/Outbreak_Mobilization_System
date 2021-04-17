@@ -17,6 +17,7 @@ import java.util.ArrayList;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/17/2021            @author nakul       Added Hospital Admin Directory
+ * 04/17/2021            @author nakul       Updated function name
  */
 
 public class HospitalAdminDirectory {
@@ -44,7 +45,7 @@ public class HospitalAdminDirectory {
         this.hospitalAdminList = hospitalAdminList;
     }
     
-    public HospitalAdmin getDoctor(String hospitalAdminUsername) {
+    public HospitalAdmin getAdmin(String hospitalAdminUsername) {
         for(HospitalAdmin hospitalAdmin: hospitalAdminList) {
             if(hospitalAdmin.getAdminUsername().equalsIgnoreCase(hospitalAdminUsername)) {
                 return hospitalAdmin;

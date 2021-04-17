@@ -17,6 +17,7 @@ import java.util.ArrayList;
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/14/2021            @author ajayp       Added LabAssistant Directory Information
  * 04/14/2021            @author ajayp       Updated Line 58 for incrementing id using counter
+ * 04/17/2021            @author palak       Updated updateLabAssistant function
  * 
  */
 
@@ -69,8 +70,8 @@ public class LabAssistantDirectory {
     }
     
     public void updateLabAssistant(LabAssistant labAssistant, String labAssistantName, String labAssistantUsername, String labAssistantPassword, String labAssistantNumber) {
-        for(LabAssistant updateDiagnostician: labAssistantList) {
-            if(updateDiagnostician.getLabAssistantUsername().equalsIgnoreCase(labAssistantUsername)) {
+        for(LabAssistant updateLabAssistant: labAssistantList) {
+            if(updateLabAssistant.getLabAssistantUsername().equalsIgnoreCase(labAssistantUsername)) {
                 labAssistant.labAssistantName = labAssistantName;
                 labAssistant.labAssistantUsername = labAssistantUsername;
                 labAssistant.labAssistantPassword = labAssistantPassword;
