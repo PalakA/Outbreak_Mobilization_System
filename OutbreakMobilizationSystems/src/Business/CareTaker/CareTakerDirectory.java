@@ -55,7 +55,7 @@ public class CareTakerDirectory {
         return null;
     }
     
-    public CareTaker createCareTaker(String caretakerName, String caretakerUsername, String caretakerPassword, String caretakerAddress, String caretakerNumber, Date dutyHours) {
+    public CareTaker createCareTaker(String caretakerName, String caretakerUsername, String caretakerPassword, String caretakerAddress, String caretakerNumber, String dutyHours) {
         careTaker = new CareTaker(careTaker.getCaretakerId(), caretakerName, caretakerUsername, caretakerPassword, caretakerAddress, caretakerNumber, dutyHours);
         careTakerList.add(careTaker);
         return careTaker;
@@ -69,7 +69,7 @@ public class CareTakerDirectory {
         }
     }
     
-    public void updateCareTaker(CareTaker careTaker, String caretakerName, String caretakerUsername, String caretakerPassword, String caretakerAddress, String caretakerNumber, Date dutyHours) {
+    public void updateCareTaker(CareTaker careTaker, String caretakerName, String caretakerUsername, String caretakerPassword, String caretakerAddress, String caretakerNumber, String dutyHours) {
         for(CareTaker updateCaretaker: careTakerList) {
             if(updateCaretaker.getCaretakerUsername().equalsIgnoreCase(caretakerUsername)) {
                 careTaker.caretakerName = caretakerName;

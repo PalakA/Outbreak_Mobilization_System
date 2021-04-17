@@ -28,14 +28,14 @@ public class CareTaker {
     public String caretakerPassword;
     public String caretakerAddress;
     public String caretakerNumber;
-    public Date dutyHours;
+    public String dutyHours;
     
     public CareTaker() {
         this.caretakerId = count;
         count++;
     }
 
-    public CareTaker(int caretakerId, String caretakerName, String caretakerUsername, String caretakerPassword, String caretakerAddress, String caretakerNumber, Date dutyHours) {
+    public CareTaker(int caretakerId, String caretakerName, String caretakerUsername, String caretakerPassword, String caretakerAddress, String caretakerNumber, String dutyHours) {
         this.caretakerId = caretakerId;
         this.caretakerName = caretakerName;
         this.caretakerUsername = caretakerUsername;
@@ -93,11 +93,11 @@ public class CareTaker {
         this.caretakerNumber = caretakerNumber;
     }
 
-    public Date getDutyHours() {
+    public String getDutyHours() {
         return dutyHours;
     }
 
-    public void setDutyHours(Date dutyHours) {
+    public void setDutyHours(String dutyHours) {
         this.dutyHours = dutyHours;
     }
 
