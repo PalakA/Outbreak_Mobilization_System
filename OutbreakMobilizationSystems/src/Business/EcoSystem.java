@@ -9,6 +9,7 @@ import Business.Network.Network;
 import Business.CareTaker.CareTakerDirectory;
 import Business.Doctor.DoctorDirectory;
 import Business.Hospital.HospitalRegistrationDirectory;
+import Business.HospitalAdmin.HospitalAdminDirectory;
 import Business.Organizations.Organization;
 import Business.Patient.PatientDirectory;
 import Business.Roles.Roles;
@@ -36,13 +37,15 @@ public class EcoSystem extends Organization{
     private CareTakerDirectory careTakerDirectory;
     private DoctorDirectory doctorDirectory;
     private HospitalRegistrationDirectory hospitalRegistrationDirectory;
+    private HospitalAdminDirectory hospitalAdminDirectory;
 
-    public EcoSystem(PatientDirectory patientDirectory, CareTakerDirectory careTakerDirectory, DoctorDirectory doctorDirectory, String name, HospitalRegistrationDirectory hospitalRegistrationDirectory) {
+    public EcoSystem(PatientDirectory patientDirectory, CareTakerDirectory careTakerDirectory, DoctorDirectory doctorDirectory, String name, HospitalRegistrationDirectory hospitalRegistrationDirectory, HospitalAdminDirectory hospitalAdminDirectory) {
         super(name);
         this.patientDirectory = patientDirectory;
         this.careTakerDirectory = careTakerDirectory;
         this.doctorDirectory = doctorDirectory;
         this.hospitalRegistrationDirectory = hospitalRegistrationDirectory;
+        this.hospitalAdminDirectory = hospitalAdminDirectory;
     }
 
     public HospitalRegistrationDirectory getHospitalRegistrationDirectory() {
@@ -64,7 +67,15 @@ public class EcoSystem extends Organization{
     public DoctorDirectory getDoctorDirectory() {
         return doctorDirectory;
     }
-    
+
+    public HospitalAdminDirectory getHospitalAdminDirectory() {
+        return hospitalAdminDirectory;
+    }
+
+    public void setHospitalAdminDirectory(HospitalAdminDirectory hospitalAdminDirectory) {
+        this.hospitalAdminDirectory = hospitalAdminDirectory;
+    }
+        
     public static EcoSystem getInstance(){
         if(business==null){
             business=new EcoSystem();
