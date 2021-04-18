@@ -46,7 +46,11 @@ public class HospitalAdminDirectory {
         this.hospitalAdminList = hospitalAdminList;
     }
     
+<<<<<<< HEAD
     public HospitalAdmin getAdmin(String hospitalAdminUsername) {
+=======
+    public HospitalAdmin getHospitalAdmin(String hospitalAdminUsername) {
+>>>>>>> ff0bcef983555e19d2ab4632acc8432b9081a1b8
         for(HospitalAdmin hospitalAdmin: hospitalAdminList) {
             if(hospitalAdmin.getAdminUsername().equalsIgnoreCase(hospitalAdminUsername)) {
                 return hospitalAdmin;
