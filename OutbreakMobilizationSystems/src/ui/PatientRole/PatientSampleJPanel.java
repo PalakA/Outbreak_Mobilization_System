@@ -37,11 +37,13 @@ public class PatientSampleJPanel extends javax.swing.JPanel {
     
     private JPanel userProcessContainer;
     private EcoSystem ecosystem;
+    Enterprise enterprise;
     
-    public PatientSampleJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
+    public PatientSampleJPanel(JPanel userProcessContainer, EcoSystem ecosystem, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
+        this.enterprise = enterprise;
         populateEnterpriseTable();
     }
 
@@ -165,7 +167,7 @@ public class PatientSampleJPanel extends javax.swing.JPanel {
         {
             if(patientRegistrationRequest.getDiagnostician() == null)
             {
-                Enterprise enterprise = (Enterprise)tblDiagnosticCenter.getValueAt(selectedRow, 0);
+                //Enterprise enterprise = (Enterprise)tblDiagnosticCenter.getValueAt(selectedRow, 0);
                 Employee employee = (Employee)tblDiagnosticCenter.getValueAt(selectedRow, 2);
 
                 patientRegistrationRequest.setDiagnostician(employee);

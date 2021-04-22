@@ -6,6 +6,7 @@
 package ui.PatientRole;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -40,13 +41,15 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     UserAccount user;
     Network network;
     Timer timer;
+    Enterprise enterprise;
     
-    public PatientWorkAreaJPanel(JPanel userProcessContainer,UserAccount user, Network network, EcoSystem ecosystem) {
+    public PatientWorkAreaJPanel(JPanel userProcessContainer,UserAccount user, Network network, EcoSystem ecosystem, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.user = user;
         this.network = network;
         this.ecosystem=ecosystem;
+        this.enterprise = enterprise;
         
         ActionListener actionListener = new ActionListener() {
         @Override
@@ -149,7 +152,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnSampleTestingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSampleTestingActionPerformed
         // TODO add your handling code here:
-        PatientSampleJPanel patientSampleJPanel = new PatientSampleJPanel(userProcessContainer, ecosystem);
+        PatientSampleJPanel patientSampleJPanel = new PatientSampleJPanel(userProcessContainer, ecosystem, enterprise);
         userProcessContainer.add("PatientSampleJPanel", patientSampleJPanel);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

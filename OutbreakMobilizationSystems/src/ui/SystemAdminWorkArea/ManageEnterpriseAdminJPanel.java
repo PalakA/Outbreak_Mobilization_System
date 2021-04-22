@@ -9,14 +9,11 @@ import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
-import Business.Roles.CareTakerRole;
 import Business.Roles.DiagnosticianRole;
-import Business.Roles.DoctorRole;
 import Business.Roles.LabAssistantRole;
 import Business.Roles.ManagerRole;
 import Business.Roles.ManufacturerRole;
 import Business.Roles.PharmacistRole;
-import Business.Roles.SupplyChainRole;
 import Business.UserAccount.UserAccount;
 import Business.Utils.Validator;
 import java.awt.CardLayout;
@@ -33,6 +30,7 @@ import javax.swing.table.DefaultTableModel;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/19/2021            @author palak      Added ManageEnterpriseAdminJPanel
+ * 04/22/2021            @author palak      Added lab assistant role
  */
 
 public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
@@ -118,11 +116,6 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         lblEnterpriseType.setText("Enterprise Type:");
 
         comboEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboEnterpriseType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboEnterpriseTypeActionPerformed(evt);
-            }
-        });
 
         lblHospitalUsername1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblHospitalUsername1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -424,12 +417,12 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
             if (ecosystem.checkIfUserIsUnique(username)) {
                 UserAccount account = null;
-                if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital && radioBtnManager.isSelected()) {
+                if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
                     account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ManagerRole());
-                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.DiagnosticCenter) {
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.DiagnosticCenter && radioBtnDiagnostician.isSelected()) {
                     account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DiagnosticianRole());
-                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Logistics) {
-                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new SupplyChainRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.DiagnosticCenter && radioBtnLabAssistant.isSelected()) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new LabAssistantRole());
                 } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalDeviceCompanies) {
                     account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ManufacturerRole());
                 } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Pharmacy) {
@@ -457,6 +450,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         radioBtnManufacturer.setSelected(false);
         radioBtnSupplyChain.setSelected(false);
         radioBtnSupplyChain.setSelected(false);
+        radioBtnLabAssistant.setSelected(false);
     }//GEN-LAST:event_radioBtnManagerActionPerformed
 
     private void radioBtnDiagnosticianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnDiagnosticianActionPerformed
@@ -465,6 +459,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         radioBtnManufacturer.setSelected(false);
         radioBtnPharmacist.setSelected(false);
         radioBtnSupplyChain.setSelected(false);
+        radioBtnLabAssistant.setSelected(false);
     }//GEN-LAST:event_radioBtnDiagnosticianActionPerformed
 
     private void radioBtnPharmacistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnPharmacistActionPerformed
@@ -473,6 +468,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         radioBtnManufacturer.setSelected(false);
         radioBtnSupplyChain.setSelected(false);
         radioBtnManager.setSelected(false);
+        radioBtnLabAssistant.setSelected(false);
     }//GEN-LAST:event_radioBtnPharmacistActionPerformed
 
     private void radioBtnManufacturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnManufacturerActionPerformed
@@ -481,6 +477,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         radioBtnManager.setSelected(false);
         radioBtnPharmacist.setSelected(false);
         radioBtnSupplyChain.setSelected(false);
+        radioBtnLabAssistant.setSelected(false);
     }//GEN-LAST:event_radioBtnManufacturerActionPerformed
 
     private void comboNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboNetworkActionPerformed
@@ -497,15 +494,17 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         radioBtnManager.setSelected(false);
         radioBtnPharmacist.setSelected(false);
         radioBtnManufacturer.setSelected(false);
+        radioBtnLabAssistant.setSelected(false);
     }//GEN-LAST:event_radioBtnSupplyChainActionPerformed
 
     private void radioBtnLabAssistantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnLabAssistantActionPerformed
         // TODO add your handling code here:
+        radioBtnDiagnostician.setSelected(false);
+        radioBtnManager.setSelected(false);
+        radioBtnPharmacist.setSelected(false);
+        radioBtnManufacturer.setSelected(false);
+        radioBtnSupplyChain.setSelected(false);
     }//GEN-LAST:event_radioBtnLabAssistantActionPerformed
-
-    private void comboEnterpriseTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEnterpriseTypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboEnterpriseTypeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

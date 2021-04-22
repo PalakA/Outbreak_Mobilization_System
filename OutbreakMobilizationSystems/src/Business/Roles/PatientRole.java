@@ -23,6 +23,7 @@ import ui.PatientRole.PatientWorkAreaJPanel;
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author nakul       Added Patient role
  * 04/14/2021            @author palak       Added UserAccount, network and constructor
+ * 04/22/2021            @author palak       Added enterprise
  */
 
 public class PatientRole extends Roles{
@@ -33,7 +34,7 @@ public class PatientRole extends Roles{
     }
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
-        return new PatientWorkAreaJPanel(userProcessContainer, account, network, system);
+        return new PatientWorkAreaJPanel(userProcessContainer, account, network, system, enterprise);
     }
     
 }
