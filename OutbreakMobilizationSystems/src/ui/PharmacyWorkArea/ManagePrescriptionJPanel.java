@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.CareTakerRole;
+package ui.PharmacyWorkArea;
 
 import Business.EcoSystem;
 import Business.Network.Network;
@@ -18,22 +18,20 @@ import javax.swing.JPanel;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 04/13/2021            @author nakul       Added CareTakerWorkArea JPanel
- * 04/14/2021            @author palak       Added UserAccount and network
+ * 04/13/2021            @author nakul       Added ManageMedicines JPanel
+ * 04/14/2021            @author palak       Added UserAccount
  */
-
-public class CaretakerWorkAreaJPanel extends javax.swing.JPanel {
+public class ManagePrescriptionJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CaretakerWorkAreaJPanel
+     * Creates new form ManagePrescriptionJPanel
      */
-    
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     UserAccount user;
     Network network;
     
-    public CaretakerWorkAreaJPanel(JPanel userProcessContainer,UserAccount user, Network network, EcoSystem ecosystem) {
+    public ManagePrescriptionJPanel(JPanel userProcessContainer, UserAccount user,Network network, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.user = user;
@@ -51,41 +49,41 @@ public class CaretakerWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblGetMedicines = new javax.swing.JLabel();
+        lblMedicinesToPatients = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblMedicines = new javax.swing.JTable();
+        tblProcessMedicines = new javax.swing.JTable();
         btnProcess = new javax.swing.JButton();
-        btnDelivered = new javax.swing.JButton();
+        btnComplete = new javax.swing.JButton();
 
-        lblGetMedicines.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblGetMedicines.setText("Get Prescribed Medicines");
+        lblMedicinesToPatients.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblMedicinesToPatients.setText("Process the Medicines to Patients");
 
-        tblMedicines.setModel(new javax.swing.table.DefaultTableModel(
+        tblProcessMedicines.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Pharmacy Name", "Patient Name", "Doctor Name", "Prescription", "Status", "Message"
+                "Patient Name", "Doctor Name", "Care Taker Name", "Prescription", "Quantity", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblMedicines);
+        jScrollPane1.setViewportView(tblProcessMedicines);
 
         btnProcess.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnProcess.setText("Process");
 
-        btnDelivered.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnDelivered.setText("Delivered");
+        btnComplete.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnComplete.setText("Complete");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -94,39 +92,45 @@ public class CaretakerWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(295, 295, 295)
-                        .addComponent(lblGetMedicines))
+                        .addGap(360, 360, 360)
+                        .addComponent(lblMedicinesToPatients))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(75, 75, 75)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnProcess)
-                                .addGap(151, 151, 151)
-                                .addComponent(btnDelivered))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(123, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnComplete))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnComplete, btnProcess});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(lblGetMedicines)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
+                .addComponent(lblMedicinesToPatients)
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProcess)
-                    .addComponent(btnDelivered))
-                .addContainerGap(229, Short.MAX_VALUE))
+                    .addComponent(btnComplete))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnComplete, btnProcess});
+
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDelivered;
+    private javax.swing.JButton btnComplete;
     private javax.swing.JButton btnProcess;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblGetMedicines;
-    private javax.swing.JTable tblMedicines;
+    private javax.swing.JLabel lblMedicinesToPatients;
+    private javax.swing.JTable tblProcessMedicines;
     // End of variables declaration//GEN-END:variables
 }
