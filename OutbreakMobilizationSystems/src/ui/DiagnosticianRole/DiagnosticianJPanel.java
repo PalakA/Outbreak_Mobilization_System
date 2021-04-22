@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.DiagnosticCenterWorkArea;
+package ui.DiagnosticianRole;
 
 import Business.EcoSystem;
 import Business.Network.Network;
@@ -22,10 +22,10 @@ import javax.swing.JPanel;
  * 04/14/2021            @author palak       Added UserAccount, network
  */
 
-public class DiagnosticCenterJPanel extends javax.swing.JPanel {
+public class DiagnosticianJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form DiagnosticCenterJPanel
+     * Creates new form DiagnosticianJPanel
      */
     
     JPanel userProcessContainer;
@@ -33,7 +33,7 @@ public class DiagnosticCenterJPanel extends javax.swing.JPanel {
     UserAccount user;
     Network network;
     
-    public DiagnosticCenterJPanel(JPanel userProcessContainer,UserAccount user, Network network, EcoSystem ecosystem) {
+    public DiagnosticianJPanel(JPanel userProcessContainer,UserAccount user, Network network, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.user = user;
@@ -55,11 +55,11 @@ public class DiagnosticCenterJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 839, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 498, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
