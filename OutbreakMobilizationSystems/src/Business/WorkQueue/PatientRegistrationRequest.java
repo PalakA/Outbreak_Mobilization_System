@@ -23,7 +23,7 @@ import Business.Organizations.Organization;
  * 04/20/2021            @author palak       Added patient registration to work request
  */
 
-public class PatientRegistrationRequest extends WorkRequest{
+public class PatientRegistrationRequest extends WorkRequest {
     
     private String patientName;
     private String patientAge;

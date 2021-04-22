@@ -8,7 +8,14 @@ package ui.LabAssistantRole;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Organizations.Organization;
+import Business.Roles.LabAssistantRole;
+import Business.Roles.ManagerRole;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.SendTestSampleRequest;
+import Business.WorkQueue.WorkRequest;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,6 +37,8 @@ public class LabAssistantJPanel extends javax.swing.JPanel {
         this.ecosystem = ecosystem;
         this.network = network;
         this.enterprise = enterprise;
+        populateSamplesProcessTable();
+        populateLabAssistantCombo();
     }
 
     /**
@@ -42,30 +51,157 @@ public class LabAssistantJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblManageSamples = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblSamplesProcessed = new javax.swing.JTable();
+        btnProcess = new javax.swing.JButton();
+        btnComplete = new javax.swing.JButton();
+        lblHospitalList = new javax.swing.JLabel();
+        comboHospitalList = new javax.swing.JComboBox();
 
         lblManageSamples.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblManageSamples.setText("Manage Lab Samples");
+
+        tblSamplesProcessed.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Patient Name", "Samples", "Hospital Name", "Assigned Lab Assistant", "Diagnostics Center", "Status", "Message"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblSamplesProcessed);
+
+        btnProcess.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnProcess.setText("Process");
+        btnProcess.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcessActionPerformed(evt);
+            }
+        });
+
+        btnComplete.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnComplete.setText("Complete");
+        btnComplete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompleteActionPerformed(evt);
+            }
+        });
+
+        lblHospitalList.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblHospitalList.setText("List of Hospitals");
+
+        comboHospitalList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(304, 304, 304)
-                .addComponent(lblManageSamples, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(304, 304, 304)
+                        .addComponent(lblManageSamples, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnProcess)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnComplete))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(260, 260, 260)
+                        .addComponent(lblHospitalList)
+                        .addGap(29, 29, 29)
+                        .addComponent(comboHospitalList, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnComplete, btnProcess});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(lblManageSamples)
-                .addContainerGap(425, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnProcess)
+                    .addComponent(btnComplete))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHospitalList)
+                    .addComponent(comboHospitalList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnComplete, btnProcess});
+
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProcessActionPerformed
 
+    private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCompleteActionPerformed
+
+    private void populateSamplesProcessTable() {
+        DefaultTableModel samplesModel = (DefaultTableModel) tblSamplesProcessed.getModel();
+        samplesModel.setRowCount(0);
+
+        for (WorkRequest wr : enterprise.getWorkQueue().getWorkRequestList()) {
+            if (wr instanceof SendTestSampleRequest) {
+                Object[] row = new Object[samplesModel.getColumnCount()];
+                row[0] = ((SendTestSampleRequest) wr).getPatientName();
+                row[1] = ((SendTestSampleRequest) wr).getSamples();
+                row[1] = ((SendTestSampleRequest) wr).getEnterprise().getEnterpriseType().Hospital;
+                row[3] = ((SendTestSampleRequest) wr).getLabAssistant();
+                row[4] = ((SendTestSampleRequest) wr).getDiagnostician();
+                row[5] = ((SendTestSampleRequest) wr).getStatus();
+                row[6] = ((SendTestSampleRequest) wr).getMessage();
+                samplesModel.addRow(row);
+            }
+        }
+    }
+
+    private void populateLabAssistantCombo() {
+        comboHospitalList.removeAllItems();
+        System.out.println("Started");
+        System.out.println(enterprise);
+        System.out.println(enterprise.getOrganizationDirectory());
+        System.out.println(enterprise.getOrganizationDirectory().getOrganizationList());
+        for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
+                System.out.println(u);
+                if (u.getRole() instanceof LabAssistantRole) {
+                    comboHospitalList.addItem(u.getEmployee());
+                }
+            }
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnComplete;
+    private javax.swing.JButton btnProcess;
+    private javax.swing.JComboBox comboHospitalList;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblHospitalList;
     private javax.swing.JLabel lblManageSamples;
+    private javax.swing.JTable tblSamplesProcessed;
     // End of variables declaration//GEN-END:variables
 }

@@ -51,19 +51,117 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblTreatment = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblPatientDetails = new javax.swing.JTable();
+        lblAssignCaretaker = new javax.swing.JLabel();
+        lblAssignPharmacy = new javax.swing.JLabel();
+        comboCaretaker = new javax.swing.JComboBox<>();
+        comboPharmacy = new javax.swing.JComboBox<>();
+        btnAssign = new javax.swing.JButton();
+
+        lblTreatment.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTreatment.setText("Treatment to a Patient");
+
+        tblPatientDetails.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Hospital Name", "Diagnostic Center", "Diagnostician", "Lab Assistant", "Samples", "Patient Name", "Prescription", "Care Taker", "Pharmacy", "Status", "Message"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblPatientDetails);
+
+        lblAssignCaretaker.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblAssignCaretaker.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblAssignCaretaker.setText("Assign Care Taker");
+
+        lblAssignPharmacy.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblAssignPharmacy.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblAssignPharmacy.setText("Assign Pharmacy");
+
+        comboCaretaker.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        comboPharmacy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnAssign.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnAssign.setText("Assign");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(281, 281, 281)
+                        .addComponent(lblTreatment))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAssignCaretaker)
+                            .addComponent(lblAssignPharmacy))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboPharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboCaretaker, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(36, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnAssign)
+                .addGap(334, 334, 334))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblAssignCaretaker, lblAssignPharmacy});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(lblTreatment)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAssignCaretaker)
+                    .addComponent(comboCaretaker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAssignPharmacy)
+                    .addComponent(comboPharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnAssign)
+                .addContainerGap(143, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblAssignCaretaker, lblAssignPharmacy});
+
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAssign;
+    private javax.swing.JComboBox<String> comboCaretaker;
+    private javax.swing.JComboBox<String> comboPharmacy;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAssignCaretaker;
+    private javax.swing.JLabel lblAssignPharmacy;
+    private javax.swing.JLabel lblTreatment;
+    private javax.swing.JTable tblPatientDetails;
     // End of variables declaration//GEN-END:variables
 }
