@@ -18,6 +18,7 @@ import java.util.ArrayList;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/12/2021            @author palak       Added User Account Directory
+ * 04/19/2021            @author palak       Added find employee function
  * 
  */
 
@@ -57,5 +58,14 @@ public class UserAccountDirectory {
                 return false;
         }
         return true;
+    }
+    
+    public UserAccount findEmployee(Employee employee)
+    {
+        for (UserAccount ua : userAccountList)
+            if (ua.getEmployee()== employee){
+                return ua;
+            }
+        return null;
     }
 }

@@ -9,15 +9,34 @@ import Business.DB4OUtil.DB4OUtil;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organizations.Organization;
+import Business.Roles.CareTakerRole;
+import Business.Roles.DiagnosticianRole;
+import Business.Roles.DoctorRole;
+import Business.Roles.LabAssistantRole;
+import Business.Roles.ManagerRole;
+import Business.Roles.ManufacturerRole;
+import Business.Roles.PatientRole;
+import Business.Roles.PharmacistRole;
+import Business.Roles.SupplyChainRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import ui.PatientWorkArea.PatientRegistrationJPanel;
 
 /**
- *
- * @author Lingfeng
+ * @author ajayp
+ * @author nakul
+ * @author palak
+ * 
+ * Revision History:
+ * 
+ * Date(MM/DD/YYYY)      Author              Comment
+ * 04/16/2021            @author ajayp       Added MainJFrame
+ * 04/17/2021            @author palak       Added setworkarea function
+ * 04/18/2021            @author palak       Removed Hospital Admin
  */
+
 public class MainJFrame extends javax.swing.JFrame {
 
     /**
@@ -25,13 +44,15 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     private EcoSystem system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
-    Enterprise inEnterprise = null;
-    Organization inOrganization = null;
-    Network network = null;
+    Enterprise inEnterprise;
+    Organization inOrganization;
+    Network inNetwork ;
+    UserAccount userAccount;
 
     public MainJFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
+        EcoSystem.setInstance(system);
         this.setSize(1680, 1050);
     }
 
@@ -53,6 +74,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         loginJLabel = new javax.swing.JLabel();
         logoutJButton = new javax.swing.JButton();
+        btnSignUp = new javax.swing.JButton();
         container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,6 +98,13 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnSignUp.setText("Sign Up");
+        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignUpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -84,7 +113,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                        .addComponent(passwordField)
                         .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(userNameJTextField, javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,9 +121,13 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addComponent(logoutJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
                             .addGap(26, 26, 26)
                             .addComponent(loginJLabel)))
-                    .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSignUp, logoutJButton});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -112,7 +145,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(logoutJButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginJLabel)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addGap(65, 65, 65)
+                .addComponent(btnSignUp)
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -133,8 +168,11 @@ public class MainJFrame extends javax.swing.JFrame {
         String password = String.valueOf(passwordCharArray);
 
         //Step1: Check in the system admin user account directory if you have the user
-        UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
-
+        userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
+        inEnterprise = null;
+        inOrganization = null;
+        inNetwork = null;
+        
         if (userAccount == null) {
             //Step 2: Go inside each network and check each enterprise
             for (Network network : system.getNetworkList()) {
@@ -148,6 +186,7 @@ public class MainJFrame extends javax.swing.JFrame {
                             if (userAccount != null) {
                                 inEnterprise = enterprise;
                                 inOrganization = organization;
+                                inNetwork = network;
                                 break;
                             }
                         }
@@ -169,15 +208,12 @@ public class MainJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Invalid credentials");
             return;
         } else {
-            CardLayout layout = (CardLayout) container.getLayout();
-            container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, network, system));
-            layout.next(container);
+            loginJButton.setEnabled(false);
+            logoutJButton.setEnabled(true);
+            userNameJTextField.setEnabled(false);
+            passwordField.setEnabled(false);
+            setWorkArea();
         }
-
-        loginJButton.setEnabled(false);
-        logoutJButton.setEnabled(true);
-        userNameJTextField.setEnabled(false);
-        passwordField.setEnabled(false);
     }//GEN-LAST:event_loginJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -196,6 +232,18 @@ public class MainJFrame extends javax.swing.JFrame {
         crdLyt.next(container);
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_logoutJButtonActionPerformed
+
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
+
+        PatientRegistrationJPanel panel = new PatientRegistrationJPanel(container, system);
+        loginJButton.setVisible(false);
+        container.setVisible(true);
+        userNameJTextField.setText("");
+        passwordField.setText("");
+        container.add("workArea", panel);
+        CardLayout layout = (CardLayout) container.getLayout();
+        layout.next(container);
+    }//GEN-LAST:event_btnSignUpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,7 +279,50 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void setWorkArea() {
+      
+        if (userAccount != null && userAccount.getRole() != null) {
+            String greetings = "Hello";
+            if (userAccount.getRole() instanceof CareTakerRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, system));
+            } else if (userAccount.getRole() instanceof DiagnosticianRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, system));
+            } else if (userAccount.getRole() instanceof DoctorRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, system));
+            } else if (userAccount.getRole() instanceof LabAssistantRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, system));
+            } else if (userAccount.getRole() instanceof ManagerRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, system));
+            }else if (userAccount.getRole() instanceof ManufacturerRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, system)); 
+            }else if (userAccount.getRole() instanceof PatientRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, system)); 
+            }else if (userAccount.getRole() instanceof PharmacistRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, system)); 
+            }else if (userAccount.getRole() instanceof SupplyChainRole) {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, system)); 
+            }else {
+                greetings = greetings + " " + userAccount.getUsername();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, system));
+            }
+            //greetingUserLabel.setText(greetings + " !!!");
+            JOptionPane.showMessageDialog(null, greetings);
+            CardLayout layout = (CardLayout) container.getLayout();
+            layout.next(container);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSignUp;
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

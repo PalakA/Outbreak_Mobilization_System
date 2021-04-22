@@ -9,9 +9,7 @@ import Business.Network.Network;
 import Business.CareTaker.CareTakerDirectory;
 import Business.Doctor.DoctorDirectory;
 import Business.Hospital.HospitalRegistrationDirectory;
-import Business.HospitalAdmin.HospitalAdminDirectory;
 import Business.Organizations.Organization;
-import Business.Patient.PatientDirectory;
 import Business.Roles.Roles;
 import Business.Roles.SystemAdminRole;
 import java.util.ArrayList;
@@ -26,38 +24,26 @@ import java.util.ArrayList;
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/12/2021            @author palak       Added directories to EcoSystem
  * 04/15/2021            @author palak       Added directories
- * 
+ * 04/18/2021            @author ajayp       Added hospitalAdmin and Hospital Registry Directories
+ * 04/18/2021            @author palak       Removed setter for hospitalAdmin and Hospital Registry Directories
+ * 04/19/2021            @author palak       Removed Hospital Admin
  */
 
 public class EcoSystem extends Organization{
     
     private static EcoSystem business;
     private ArrayList<Network> networkList;
-    private PatientDirectory patientDirectory;
     private CareTakerDirectory careTakerDirectory;
     private DoctorDirectory doctorDirectory;
     private HospitalRegistrationDirectory hospitalRegistrationDirectory;
-    private HospitalAdminDirectory hospitalAdminDirectory;
 
-    public EcoSystem(PatientDirectory patientDirectory, CareTakerDirectory careTakerDirectory, DoctorDirectory doctorDirectory, String name, HospitalRegistrationDirectory hospitalRegistrationDirectory, HospitalAdminDirectory hospitalAdminDirectory) {
-        super(name);
-        this.patientDirectory = patientDirectory;
-        this.careTakerDirectory = careTakerDirectory;
-        this.doctorDirectory = doctorDirectory;
-        this.hospitalRegistrationDirectory = hospitalRegistrationDirectory;
-        this.hospitalAdminDirectory = hospitalAdminDirectory;
-    }
-
-    public HospitalRegistrationDirectory getHospitalRegistrationDirectory() {
-        return hospitalRegistrationDirectory;
-    }
-
-    public void setHospitalRegistrationDirectory(HospitalRegistrationDirectory hospitalRegistrationDirectory) {
-        this.hospitalRegistrationDirectory = hospitalRegistrationDirectory;
+    private EcoSystem(){
+        super(null);
+        networkList=new ArrayList<Network>();
     }
         
-    public PatientDirectory getPatientDirectory() {
-        return patientDirectory;
+    public HospitalRegistrationDirectory getHospitalRegistrationDirectory() {
+        return hospitalRegistrationDirectory;
     }
 
     public CareTakerDirectory getCareTakerDirectory() {
@@ -66,14 +52,6 @@ public class EcoSystem extends Organization{
 
     public DoctorDirectory getDoctorDirectory() {
         return doctorDirectory;
-    }
-
-    public HospitalAdminDirectory getHospitalAdminDirectory() {
-        return hospitalAdminDirectory;
-    }
-
-    public void setHospitalAdminDirectory(HospitalAdminDirectory hospitalAdminDirectory) {
-        this.hospitalAdminDirectory = hospitalAdminDirectory;
     }
         
     public static EcoSystem getInstance(){
@@ -93,10 +71,6 @@ public class EcoSystem extends Organization{
         ArrayList<Roles> roleList=new ArrayList<Roles>();
         roleList.add(new SystemAdminRole());
         return roleList;
-    }
-    private EcoSystem(){
-        super(null);
-        networkList=new ArrayList<Network>();
     }
 
     public static void setInstance(EcoSystem system) {	

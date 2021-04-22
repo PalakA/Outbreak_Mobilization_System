@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.Patient;
+package Business.WorkQueue;
+
+import Business.Employee.Employee;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Organizations.Organization;
 
 /**
  * @author ajayp
@@ -15,49 +20,26 @@ package Business.Patient;
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author ajayp       Added Patient Information
  * 04/14/2021            @author ajayp       Added counter for patient id
+ * 04/20/2021            @author palak       Added patient registration to work request
  */
 
-public class Patient {
+public class PatientRegistrationRequest extends WorkRequest{
     
-    private static int count = 1;
-    public int patientId;
-    public String patientName;
-    public String patientAge;
-    public String patientUsername;
-    public String patientPassword;
-    public String patientAddress;
-    public String patientNumber;
-    public String patientGender;
-    public String symptom1;
-    public String symptom2;
-    public String symptom3;
-    
-    public Patient() {
-        this.patientId = count;
-        count++;
-    }
-
-    public Patient(int patientId, String patientName, String patientAge, String patientUsername, String patientPassword, String patientAddress, String patientNumber, String patientGender, String symptom1, String symptom2, String symptom3) {
-        this.patientId = patientId;
-        this.patientName = patientName;
-        this.patientAge = patientAge;
-        this.patientUsername = patientUsername;
-        this.patientPassword = patientPassword;
-        this.patientAddress = patientAddress;
-        this.patientNumber = patientNumber;
-        this.patientGender = patientGender;
-        this.symptom1 = symptom1;
-        this.symptom2 = symptom2;
-        this.symptom3 = symptom3;
-    }
-
-    public int getPatientId() {
-        return patientId;
-    }
-
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
-    }
+    private String patientName;
+    private String patientAge;
+    private String patientUsername;
+    private String patientPassword;
+    private String patientAddress;
+    private String patientNumber;
+    private String patientGender;
+    private String patientEmailId;
+    private String symptom1;
+    private Network network;
+    private Enterprise enterprise;
+    private Organization.Type orgType;
+    private Employee doctor;
+    private Employee diagnostician;
+    private Employee careTaker;
 
     public String getPatientName() {
         return patientName;
@@ -123,20 +105,60 @@ public class Patient {
         this.symptom1 = symptom1;
     }
 
-    public String getSymptom2() {
-        return symptom2;
+    public String getPatientEmailId() {
+        return patientEmailId;
     }
 
-    public void setSymptom2(String symptom2) {
-        this.symptom2 = symptom2;
+    public void setPatientEmailId(String patientEmailId) {
+        this.patientEmailId = patientEmailId;
     }
 
-    public String getSymptom3() {
-        return symptom3;
+    public Network getNetwork() {
+        return network;
     }
 
-    public void setSymptom3(String symptom3) {
-        this.symptom3 = symptom3;
+    public void setNetwork(Network network) {
+        this.network = network;
+    }
+
+    public Enterprise getEnterprise() {
+        return enterprise;
+    }
+
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
+    }
+
+    public Organization.Type getOrgType() {
+        return orgType;
+    }
+
+    public void setOrgType(Organization.Type orgType) {
+        this.orgType = orgType;
+    }
+
+    public Employee getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Employee doctor) {
+        this.doctor = doctor;
+    }
+
+    public Employee getDiagnostician() {
+        return diagnostician;
+    }
+
+    public void setDiagnostician(Employee diagnostician) {
+        this.diagnostician = diagnostician;
+    }
+
+    public Employee getCareTaker() {
+        return careTaker;
+    }
+
+    public void setCareTaker(Employee careTaker) {
+        this.careTaker = careTaker;
     }
     
     @Override

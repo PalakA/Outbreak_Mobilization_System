@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.HospitalWorkArea;
+package ui.DoctorRole;
 
 import Business.EcoSystem;
 import Business.Network.Network;
@@ -11,13 +11,21 @@ import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
 /**
- *
  * @author ajayp
+ * @author nakul
+ * @author palak
+ * 
+ * Revision History:
+ * 
+ * Date(MM/DD/YYYY)      Author              Comment
+ * 04/13/2021            @author nakul       Added DoctorWorkArea JPanel
+ * 04/14/2021            @author palak       Added UserAccount, network
  */
-public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
+
+public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form HospitalAdminWorkAreaJPanel
+     * Creates new form DoctorWorkAreaJPanel
      */
     
     JPanel userProcessContainer;
@@ -25,12 +33,13 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     UserAccount user;
     Network network;
     
-    public HospitalAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount user, Network network, EcoSystem ecosystem) {
+    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount user, Network network, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.user = user;
         this.network = network;
         this.ecosystem=ecosystem;
+        //populateTree();
     }
 
     /**
