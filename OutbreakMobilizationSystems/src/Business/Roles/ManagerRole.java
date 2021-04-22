@@ -11,7 +11,7 @@ import Business.Network.Network;
 import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import ui.HospitalWorkArea.ManagerWorkAreaJPanel;
+import ui.HospitalWorkArea.ManageWorkAreaJPanel;
 
 /**
  * @author ajayp
@@ -23,6 +23,7 @@ import ui.HospitalWorkArea.ManagerWorkAreaJPanel;
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/13/2021            @author nakul       Added Manager role
  * 04/14/2021            @author palak       Added UserAccount, network and constructor
+ * 04/20/2021            @author palak       Added enterprise
  */
 
 public class ManagerRole extends Roles{
@@ -33,7 +34,7 @@ public class ManagerRole extends Roles{
     }
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
-        return new ManagerWorkAreaJPanel(userProcessContainer, account, network, system);
+        return new ManageWorkAreaJPanel(userProcessContainer, system, enterprise);
     }
     
 }

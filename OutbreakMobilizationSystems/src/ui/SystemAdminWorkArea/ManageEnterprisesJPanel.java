@@ -12,12 +12,20 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import ui.EnterpriseRegistration.HospitalAdminRegistrationJPanel;
 
 /**
- *
  * @author ajayp
+ * @author nakul
+ * @author palak
+ * 
+ * Revision History:
+ * 
+ * Date(MM/DD/YYYY)      Author              Comment
+ * 04/17/2021            @author ajayp       Added ManageEnterprisesJPanel
+ * 04/18/2021            @author palak       Passing type to HospitalAdmin Panel, network
+ * 04/19/2021            @author palak       Added delete enterprise function
  */
+
 public class ManageEnterprisesJPanel extends javax.swing.JPanel {
 
     /**
@@ -25,11 +33,14 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private EcoSystem ecosystem;
+    private Network network;
+    
 
-    public ManageEnterprisesJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
+    public ManageEnterprisesJPanel(JPanel userProcessContainer, EcoSystem ecosystem, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
+        this.network = network;
         populateEnterpriseTable();
         populateComboBox();
     }
@@ -75,8 +86,6 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
         txtName = new javax.swing.JTextField();
         lblName = new javax.swing.JLabel();
         lblANewEnterprise = new javax.swing.JLabel();
-        btnDelete = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
         lblNetwork = new javax.swing.JLabel();
         lblEnterpriseType = new javax.swing.JLabel();
         comboEnterpriseType = new javax.swing.JComboBox();
@@ -121,22 +130,6 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
 
         lblANewEnterprise.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblANewEnterprise.setText("Add a new Enterprise");
-
-        btnDelete.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnDelete.setText("Delete Enterprise");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-
-        btnUpdate.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnUpdate.setText("Update Enterprise");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
 
         lblNetwork.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblNetwork.setText("Network:");
@@ -191,23 +184,18 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
                         .addComponent(btnAddEnterprise))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(150, 150, 150)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(135, 135, 135)
                                 .addComponent(lblEnterpriseInformation))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCreateEmployee)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnUpdate)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnDelete))
-                            .addComponent(jScrollPane1))))
-                .addContainerGap(195, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(302, 302, 302)
+                        .addComponent(btnCreateEmployee)))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {comboEnterpriseType, comboNetwork, txtName});
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCreateEmployee, btnDelete, btnUpdate});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,16 +223,11 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnDelete)
-                    .addComponent(btnCreateEmployee))
+                .addComponent(btnCreateEmployee)
                 .addContainerGap(83, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {comboEnterpriseType, comboNetwork, txtName});
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCreateEmployee, btnDelete, btnUpdate});
 
     }// </editor-fold>//GEN-END:initComponents
 
@@ -269,14 +252,6 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAddEnterpriseActionPerformed
 
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
@@ -286,16 +261,10 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
 
     private void btnCreateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateEmployeeActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblEnterpriseInformation.getSelectedRow();
-        if (selectedRow >= 0) {
-            String name = (String) tblEnterpriseInformation.getValueAt(selectedRow, 0);
-            HospitalAdminRegistrationJPanel hospitalAdminRegistrationJPanel = new HospitalAdminRegistrationJPanel(userProcessContainer, ecosystem, name);
-            userProcessContainer.add("HospitalAdminRegistration", hospitalAdminRegistrationJPanel);
+            ManageEnterpriseAdminJPanel ManageEnterpriseAdminJPanel = new ManageEnterpriseAdminJPanel(userProcessContainer, ecosystem);
+            userProcessContainer.add("ManageEnterpriseAdminJPanel", ManageEnterpriseAdminJPanel);
             CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
             cardLayout.next(userProcessContainer);
-        } else {
-            JOptionPane.showMessageDialog(null, "Please select a row to create employee");
-        }
     }//GEN-LAST:event_btnCreateEmployeeActionPerformed
 
 
@@ -303,8 +272,6 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAddEnterprise;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreateEmployee;
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox comboEnterpriseType;
     private javax.swing.JComboBox comboNetwork;
     private javax.swing.JScrollPane jScrollPane1;

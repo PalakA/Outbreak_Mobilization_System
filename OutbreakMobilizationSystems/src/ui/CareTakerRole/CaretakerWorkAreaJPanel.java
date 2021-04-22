@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.DiagnosticCenterWorkArea;
+package ui.CareTakerRole;
 
 import Business.EcoSystem;
 import Business.Network.Network;
@@ -18,14 +18,14 @@ import javax.swing.JPanel;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 04/13/2021            @author nakul       Added DiagnosticCenter JPanel
- * 04/14/2021            @author palak       Added UserAccount, network
+ * 04/13/2021            @author nakul       Added CareTakerWorkArea JPanel
+ * 04/14/2021            @author palak       Added UserAccount and network
  */
 
-public class DiagnosticCenterJPanel extends javax.swing.JPanel {
+public class CaretakerWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form DiagnosticCenterJPanel
+     * Creates new form CaretakerWorkAreaJPanel
      */
     
     JPanel userProcessContainer;
@@ -33,7 +33,7 @@ public class DiagnosticCenterJPanel extends javax.swing.JPanel {
     UserAccount user;
     Network network;
     
-    public DiagnosticCenterJPanel(JPanel userProcessContainer,UserAccount user, Network network, EcoSystem ecosystem) {
+    public CaretakerWorkAreaJPanel(JPanel userProcessContainer,UserAccount user, Network network, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.user = user;

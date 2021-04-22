@@ -23,6 +23,7 @@ import javax.swing.JPanel;
  * 04/13/2021            @author palak       Added Roles class
  * 04/15/2021            @author palak       Added network in createWorkArea class
  * 04/17/2021            @author nakul       Added Hospital Admin Role
+ * 04/20/2021            @author palak       Removed Hospital Admin Role
  */
 
 public abstract class Roles {
@@ -37,8 +38,7 @@ public abstract class Roles {
         Patient("Patient"),
         Pharmacist("Pharmacist"),
         SupplyChain("SupplyChain"),
-        CareTaker("CareTaker"),
-        HospitalAdmin("HospitalAdmin");
+        CareTaker("CareTaker");
         
         private String value;
         private RoleType(String value){

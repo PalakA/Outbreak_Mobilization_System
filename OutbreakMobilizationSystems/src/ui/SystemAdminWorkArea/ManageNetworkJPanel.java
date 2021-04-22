@@ -58,8 +58,6 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNetworkInformation = new javax.swing.JTable();
         lblNetworkInformation = new javax.swing.JLabel();
-        btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
         lblANewNetwork.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -100,22 +98,6 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         lblNetworkInformation.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNetworkInformation.setText("Network Information");
 
-        btnUpdate.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-
-        btnDelete.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnDelete.setText("Delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-
         btnBack.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -148,18 +130,11 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                         .addComponent(btnAddNetwork))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(152, 152, 152)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnUpdate)
-                                .addGap(294, 294, 294)
-                                .addComponent(btnDelete)))))
-                .addContainerGap(129, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblANewNetwork, lblNetworkInformation});
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDelete, btnUpdate});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,16 +153,10 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 .addComponent(lblNetworkInformation)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnDelete))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblANewNetwork, lblNetworkInformation});
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnDelete, btnUpdate});
 
     }// </editor-fold>//GEN-END:initComponents
 
@@ -209,14 +178,6 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         populateNetworkTable();
     }//GEN-LAST:event_btnAddNetworkActionPerformed
 
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
@@ -228,8 +189,6 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddNetwork;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblANewNetwork;
     private javax.swing.JLabel lblNetworkInformation;

@@ -5,6 +5,8 @@
  */
 package Business.WorkQueue;
 
+import java.util.ArrayList;
+
 /**
  * @author ajayp
  * @author nakul
@@ -13,9 +15,18 @@ package Business.WorkQueue;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 
+ * 04/20/2021            @author palak       Added WorkQueue
  */
 
 public class WorkQueue {
     
+    private ArrayList<WorkRequest> workRequestList;
+
+    public WorkQueue() {
+        workRequestList = new ArrayList();
+    }
+
+    public ArrayList<WorkRequest> getWorkRequestList() {
+        return workRequestList;
+    }
 }
