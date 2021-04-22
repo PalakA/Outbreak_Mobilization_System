@@ -11,7 +11,6 @@ import Business.Network.Network;
 import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import ui.DiagnosticianRole.DiagnosticianJPanel;
 import ui.LabAssistantRole.LabAssistantJPanel;
 
 /**

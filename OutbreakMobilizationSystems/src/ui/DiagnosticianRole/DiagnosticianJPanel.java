@@ -8,7 +8,6 @@ package ui.DiagnosticianRole;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
-import Business.LabAssistant.LabAssistant;
 import Business.Network.Network;
 import Business.Organizations.Organization;
 import Business.Roles.LabAssistantRole;
@@ -18,7 +17,6 @@ import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import ui.PatientWorkArea.PatientRegistrationJPanel;
 
 /**
  * @author ajayp
@@ -62,9 +60,6 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
         lblManageAssistant = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSamples = new javax.swing.JTable();
-        btnAssign = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
-        btnAccept = new javax.swing.JButton();
         lblAssignLabAssistant = new javax.swing.JLabel();
         comboLabAssistant = new javax.swing.JComboBox();
         btnSubmit = new javax.swing.JButton();
@@ -93,30 +88,6 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblSamples);
 
-        btnAssign.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnAssign.setText("Assign Samples");
-        btnAssign.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssignActionPerformed(evt);
-            }
-        });
-
-        btnCancel.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnCancel.setText("Cancel Samples");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
-
-        btnAccept.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnAccept.setText("Accept Samples");
-        btnAccept.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAcceptActionPerformed(evt);
-            }
-        });
-
         lblAssignLabAssistant.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblAssignLabAssistant.setText("Assign Lab Assistant");
 
@@ -128,7 +99,7 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
         });
 
         btnSubmit.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnSubmit.setText("Submit");
+        btnSubmit.setText("Assign");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
@@ -143,30 +114,22 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(113, 113, 113)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAccept)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCancel)
-                                .addGap(88, 88, 88)
-                                .addComponent(btnAssign))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(220, 220, 220)
-                        .addComponent(lblAssignLabAssistant)
-                        .addGap(39, 39, 39)
-                        .addComponent(comboLabAssistant, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(349, 349, 349)
-                        .addComponent(btnSubmit))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(319, 319, 319)
-                        .addComponent(lblManageAssistant, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblManageAssistant, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(229, 229, 229)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblAssignLabAssistant)
+                                .addGap(39, 39, 39)
+                                .addComponent(comboLabAssistant, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(129, 129, 129)
+                                .addComponent(btnSubmit)))))
                 .addContainerGap(133, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAccept, btnAssign, btnCancel});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -174,35 +137,15 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
                 .addComponent(lblManageAssistant)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancel)
-                    .addComponent(btnAccept)
-                    .addComponent(btnAssign))
-                .addGap(54, 54, 54)
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAssignLabAssistant)
                     .addComponent(comboLabAssistant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnSubmit)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAccept, btnAssign, btnCancel});
-
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAcceptActionPerformed
-
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelActionPerformed
-
-    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAssignActionPerformed
 
     private void comboLabAssistantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboLabAssistantActionPerformed
         // TODO add your handling code here:
@@ -273,11 +216,12 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
             }
         }
     }
+    
+    private void populateOrganization() {
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAccept;
-    private javax.swing.JButton btnAssign;
-    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox comboLabAssistant;
     private javax.swing.JScrollPane jScrollPane1;
