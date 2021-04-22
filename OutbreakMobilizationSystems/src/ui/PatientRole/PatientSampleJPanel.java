@@ -13,6 +13,7 @@ import Business.Network.Network;
 import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientRegistrationRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -38,13 +39,16 @@ public class PatientSampleJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem ecosystem;
     Enterprise enterprise;
+    Organization organization;
     
-    public PatientSampleJPanel(JPanel userProcessContainer, EcoSystem ecosystem, Enterprise enterprise) {
+    public PatientSampleJPanel(JPanel userProcessContainer, EcoSystem ecosystem, Enterprise enterprise, Organization organization) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.enterprise = enterprise;
+        this.organization = organization;
         populateEnterpriseTable();
+        populatePatientStatusTable();
     }
 
     /**
@@ -75,6 +79,22 @@ public class PatientSampleJPanel extends javax.swing.JPanel {
         }
     }
         
+    private void populatePatientStatusTable(){
+        DefaultTableModel model = (DefaultTableModel) tblPopulatePatientStatus.getModel();
+        model.setRowCount(0);
+        
+        for (WorkRequest workRequest : enterprise.getWorkQueue().getWorkRequestList()) {
+
+            if (workRequest instanceof PatientRegistrationRequest) {
+                Object[] row = new Object[model.getColumnCount()];
+                row[0] = ((PatientRegistrationRequest) workRequest);
+                row[1] = ((PatientRegistrationRequest) workRequest).getDiagnostician();
+                row[2] = ((PatientRegistrationRequest) workRequest).getStatus();
+                row[3] = ((PatientRegistrationRequest) workRequest).getMessage();
+                model.addRow(row);
+            }
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -84,6 +104,8 @@ public class PatientSampleJPanel extends javax.swing.JPanel {
         tblDiagnosticCenter = new javax.swing.JTable();
         btnSubmit = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblPopulatePatientStatus = new javax.swing.JTable();
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTitle.setText("Select Diagnostic Center to give Samples");
@@ -124,6 +146,27 @@ public class PatientSampleJPanel extends javax.swing.JPanel {
             }
         });
 
+        tblPopulatePatientStatus.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id", "Assigned Diagnostician", "Status", "Message"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblPopulatePatientStatus);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,12 +179,14 @@ public class PatientSampleJPanel extends javax.swing.JPanel {
                         .addGap(80, 80, 80)
                         .addComponent(lblTitle))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(112, 112, 112)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(282, 282, 282)
+                        .addGap(273, 273, 273)
                         .addComponent(btnSubmit)))
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,47 +195,54 @@ public class PatientSampleJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblTitle)
                     .addComponent(btnBack))
-                .addGap(54, 54, 54)
+                .addGap(55, 55, 55)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSubmit)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblDiagnosticCenter.getSelectedRow();
-        PatientRegistrationRequest patientRegistrationRequest = new PatientRegistrationRequest();
+        int selectedRow = tblPopulatePatientStatus.getSelectedRow();
+        int selectedDiagnosticRow = tblDiagnosticCenter.getSelectedRow(); 
         
-        if (selectedRow >= 0)
-        {
-            if(patientRegistrationRequest.getDiagnostician() == null)
-            {
-                Employee employee = (Employee)tblDiagnosticCenter.getValueAt(selectedRow, 1);
+        PatientRegistrationRequest patientRegistrationRequest = (PatientRegistrationRequest) tblPopulatePatientStatus.getValueAt(selectedRow, 0);
 
+        Employee employee = (Employee)tblDiagnosticCenter.getValueAt(selectedDiagnosticRow, 1);
+        
+        if (selectedRow >= 0 && selectedDiagnosticRow >=0)
+        {
+            if(patientRegistrationRequest.getDiagnostician()==null){
+                String msg = JOptionPane.showInputDialog("Additional Information");
+            
                 patientRegistrationRequest.setDiagnostician(employee);
                 patientRegistrationRequest.setStatus("Submitted Samples for Testing");
+                patientRegistrationRequest.setMessage(msg);
 
                 for(Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
-                    if (u.getEmployee().getId() == (employee.getId())) {
-                        u.getWorkQueue().getWorkRequestList().add(patientRegistrationRequest);
+                    for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
+                        if (u.getEmployee().getId() == (employee.getId())) {
+                            u.getWorkQueue().getWorkRequestList().add(patientRegistrationRequest);
+                        }
                     }
-                }
                 }
 
                 JOptionPane.showMessageDialog(null, "Samples Submitted Successfully");
                 populateEnterpriseTable();
+                populatePatientStatusTable();
             }
             else{
-                JOptionPane.showMessageDialog(null,"Samples already submitted!", "Warning", JOptionPane.WARNING_MESSAGE);
-                return;
+                 JOptionPane.showMessageDialog(null,"Samples already submitted to the Diagnostic Center", "Warning", JOptionPane.WARNING_MESSAGE);
+                 return;
             }
         }
         else
         {
-            JOptionPane.showMessageDialog(null,"Please select a Diadnostic Center to give your samples!", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a Diadnostic Center & Samples to Submit!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
@@ -207,7 +259,9 @@ public class PatientSampleJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblDiagnosticCenter;
+    private javax.swing.JTable tblPopulatePatientStatus;
     // End of variables declaration//GEN-END:variables
 }
