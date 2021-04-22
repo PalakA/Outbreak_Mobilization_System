@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.PatientWorkArea;
+package ui.PatientRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
@@ -315,7 +315,6 @@ public class PatientRegistrationJPanel extends javax.swing.JPanel {
       
     private void populateNetworkComboBox() {
         comboNetwork.removeAllItems();
-        System.out.println("ecosystem" +ecosystem);
         for (Network network : ecosystem.getNetworkList()) {
             comboNetwork.addItem(network);
         }
@@ -364,7 +363,6 @@ public class PatientRegistrationJPanel extends javax.swing.JPanel {
             return;
         }
         
-        System.out.println("ecosystem11" +ecosystem);
         System.out.println("system.getWorkQueue()" +ecosystem.getWorkQueue());
         if(radioBtnMale.isSelected())
         {

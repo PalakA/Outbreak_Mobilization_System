@@ -22,7 +22,7 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import ui.PatientWorkArea.PatientRegistrationJPanel;
+import ui.PatientRole.PatientRegistrationJPanel;
 
 /**
  * @author ajayp

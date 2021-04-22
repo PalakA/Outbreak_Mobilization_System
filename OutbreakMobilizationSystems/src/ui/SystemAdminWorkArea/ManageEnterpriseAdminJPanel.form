@@ -39,6 +39,63 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblHospitalUsername1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblEnterpriseType" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNetwork" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                      <Component id="comboEnterpriseType" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="comboNetwork" linkSize="1" min="-2" pref="175" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtAdminName" alignment="1" min="-2" pref="172" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblHospitalPassword" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblHospitalUsername" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtUsername" linkSize="2" alignment="0" pref="172" max="32767" attributes="0"/>
+                                  <Component id="txtPassword" linkSize="2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnSubmit" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblRole" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="radioBtnManager" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="radioBtnDiagnostician" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="radioBtnPharmacist" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="radioBtnManufacturer" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="radioBtnSupplyChain" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="radioBtnLabAssistant" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Component id="jScrollPane3" alignment="0" min="-2" pref="523" max="-2" attributes="0"/>
+              </Group>
+          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -46,61 +103,11 @@
                       <Component id="btnBack" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblHospitalUsername1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblEnterpriseType" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblNetwork" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Component id="comboEnterpriseType" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="comboNetwork" linkSize="1" min="-2" pref="175" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="txtAdminName" alignment="1" min="-2" pref="172" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblHospitalPassword" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblHospitalUsername" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtUsername" linkSize="2" alignment="0" pref="172" max="32767" attributes="0"/>
-                                          <Component id="txtPassword" linkSize="2" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="btnSubmit" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="lblRole" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="radioBtnManager" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="radioBtnPharmacist" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="radioBtnManufacturer" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="radioBtnSupplyChain" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="radioBtnDiagnostician" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Component id="jScrollPane3" alignment="0" min="-2" pref="523" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="400" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="67" max="32767" attributes="0"/>
+              <EmptySpace pref="133" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -136,22 +143,25 @@
                           <Component id="lblHospitalUsername" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtUsername" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblHospitalPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="radioBtnSupplyChain" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="btnSubmit" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Component id="radioBtnDiagnostician" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                      <Component id="radioBtnLabAssistant" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="radioBtnPharmacist" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="radioBtnManufacturer" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="radioBtnSupplyChain" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
@@ -216,6 +226,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboEnterpriseTypeActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
       </AuxValues>
@@ -390,6 +403,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioBtnSupplyChainActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="radioBtnLabAssistant">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lab Assistant"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioBtnLabAssistantActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
