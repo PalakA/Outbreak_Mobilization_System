@@ -167,8 +167,7 @@ public class PatientSampleJPanel extends javax.swing.JPanel {
         {
             if(patientRegistrationRequest.getDiagnostician() == null)
             {
-                //Enterprise enterprise = (Enterprise)tblDiagnosticCenter.getValueAt(selectedRow, 0);
-                Employee employee = (Employee)tblDiagnosticCenter.getValueAt(selectedRow, 2);
+                Employee employee = (Employee)tblDiagnosticCenter.getValueAt(selectedRow, 1);
 
                 patientRegistrationRequest.setDiagnostician(employee);
                 patientRegistrationRequest.setStatus("Submitted Samples for Testing");
@@ -181,7 +180,7 @@ public class PatientSampleJPanel extends javax.swing.JPanel {
                 }
                 }
 
-                JOptionPane.showMessageDialog(null, "Reporting admin is assigned successfully");
+                JOptionPane.showMessageDialog(null, "Samples Submitted Successfully");
                 populateEnterpriseTable();
             }
             else{

@@ -240,14 +240,17 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
 
-        PatientRegistrationJPanel panel = new PatientRegistrationJPanel(container, system);
-        loginJButton.setVisible(false);
+        PatientRegistrationJPanel panel = new PatientRegistrationJPanel(container, system, inEnterprise);
+        //loginJButton.setVisible(false);
         container.setVisible(true);
         userNameJTextField.setText("");
         passwordField.setText("");
         container.add("workArea", panel);
         CardLayout layout = (CardLayout) container.getLayout();
         layout.next(container);
+        
+        logoutJButton.setEnabled(true);
+        loginJButton.setEnabled(false);
     }//GEN-LAST:event_btnSignUpActionPerformed
 
     /**
