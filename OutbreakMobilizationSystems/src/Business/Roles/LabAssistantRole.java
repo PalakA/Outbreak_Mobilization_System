@@ -11,7 +11,7 @@ import Business.Network.Network;
 import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import ui.DiagnosticCenterWorkArea.DiagnosticCenterJPanel;
+import ui.DiagnosticianRole.DiagnosticianJPanel;
 
 /**
  * @author ajayp
@@ -32,6 +32,6 @@ public class LabAssistantRole extends Roles{
     }
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
-        return new DiagnosticCenterJPanel(userProcessContainer, account, network, system);
+        return new DiagnosticianJPanel(userProcessContainer, account, network, system);
     }
 }

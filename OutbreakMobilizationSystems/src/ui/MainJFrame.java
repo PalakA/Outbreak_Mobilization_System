@@ -54,6 +54,11 @@ public class MainJFrame extends javax.swing.JFrame {
         system = dB4OUtil.retrieveSystem();
         EcoSystem.setInstance(system);
         this.setSize(1680, 1050);
+        
+        // To clear Network, Enterprise and Organization
+        //system.getNetworkList().clear();
+        
+        //system.getEmployeeDirectory().getEmployeeList().clear();
     }
 
     /**
