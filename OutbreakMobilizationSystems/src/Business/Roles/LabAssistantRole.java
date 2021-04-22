@@ -12,6 +12,7 @@ import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import ui.DiagnosticianRole.DiagnosticianJPanel;
+import ui.LabAssistantRole.LabAssistantJPanel;
 
 /**
  * @author ajayp
@@ -32,6 +33,11 @@ public class LabAssistantRole extends Roles{
     }
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
-        return new DiagnosticianJPanel(userProcessContainer, account, network, system);
+        return new LabAssistantJPanel(userProcessContainer, system, network, enterprise);
+    }
+    
+    @Override
+    public String toString(){
+        return (RoleType.LabAssistant.getValue());
     }
 }

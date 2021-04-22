@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * 04/15/2021            @author palak       Added roles in function
  */
 
-public class DiagnosticCenterEnterprise extends Enterprise{
+public class DiagnosticCenterEnterprise extends Enterprise {
 
     public DiagnosticCenterEnterprise(String name) {
         super(name,Enterprise.EnterpriseType.DiagnosticCenter);

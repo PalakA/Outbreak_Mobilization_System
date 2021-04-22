@@ -33,8 +33,6 @@ public class DiagnosticianRole extends Roles{
     }
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
-        return new DiagnosticianJPanel(userProcessContainer, account, network, system);
+        return new DiagnosticianJPanel(userProcessContainer, system, network, enterprise);
     }
-    
-    
 }
