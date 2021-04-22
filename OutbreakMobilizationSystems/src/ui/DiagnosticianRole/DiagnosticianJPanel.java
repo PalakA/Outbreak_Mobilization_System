@@ -9,7 +9,9 @@ import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Organizations.LaboratoriesOrganization;
 import Business.Organizations.Organization;
+import Business.Organizations.OrganizationDirectory;
 import Business.Roles.LabAssistantRole;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientRegistrationRequest;
@@ -37,6 +39,7 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
     EcoSystem ecosystem;
     Network network;
     Enterprise enterprise;
+    private OrganizationDirectory directory;
 
     public DiagnosticianJPanel(JPanel userProcessContainer, EcoSystem ecosystem, Network network, Enterprise enterprise) {
         initComponents();
@@ -69,17 +72,17 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
 
         tblSamples.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Patient Name", "Symptoms", "Assigned Lab Assistant", "Created Date", "Status", "Message"
+                "id", "Patient Name", "Symptoms", "Assigned Lab Assistant", "Created Date", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                true, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -92,11 +95,6 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
         lblAssignLabAssistant.setText("Assign Lab Assistant");
 
         comboLabAssistant.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboLabAssistant.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboLabAssistantActionPerformed(evt);
-            }
-        });
 
         btnSubmit.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnSubmit.setText("Assign");
@@ -147,25 +145,36 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboLabAssistantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboLabAssistantActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboLabAssistantActionPerformed
-
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblSamples.getSelectedRow();
-        PatientRegistrationRequest patientRegistrationRequest = new PatientRegistrationRequest();
+        boolean isResolved = true;
+        UserAccount empUserAccount = null;
+        PatientRegistrationRequest patientRegistrationRequest = (PatientRegistrationRequest) tblSamples.getValueAt(selectedRow, 0);
+        Employee labAssistant = (Employee) comboLabAssistant.getSelectedItem();
         if (selectedRow >= 0) {
-            if (patientRegistrationRequest.getDiagnostician() == null) {
-                Enterprise enterprise = (Enterprise) tblSamples.getValueAt(selectedRow, 0);
-                Employee employee = (Employee) tblSamples.getValueAt(selectedRow, 3);
-
-                patientRegistrationRequest.setLabAssistant(employee);
+            for(Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
+                    if (u.getEmployee().getId() == (labAssistant.getId())) {
+                        empUserAccount = u;
+                        break;
+                    }
+                }
+            }
+            for (WorkRequest wr : empUserAccount.getWorkQueue().getWorkRequestList()) {
+                if (wr instanceof PatientRegistrationRequest) {
+                    if (!((PatientRegistrationRequest) wr).getStatus().equals("Resolved")) {
+                        isResolved = false;
+                        break;
+                    }
+                }
+            }
+            if (isResolved) {
+                patientRegistrationRequest.setLabAssistant(labAssistant);
                 patientRegistrationRequest.setStatus("Assigned to Lab Assistant");
-
                 for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
                     for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
-                        if (u.getEmployee().getId() == (employee.getId())) {
+                        if (u.getEmployee().getId() == (labAssistant.getId())) {
                             u.getWorkQueue().getWorkRequestList().add(patientRegistrationRequest);
                         }
                     }
@@ -173,8 +182,7 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Lab Assistant is assigned successfully");
                 populateSamplesTable();
             } else {
-                JOptionPane.showMessageDialog(null, "Lab Assitant is already assigned!", "Warning", JOptionPane.WARNING_MESSAGE);
-                return;
+                JOptionPane.showMessageDialog(null, "This lab assistant is already processing tests in Lab. Please select a different Lab Assistant.");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Please select a Diadnostic Center to give your samples!", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -189,12 +197,13 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
         for (WorkRequest wr : enterprise.getWorkQueue().getWorkRequestList()) {
             if (wr instanceof PatientRegistrationRequest) {
                 Object[] row = new Object[samplesModel.getColumnCount()];
-                row[0] = ((PatientRegistrationRequest) wr).getPatientName();
-                row[1] = ((PatientRegistrationRequest) wr).getSymptom1();
-                row[2] = ((PatientRegistrationRequest) wr).getLabAssistant();
-                row[3] = ((PatientRegistrationRequest) wr).getRequestDate();
-                row[4] = ((PatientRegistrationRequest) wr).getStatus();
-                row[5] = ((PatientRegistrationRequest) wr).getMessage();
+                row[0] = ((PatientRegistrationRequest) wr);
+                row[1] = ((PatientRegistrationRequest) wr).getPatientName();
+                row[2] = ((PatientRegistrationRequest) wr).getSymptom1();
+                row[3] = ((PatientRegistrationRequest) wr).getLabAssistant();
+                row[4] = ((PatientRegistrationRequest) wr).getRequestDate();
+                row[5] = ((PatientRegistrationRequest) wr).getStatus();
+                row[6] = ((PatientRegistrationRequest) wr).getMessage();
                 samplesModel.addRow(row);
             }
         }
@@ -202,23 +211,18 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
 
     private void populateLabAssistantCombo() {
         comboLabAssistant.removeAllItems();
-        System.out.println("Started");
-        System.out.println(enterprise);
-        System.out.println(enterprise.getOrganizationDirectory());
-        System.out.println(enterprise.getOrganizationDirectory().getOrganizationList());
-        for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            System.out.println();
-            for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
-                System.out.println(u);
-                if (u.getRole() instanceof LabAssistantRole) {
-                    comboLabAssistant.addItem(u.getEmployee());
+        for (Network network : ecosystem.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
+                        System.out.println(o.getUserAccountDirectory().getUserAccountList());
+                        if (u.getRole() instanceof LabAssistantRole) {
+                            comboLabAssistant.addItem(u.getEmployee());
+                        }
+                    }
                 }
             }
         }
-    }
-    
-    private void populateOrganization() {
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
