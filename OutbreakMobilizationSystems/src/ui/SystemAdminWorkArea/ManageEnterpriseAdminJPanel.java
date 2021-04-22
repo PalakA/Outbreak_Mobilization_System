@@ -9,14 +9,11 @@ import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
-import Business.Roles.CareTakerRole;
 import Business.Roles.DiagnosticianRole;
-import Business.Roles.DoctorRole;
 import Business.Roles.LabAssistantRole;
 import Business.Roles.ManagerRole;
 import Business.Roles.ManufacturerRole;
 import Business.Roles.PharmacistRole;
-import Business.Roles.SupplyChainRole;
 import Business.UserAccount.UserAccount;
 import Business.Utils.Validator;
 import java.awt.CardLayout;
@@ -33,6 +30,7 @@ import javax.swing.table.DefaultTableModel;
  * 
  * Date(MM/DD/YYYY)      Author              Comment
  * 04/19/2021            @author palak      Added ManageEnterpriseAdminJPanel
+ * 04/22/2021            @author palak      Added lab assistant role
  */
 
 public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
@@ -85,6 +83,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         radioBtnPharmacist = new javax.swing.JRadioButton();
         radioBtnManufacturer = new javax.swing.JRadioButton();
         radioBtnSupplyChain = new javax.swing.JRadioButton();
+        radioBtnLabAssistant = new javax.swing.JRadioButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -222,55 +221,67 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        radioBtnLabAssistant.setText("Lab Assistant");
+        radioBtnLabAssistant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBtnLabAssistantActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblHospitalUsername1)
+                                    .addComponent(lblEnterpriseType)
+                                    .addComponent(lblNetwork))
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(comboEnterpriseType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(comboNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtAdminName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblHospitalPassword)
+                                    .addComponent(lblHospitalUsername))
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                                    .addComponent(txtPassword)
+                                    .addComponent(btnSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(53, 53, 53)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblRole, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(radioBtnManager, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(radioBtnDiagnostician, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(radioBtnPharmacist, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(radioBtnManufacturer, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(radioBtnSupplyChain, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(radioBtnLabAssistant, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnBack))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblHospitalUsername1)
-                                            .addComponent(lblEnterpriseType)
-                                            .addComponent(lblNetwork))
-                                        .addGap(33, 33, 33)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(comboEnterpriseType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(comboNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(txtAdminName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblHospitalPassword)
-                                            .addComponent(lblHospitalUsername))
-                                        .addGap(33, 33, 33)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                                            .addComponent(txtPassword)
-                                            .addComponent(btnSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                .addGap(53, 53, 53)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblRole, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(radioBtnManager, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(radioBtnPharmacist, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(radioBtnManufacturer, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(radioBtnSupplyChain, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addComponent(radioBtnDiagnostician))))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {comboEnterpriseType, comboNetwork});
@@ -305,20 +316,23 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblHospitalUsername)
                             .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
+                        .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblHospitalPassword)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(radioBtnSupplyChain))
-                        .addGap(29, 29, 29)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
                         .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
+                        .addGap(6, 6, 6)
                         .addComponent(radioBtnDiagnostician)
+                        .addGap(7, 7, 7)
+                        .addComponent(radioBtnLabAssistant)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(radioBtnPharmacist)
-                        .addGap(15, 15, 15)
-                        .addComponent(radioBtnManufacturer)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(radioBtnManufacturer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(radioBtnSupplyChain)))
                 .addGap(49, 49, 49)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(113, Short.MAX_VALUE))
@@ -358,7 +372,6 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
             comboEnterpriseType.addItem(enterprise);
         }
-        
     }
     
     private void txtAdminNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdminNameActionPerformed
@@ -404,12 +417,12 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
             if (ecosystem.checkIfUserIsUnique(username)) {
                 UserAccount account = null;
-                if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital && radioBtnManager.isSelected()) {
+                if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
                     account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ManagerRole());
-                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.DiagnosticCenter) {
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.DiagnosticCenter && radioBtnDiagnostician.isSelected()) {
                     account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DiagnosticianRole());
-                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Logistics) {
-                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new SupplyChainRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.DiagnosticCenter && radioBtnLabAssistant.isSelected()) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new LabAssistantRole());
                 } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalDeviceCompanies) {
                     account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ManufacturerRole());
                 } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Pharmacy) {
@@ -437,6 +450,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         radioBtnManufacturer.setSelected(false);
         radioBtnSupplyChain.setSelected(false);
         radioBtnSupplyChain.setSelected(false);
+        radioBtnLabAssistant.setSelected(false);
     }//GEN-LAST:event_radioBtnManagerActionPerformed
 
     private void radioBtnDiagnosticianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnDiagnosticianActionPerformed
@@ -445,6 +459,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         radioBtnManufacturer.setSelected(false);
         radioBtnPharmacist.setSelected(false);
         radioBtnSupplyChain.setSelected(false);
+        radioBtnLabAssistant.setSelected(false);
     }//GEN-LAST:event_radioBtnDiagnosticianActionPerformed
 
     private void radioBtnPharmacistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnPharmacistActionPerformed
@@ -453,6 +468,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         radioBtnManufacturer.setSelected(false);
         radioBtnSupplyChain.setSelected(false);
         radioBtnManager.setSelected(false);
+        radioBtnLabAssistant.setSelected(false);
     }//GEN-LAST:event_radioBtnPharmacistActionPerformed
 
     private void radioBtnManufacturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnManufacturerActionPerformed
@@ -461,6 +477,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         radioBtnManager.setSelected(false);
         radioBtnPharmacist.setSelected(false);
         radioBtnSupplyChain.setSelected(false);
+        radioBtnLabAssistant.setSelected(false);
     }//GEN-LAST:event_radioBtnManufacturerActionPerformed
 
     private void comboNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboNetworkActionPerformed
@@ -477,7 +494,17 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         radioBtnManager.setSelected(false);
         radioBtnPharmacist.setSelected(false);
         radioBtnManufacturer.setSelected(false);
+        radioBtnLabAssistant.setSelected(false);
     }//GEN-LAST:event_radioBtnSupplyChainActionPerformed
+
+    private void radioBtnLabAssistantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnLabAssistantActionPerformed
+        // TODO add your handling code here:
+        radioBtnDiagnostician.setSelected(false);
+        radioBtnManager.setSelected(false);
+        radioBtnPharmacist.setSelected(false);
+        radioBtnManufacturer.setSelected(false);
+        radioBtnSupplyChain.setSelected(false);
+    }//GEN-LAST:event_radioBtnLabAssistantActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -496,6 +523,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblNetwork;
     private javax.swing.JLabel lblRole;
     private javax.swing.JRadioButton radioBtnDiagnostician;
+    private javax.swing.JRadioButton radioBtnLabAssistant;
     private javax.swing.JRadioButton radioBtnManager;
     private javax.swing.JRadioButton radioBtnManufacturer;
     private javax.swing.JRadioButton radioBtnPharmacist;

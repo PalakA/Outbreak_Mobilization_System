@@ -259,7 +259,8 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         Roles role = (Roles) roleJComboBox.getSelectedItem();
         
         organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-        
+        nameJTextField.setText("");
+        passwordJTextField.setText("");
         popData();
     }//GEN-LAST:event_createUserJButtonActionPerformed
 

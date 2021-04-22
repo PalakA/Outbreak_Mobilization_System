@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.PatientWorkArea;
+package ui.PatientRole;
 
 import Business.EcoSystem;
 import Business.Employee.Employee;
@@ -37,11 +37,13 @@ public class PatientSampleJPanel extends javax.swing.JPanel {
     
     private JPanel userProcessContainer;
     private EcoSystem ecosystem;
+    Enterprise enterprise;
     
-    public PatientSampleJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
+    public PatientSampleJPanel(JPanel userProcessContainer, EcoSystem ecosystem, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
+        this.enterprise = enterprise;
         populateEnterpriseTable();
     }
 
@@ -165,8 +167,7 @@ public class PatientSampleJPanel extends javax.swing.JPanel {
         {
             if(patientRegistrationRequest.getDiagnostician() == null)
             {
-                Enterprise enterprise = (Enterprise)tblDiagnosticCenter.getValueAt(selectedRow, 0);
-                Employee employee = (Employee)tblDiagnosticCenter.getValueAt(selectedRow, 2);
+                Employee employee = (Employee)tblDiagnosticCenter.getValueAt(selectedRow, 1);
 
                 patientRegistrationRequest.setDiagnostician(employee);
                 patientRegistrationRequest.setStatus("Submitted Samples for Testing");
@@ -179,7 +180,7 @@ public class PatientSampleJPanel extends javax.swing.JPanel {
                 }
                 }
 
-                JOptionPane.showMessageDialog(null, "Reporting admin is assigned successfully");
+                JOptionPane.showMessageDialog(null, "Samples Submitted Successfully");
                 populateEnterpriseTable();
             }
             else{
