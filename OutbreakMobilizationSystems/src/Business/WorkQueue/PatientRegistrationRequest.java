@@ -40,6 +40,7 @@ public class PatientRegistrationRequest extends WorkRequest{
     private Employee doctor;
     private Employee diagnostician;
     private Employee careTaker;
+    private Employee labAssistant;
 
     public String getPatientName() {
         return patientName;
@@ -159,6 +160,14 @@ public class PatientRegistrationRequest extends WorkRequest{
 
     public void setCareTaker(Employee careTaker) {
         this.careTaker = careTaker;
+    }
+
+    public Employee getLabAssistant() {
+        return labAssistant;
+    }
+
+    public void setLabAssistant(Employee labAssistant) {
+        this.labAssistant = labAssistant;
     }
     
     @Override

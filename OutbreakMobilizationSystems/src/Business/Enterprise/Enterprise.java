@@ -34,7 +34,8 @@ public abstract class Enterprise extends Organization{
         DiagnosticCenter("DiagnosticCenter"),
         Logistics("Logistics"),
         MedicalDeviceCompanies("MedicalDeviceCompanies"),
-        Pharmacy("Pharmacy");
+        Pharmacy("Pharmacy"),
+        Laboratories("Laboratories");
         
         private String value;
         
