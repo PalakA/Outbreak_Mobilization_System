@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author palak
  */
 public class MedicineDirectory {
+    
     private ArrayList<Medicine> medicineList;
     
     public MedicineDirectory() {
@@ -20,5 +21,15 @@ public class MedicineDirectory {
 
     public ArrayList<Medicine> getMedicineList() {
         return medicineList;
+    }
+    
+    public Medicine createMedicine(Medicine medicine){
+        medicineList.add(medicine);
+        return medicine;
+    }
+    
+    public Medicine updateMedicine(Medicine medicine, String medName){
+        medicine.setMedName(medName);
+        return medicine;
     }
 }

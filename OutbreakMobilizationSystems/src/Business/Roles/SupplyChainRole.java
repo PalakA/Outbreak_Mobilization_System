@@ -11,7 +11,7 @@ import Business.Network.Network;
 import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import ui.LogisticsWorkArea.ManageSupplyChainJPanel;
+import ui.LogisticsWorkArea.ManagePharmacyMedicinesJPanel;
 
 /**
  * @author ajayp
@@ -33,7 +33,6 @@ public class SupplyChainRole extends Roles{
     }
      
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
-        return new ManageSupplyChainJPanel(userProcessContainer, account, network, system);
+        return new ManagePharmacyMedicinesJPanel(userProcessContainer, system, enterprise, organization);
     }
-    
 }

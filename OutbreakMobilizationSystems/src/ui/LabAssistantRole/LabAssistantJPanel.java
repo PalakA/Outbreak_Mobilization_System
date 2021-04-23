@@ -57,7 +57,6 @@ public class LabAssistantJPanel extends javax.swing.JPanel {
         lblManageSamples = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSamplesProcessed = new javax.swing.JTable();
-        btnProcess = new javax.swing.JButton();
         btnAssign = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblHospitals = new javax.swing.JTable();
@@ -98,14 +97,6 @@ public class LabAssistantJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblSamplesProcessed);
-
-        btnProcess.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnProcess.setText("Process Samples");
-        btnProcess.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProcessActionPerformed(evt);
-            }
-        });
 
         btnAssign.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnAssign.setText("Assign Hospital");
@@ -153,15 +144,9 @@ public class LabAssistantJPanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(310, 310, 310)
-                        .addComponent(btnAssign))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(308, 308, 308)
-                        .addComponent(btnProcess)))
+                        .addComponent(btnAssign)))
                 .addContainerGap(109, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAssign, btnProcess});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -169,34 +154,13 @@ public class LabAssistantJPanel extends javax.swing.JPanel {
                 .addComponent(lblManageSamples)
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnProcess)
-                .addGap(23, 23, 23)
+                .addGap(66, 66, 66)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnAssign)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAssign, btnProcess});
-
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblSamplesProcessed.getSelectedRow();
-        PatientRegistrationRequest patientRegistrationRequest = (PatientRegistrationRequest) tblSamplesProcessed.getValueAt(selectedRow, 0);
-        if (selectedRow >= 0) {
-            String msg = JOptionPane.showInputDialog("Additional Information");
-            patientRegistrationRequest.setStatus("Processed");
-            patientRegistrationRequest.setMessage(msg);
-            JOptionPane.showMessageDialog(null, "Samples Processed Successfully");
-            populateSamplesProcessTable();
-        } else {
-            JOptionPane.showMessageDialog(null, "Please select a Sample to be process!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-    }//GEN-LAST:event_btnProcessActionPerformed
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
@@ -255,7 +219,6 @@ public class LabAssistantJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
-    private javax.swing.JButton btnProcess;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

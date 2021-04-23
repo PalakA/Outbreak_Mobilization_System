@@ -18,6 +18,10 @@ public class Medicine {
         MedId = count;
         count++;
     }
+    
+    public Medicine(String medName) {
+        this.MedName = medName;
+    }
 
     public int getMedId() {
         return MedId;
@@ -33,5 +37,10 @@ public class Medicine {
 
     public void setMedName(String MedName) {
         this.MedName = MedName;
+    }
+    
+    @Override
+        public String toString(){
+        return MedName;
     }
 }

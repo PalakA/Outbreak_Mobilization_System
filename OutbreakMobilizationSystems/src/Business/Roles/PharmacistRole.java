@@ -9,12 +9,9 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organizations.Organization;
-import Business.Organizations.PharmacyCatalogOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import ui.PharmacyWorkArea.ManagePharmacyJPanel;
-import ui.PharmacyWorkArea.ManagePrescriptionJPanel;
-import ui.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
  * @author ajayp
@@ -36,7 +33,7 @@ public class PharmacistRole extends Roles{
     }
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
-        return new ManagePharmacyJPanel(userProcessContainer, account, network, system, enterprise); 
+        return new ManagePharmacyJPanel(userProcessContainer, system, enterprise); 
     }
     
 }
