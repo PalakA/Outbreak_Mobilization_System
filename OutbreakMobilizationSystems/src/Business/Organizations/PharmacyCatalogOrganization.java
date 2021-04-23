@@ -28,7 +28,6 @@ public class PharmacyCatalogOrganization extends Organization{
     
     private MedicineDirectory medicineDirectory;
     private UserAccount userAccountAssoc;
-    private String pharmacyName;
     
     public MedicineDirectory getMedicineDirectory() {
         return medicineDirectory;
@@ -46,14 +45,8 @@ public class PharmacyCatalogOrganization extends Organization{
         this.userAccountAssoc = userAccountAssoc;
     }
     
-    public PharmacyCatalogOrganization(String pharmacyName, EcoSystem system) {
+    public PharmacyCatalogOrganization() {
         super(Organization.Type.PharmacyCatalog.getValue());
-        this.pharmacyName = pharmacyName;
-        
-        Employee employee = system.getEmployeeDirectory().createEmployee(pharmacyName);
-        this.userAccountAssoc = system.getUserAccountDirectory().createUserAccount(pharmacyName.replaceAll("\\s", ""), "pharmacyCatalog", employee, new PharmacistRole());
-        
-        this.medicineDirectory = medicineDirectory;
     }
     
     @Override

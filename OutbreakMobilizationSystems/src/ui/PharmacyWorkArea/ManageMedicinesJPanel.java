@@ -9,8 +9,6 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Medicine.Medicine;
 import Business.Network.Network;
-import Business.Organizations.Organization;
-import Business.Organizations.PharmacyCatalogOrganization;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -26,13 +24,13 @@ public class ManageMedicinesJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-    PharmacyCatalogOrganization pharmacy;
+    Enterprise enterprise;
     
-    public ManageMedicinesJPanel(JPanel userProcessContainer, EcoSystem ecosystem, PharmacyCatalogOrganization pharmacy) {
+    public ManageMedicinesJPanel(JPanel userProcessContainer, EcoSystem ecosystem, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
-        this.pharmacy = pharmacy;
+        this.enterprise = enterprise;
         populateMedicinetbl();
     }
 
@@ -43,12 +41,13 @@ public class ManageMedicinesJPanel extends javax.swing.JPanel {
      */
     
     private void populateMedicinetbl(){
-        DefaultTableModel enterpriseModel = (DefaultTableModel) tblMedicine.getModel();
-        enterpriseModel.setRowCount(0);
-        for (Medicine medicine : this.pharmacy.getMedicineDirectory().getMedicineList()) {
-        Object row[] = new Object[2];
-        row[0] = medicine;
-        row[1] = medicine.getMedName();
+        DefaultTableModel dtm = (DefaultTableModel) tblMedicine.getModel();
+        dtm.setRowCount(0);
+        for(Medicine medicine:enterprise.getMedicineList()) {
+            Object row[] = new Object[2];
+            row[0] = medicine;
+            row[1] = medicine.getMedName();
+            dtm.addRow(row);
         }
     }
     @SuppressWarnings("unchecked")
@@ -135,11 +134,8 @@ public class ManageMedicinesJPanel extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        Medicine medicine = new Medicine();
+        Medicine medicine = enterprise.createMedicineList();
         medicine.setMedName(txtMedName.getText());
-        
-        this.pharmacy.getMedicineDirectory().getMedicineList().add(medicine);
-
         JOptionPane.showMessageDialog(null, "Added Medicine Successfully");
         populateMedicinetbl();
     }//GEN-LAST:event_btnAddActionPerformed

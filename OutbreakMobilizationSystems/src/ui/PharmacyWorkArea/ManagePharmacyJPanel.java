@@ -8,7 +8,6 @@ package ui.PharmacyWorkArea;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
-import Business.Organizations.PharmacyCatalogOrganization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -28,16 +27,14 @@ public class ManagePharmacyJPanel extends javax.swing.JPanel {
     UserAccount user;
     Network network;
     Enterprise enterprise;
-    PharmacyCatalogOrganization pharmacy;
     
-    public ManagePharmacyJPanel(JPanel userProcessContainer, UserAccount user,Network network, EcoSystem ecosystem, Enterprise enterprise, PharmacyCatalogOrganization pharmacy) {
+    public ManagePharmacyJPanel(JPanel userProcessContainer, UserAccount user,Network network, EcoSystem ecosystem, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.user = user;
         this.network = network;
         this.ecosystem = ecosystem;
         this.enterprise = enterprise;
-        this.pharmacy = pharmacy;
     }
 
     /**
@@ -109,7 +106,7 @@ public class ManagePharmacyJPanel extends javax.swing.JPanel {
 
     private void btnManageMedicinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageMedicinesActionPerformed
         // TODO add your handling code here:
-        ManageMedicinesJPanel manageMedicinesJPanel = new ManageMedicinesJPanel(userProcessContainer, ecosystem, pharmacy);
+        ManageMedicinesJPanel manageMedicinesJPanel = new ManageMedicinesJPanel(userProcessContainer, ecosystem,enterprise);
         userProcessContainer.add("ManageMedicines", manageMedicinesJPanel);
         CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
         cardLayout.next(userProcessContainer);
