@@ -11,8 +11,6 @@ import Business.Enterprise.Enterprise;
 import Business.Enterprise.HospitalEnterprise;
 import Business.Network.Network;
 import Business.Organizations.Organization;
-import Business.Roles.LabAssistantRole;
-import Business.Roles.ManagerRole;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientRegistrationRequest;
 import Business.WorkQueue.SendTestSampleRequest;
@@ -186,17 +184,32 @@ public class LabAssistantJPanel extends javax.swing.JPanel {
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblSamplesProcessed.getSelectedRow();
+        PatientRegistrationRequest patientRegistrationRequest = (PatientRegistrationRequest) tblSamplesProcessed.getValueAt(selectedRow, 0);
+        if (selectedRow >= 0) {
+            String msg = JOptionPane.showInputDialog("Additional Information");
+            patientRegistrationRequest.setStatus("Processed");
+            patientRegistrationRequest.setMessage(msg);
+            JOptionPane.showMessageDialog(null, "Samples Processed Successfully");
+            populateSamplesProcessTable();
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a Sample to be process!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
     }//GEN-LAST:event_btnProcessActionPerformed
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
         int selectedHospitalRow = tblHospitals.getSelectedRow();
         int selectedSamplesRow = tblSamplesProcessed.getSelectedRow();
-        SendTestSampleRequest sendTestSampleRequest = (SendTestSampleRequest) tblSamplesProcessed.getValueAt(selectedSamplesRow, 0);
-        HospitalEnterprise hospitalName = (HospitalEnterprise) tblHospitals.getValueAt(selectedHospitalRow, 0);
+        PatientRegistrationRequest patientRegistrationRequest = (PatientRegistrationRequest) tblSamplesProcessed.getValueAt(selectedSamplesRow, 0);
+        String hospitalName = (String) tblHospitals.getValueAt(selectedHospitalRow, 0);
+        System.out.println("hospitalName" +hospitalName);
         if (selectedHospitalRow >= 0 && selectedSamplesRow >= 0) {
-            sendTestSampleRequest.setHospitalName(hospitalName);
-            sendTestSampleRequest.setStatus("Hospital Assigned");
+            String msg = JOptionPane.showInputDialog("Additional Information");
+            patientRegistrationRequest.setHospitalName(hospitalName);
+            patientRegistrationRequest.setStatus("Hospital Assigned");
+            patientRegistrationRequest.setMessage(msg);
             JOptionPane.showMessageDialog(null, "Hospital Assignment Successful");
             populateSamplesProcessTable();
         } else {
@@ -210,16 +223,16 @@ public class LabAssistantJPanel extends javax.swing.JPanel {
         samplesModel.setRowCount(0);
 
         for (WorkRequest wr : enterprise.getWorkQueue().getWorkRequestList()) {
-            if (wr instanceof SendTestSampleRequest) {
+            if (wr instanceof PatientRegistrationRequest) {
                 Object[] row = new Object[samplesModel.getColumnCount()];
-                row[0] = ((SendTestSampleRequest) wr);
-                row[1] = ((SendTestSampleRequest) wr).getPatientName();
-                row[2] = ((SendTestSampleRequest) wr).getSamples();
-                row[3] = ((SendTestSampleRequest) wr).getHospitalName();
-                row[4] = ((SendTestSampleRequest) wr).getLabAssistant();
-                row[5] = ((SendTestSampleRequest) wr).getDiagnostician();
-                row[6] = ((SendTestSampleRequest) wr).getStatus();
-                row[7] = ((SendTestSampleRequest) wr).getMessage();
+                row[0] = ((PatientRegistrationRequest) wr);
+                row[1] = ((PatientRegistrationRequest) wr).getPatientName();
+                row[2] = ((PatientRegistrationRequest) wr).getSampleId();
+                row[3] = ((PatientRegistrationRequest) wr).getHospitalName();
+                row[4] = ((PatientRegistrationRequest) wr).getLabAssistant();
+                row[5] = ((PatientRegistrationRequest) wr).getDiagnostician();
+                row[6] = ((PatientRegistrationRequest) wr).getStatus();
+                row[7] = ((PatientRegistrationRequest) wr).getMessage();
                 samplesModel.addRow(row);
             }
         }

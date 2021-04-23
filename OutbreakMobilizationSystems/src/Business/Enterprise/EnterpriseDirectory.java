@@ -59,7 +59,7 @@ public class EnterpriseDirectory {
             enterpriseList.add(enterprise);
         }
         else if(type==Enterprise.EnterpriseType.Laboratories){
-            enterprise=new PharmacyEnterprise(name);
+            enterprise=new LaboratoriesEnterprise(name);
             enterpriseList.add(enterprise);
         }
         return enterprise;

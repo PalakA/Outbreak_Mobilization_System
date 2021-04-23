@@ -6,9 +6,17 @@
 package ui.DoctorRole;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Enterprise.PharmacyEnterprise;
 import Business.Network.Network;
+import Business.Organizations.Organization;
+import Business.Roles.CareTakerRole;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.PatientDetailsRequest;
+import Business.WorkQueue.PatientRegistrationRequest;
+import Business.WorkQueue.WorkRequest;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * @author ajayp
@@ -32,14 +40,18 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     EcoSystem ecosystem;
     UserAccount user;
     Network network;
+    Enterprise enterprise;
     
-    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount user, Network network, EcoSystem ecosystem) {
+    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount user, Network network, EcoSystem ecosystem, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.user = user;
         this.network = network;
         this.ecosystem=ecosystem;
-        //populateTree();
+        this.enterprise = enterprise;
+        populatePatientsTable();
+        populateCaretakerCombo();
+        populateOrganizationCombo();
     }
 
     /**
@@ -56,8 +68,8 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         tblPatientDetails = new javax.swing.JTable();
         lblAssignCaretaker = new javax.swing.JLabel();
         lblAssignPharmacy = new javax.swing.JLabel();
-        comboCaretaker = new javax.swing.JComboBox<>();
-        comboPharmacy = new javax.swing.JComboBox<>();
+        comboCaretaker = new javax.swing.JComboBox();
+        comboPharmacy = new javax.swing.JComboBox();
         btnAssign = new javax.swing.JButton();
 
         lblTreatment.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -65,17 +77,17 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
         tblPatientDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Hospital Name", "Diagnostic Center", "Diagnostician", "Lab Assistant", "Samples", "Patient Name", "Prescription", "Care Taker", "Pharmacy", "Status", "Message"
+                "Patient ID", "Hospital Name", "Diagnostic Center", "Diagnostician", "Lab Assistant", "Samples", "Patient Name", "Prescription", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -92,12 +104,17 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         lblAssignPharmacy.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblAssignPharmacy.setText("Assign Pharmacy");
 
-        comboCaretaker.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboCaretaker.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item1" }));
 
-        comboPharmacy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboPharmacy.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", " " }));
 
         btnAssign.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnAssign.setText("Assign");
+        btnAssign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -153,11 +170,60 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAssignActionPerformed
+
+    private void populatePatientsTable() {
+        DefaultTableModel enterpriseModel = (DefaultTableModel) tblPatientDetails.getModel();
+        enterpriseModel.setRowCount(0);
+        for (WorkRequest wr : enterprise.getWorkQueue().getWorkRequestList()) {
+            if (wr instanceof PatientRegistrationRequest) {
+                Object[] row = new Object[enterpriseModel.getColumnCount()];
+                row[0] = ((PatientRegistrationRequest) wr);
+                row[1] = ((PatientRegistrationRequest) wr).getHospitalName();
+                row[2] = ((PatientRegistrationRequest) wr).getDiagnosticCenter();
+                row[3] = ((PatientRegistrationRequest) wr).getDiagnostician();
+                row[4] = ((PatientRegistrationRequest) wr).getLabAssistant();
+                row[5] = ((PatientRegistrationRequest) wr).getSampleId();
+                row[6] = ((PatientRegistrationRequest) wr).getPatientName();
+                row[7] = ((PatientRegistrationRequest) wr).getPrescription();
+                row[8] = ((PatientRegistrationRequest) wr).getStatus();
+                row[9] = ((PatientRegistrationRequest) wr).getMessage();
+                enterpriseModel.addRow(row);
+            }
+        }
+    }
+    
+    private void populateCaretakerCombo() {
+        comboCaretaker.removeAllItems();
+        for (Network network : ecosystem.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
+                        if (u.getRole() instanceof CareTakerRole) {
+                            comboCaretaker.addItem(u.getEmployee());
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void populateOrganizationCombo() {
+        comboPharmacy.removeAllItems();
+        for (Network network : ecosystem.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if(enterprise instanceof PharmacyEnterprise)
+                comboPharmacy.addItem(enterprise);
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
-    private javax.swing.JComboBox<String> comboCaretaker;
-    private javax.swing.JComboBox<String> comboPharmacy;
+    private javax.swing.JComboBox comboCaretaker;
+    private javax.swing.JComboBox comboPharmacy;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAssignCaretaker;
     private javax.swing.JLabel lblAssignPharmacy;
