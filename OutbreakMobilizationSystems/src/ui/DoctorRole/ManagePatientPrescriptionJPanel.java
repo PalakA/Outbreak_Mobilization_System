@@ -141,7 +141,11 @@ public class ManagePatientPrescriptionJPanel extends javax.swing.JPanel {
         lblManageAssistant = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblPatientDetails = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblMedicine.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblMedicine.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -158,6 +162,8 @@ public class ManagePatientPrescriptionJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblMedicine.setRowHeight(50);
+        tblMedicine.setRowMargin(0);
         tblMedicine.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblMedicineMouseClicked(evt);
@@ -165,13 +171,19 @@ public class ManagePatientPrescriptionJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblMedicine);
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 730, 550, 200));
+
+        btnAddMedicine.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnAddMedicine.setText("Add Medicine");
+        btnAddMedicine.setOpaque(false);
         btnAddMedicine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddMedicineActionPerformed(evt);
             }
         });
+        add(btnAddMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 760, 240, 50));
 
+        tblPrescription.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblPrescription.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -188,25 +200,37 @@ public class ManagePatientPrescriptionJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblPrescription.setRowHeight(50);
+        tblPrescription.setRowMargin(0);
         jScrollPane1.setViewportView(tblPrescription);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 720, 380, 200));
+
+        btnDeleteMed.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnDeleteMed.setText("Remove Medicine");
+        btnDeleteMed.setOpaque(false);
         btnDeleteMed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteMedActionPerformed(evt);
             }
         });
+        add(btnDeleteMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 857, -1, 50));
 
+        btnConfirmMed.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnConfirmMed.setText("Confirm Prescription");
+        btnConfirmMed.setOpaque(false);
         btnConfirmMed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmMedActionPerformed(evt);
             }
         });
+        add(btnConfirmMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 990, -1, 50));
 
-        lblManageAssistant.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblManageAssistant.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblManageAssistant.setText("Prescribe Medicines to Patients");
+        add(lblManageAssistant, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 760, -1));
 
+        tblPatientDetails.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblPatientDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -215,7 +239,7 @@ public class ManagePatientPrescriptionJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "id", "Patient Name", "Symptoms", "Assigned Lab Assistant", "Assigned Care Taker", "Created Date", "Status", "Message"
+                "Id", "Patient Name", "Symptoms", "Assigned Lab Assistant", "Assigned Care Taker", "Created Date", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -226,55 +250,14 @@ public class ManagePatientPrescriptionJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblPatientDetails.setRowHeight(50);
+        tblPatientDetails.setRowMargin(0);
         jScrollPane3.setViewportView(tblPatientDetails);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAddMedicine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDeleteMed))
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnConfirmMed)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(316, 316, 316)
-                        .addComponent(lblManageAssistant, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(lblManageAssistant)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnAddMedicine)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDeleteMed)
-                        .addGap(91, 91, 91))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnConfirmMed)))
-                .addContainerGap(128, Short.MAX_VALUE))
-        );
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 390, 1250, 230));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/doctorprescnew.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblMedicineMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMedicineMouseClicked
@@ -350,6 +333,7 @@ public class ManagePatientPrescriptionJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAddMedicine;
     private javax.swing.JButton btnConfirmMed;
     private javax.swing.JButton btnDeleteMed;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

@@ -104,7 +104,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageNetworkActionPerformed(evt);
             }
         });
-        add(btnManageNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 400, 393, -1));
+        add(btnManageNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 400, 400, 50));
 
         btnManageEnterprises.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnManageEnterprises.setText("Manage Enterprises");
@@ -113,7 +113,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageEnterprisesActionPerformed(evt);
             }
         });
-        add(btnManageEnterprises, new org.netbeans.lib.awtextra.AbsoluteConstraints(477, 520, 400, -1));
+        add(btnManageEnterprises, new org.netbeans.lib.awtextra.AbsoluteConstraints(477, 520, 400, 50));
 
         lblANewEnterprise.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblANewEnterprise.setText("Welcome System Admin");

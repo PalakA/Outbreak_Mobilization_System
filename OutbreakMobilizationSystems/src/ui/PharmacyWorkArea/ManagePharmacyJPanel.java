@@ -45,59 +45,34 @@ public class ManagePharmacyJPanel extends javax.swing.JPanel {
         lblManagePharmacy = new javax.swing.JLabel();
         btnManageMedicines = new javax.swing.JButton();
         btnManagePrescription = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        lblManagePharmacy.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblManagePharmacy.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblManagePharmacy.setText("Manage Pharmacy");
+        add(lblManagePharmacy, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, -1, -1));
 
-        btnManageMedicines.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnManageMedicines.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnManageMedicines.setText("Manage Medicines");
         btnManageMedicines.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageMedicinesActionPerformed(evt);
             }
         });
+        add(btnManageMedicines, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, 330, 50));
 
-        btnManagePrescription.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnManagePrescription.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnManagePrescription.setText("Manage Prescription");
         btnManagePrescription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManagePrescriptionActionPerformed(evt);
             }
         });
+        add(btnManagePrescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 530, 330, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(300, 300, 300)
-                        .addComponent(lblManagePharmacy))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(282, 282, 282)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnManagePrescription)
-                            .addComponent(btnManageMedicines))))
-                .addContainerGap(323, Short.MAX_VALUE))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnManageMedicines, btnManagePrescription});
-
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(lblManagePharmacy)
-                .addGap(42, 42, 42)
-                .addComponent(btnManageMedicines)
-                .addGap(36, 36, 36)
-                .addComponent(btnManagePrescription)
-                .addContainerGap(329, Short.MAX_VALUE))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnManageMedicines, btnManagePrescription});
-
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/presnew.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageMedicinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageMedicinesActionPerformed
@@ -120,6 +95,7 @@ public class ManagePharmacyJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnManageMedicines;
     private javax.swing.JButton btnManagePrescription;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblManagePharmacy;
     // End of variables declaration//GEN-END:variables
 }

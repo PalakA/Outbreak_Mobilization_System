@@ -133,10 +133,10 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
                 btnAddEnterpriseActionPerformed(evt);
             }
         });
-        add(btnAddEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 230, -1));
+        add(btnAddEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 250, 50));
 
         txtName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, 350, 50));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, 370, 40));
 
         lblName.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblName.setText("Name:");
@@ -156,11 +156,11 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
 
         comboEnterpriseType.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         comboEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(comboEnterpriseType, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 350, 40));
+        add(comboEnterpriseType, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 370, 40));
 
         comboNetwork.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         comboNetwork.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(comboNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, 350, 40));
+        add(comboNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, 370, 40));
 
         btnBack.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnBack.setText("Back");
@@ -170,7 +170,7 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 100, 40));
 
         btnCreateEmployee.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnCreateEmployee.setText("Create Employee");
@@ -180,7 +180,7 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
                 btnCreateEmployeeActionPerformed(evt);
             }
         });
-        add(btnCreateEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 600, -1, -1));
+        add(btnCreateEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 600, 250, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/manageenterprise.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1960, 1080));

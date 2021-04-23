@@ -60,6 +60,7 @@ public class LabAssistantJPanel extends javax.swing.JPanel {
         btnAssign = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblHospitals = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -74,9 +75,13 @@ public class LabAssistantJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        lblManageSamples.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblManageSamples.setText("Manage Lab Samples");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblManageSamples.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        lblManageSamples.setText("Manage Lab Samples");
+        add(lblManageSamples, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 530, -1));
+
+        tblSamplesProcessed.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblSamplesProcessed.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -85,7 +90,7 @@ public class LabAssistantJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "id", "Patient Name", "Samples", "Hospital Name", "Assigned Lab Assistant", "Diagnostics Center", "Status", "Message"
+                "Id", "Patient Name", "Samples", "Hospital Name", "Assigned Lab Assistant", "Diagnostics Center", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -96,16 +101,23 @@ public class LabAssistantJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblSamplesProcessed.setRowHeight(50);
+        tblSamplesProcessed.setRowMargin(0);
         jScrollPane1.setViewportView(tblSamplesProcessed);
 
-        btnAssign.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 1220, 240));
+
+        btnAssign.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnAssign.setText("Assign Hospital");
+        btnAssign.setOpaque(false);
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
             }
         });
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 900, 230, 50));
 
+        tblHospitals.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblHospitals.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -125,41 +137,14 @@ public class LabAssistantJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblHospitals.setRowHeight(50);
+        tblHospitals.setRowMargin(0);
         jScrollPane3.setViewportView(tblHospitals);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(304, 304, 304)
-                        .addComponent(lblManageSamples, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(310, 310, 310)
-                        .addComponent(btnAssign)))
-                .addContainerGap(109, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(lblManageSamples)
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnAssign)
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 610, 970, 240));
+
+        jLabel1.setText("jLabel1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -219,6 +204,7 @@ public class LabAssistantJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
