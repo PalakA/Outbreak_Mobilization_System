@@ -18,6 +18,7 @@ public class SendTestSampleRequest extends WorkRequest {
     
     private String patientName;
     private String samples;
+    private Enterprise hospitalName;
     private Network network;
     private Enterprise enterprise;
     private Organization.Type orgType;
@@ -78,6 +79,14 @@ public class SendTestSampleRequest extends WorkRequest {
 
     public void setLabAssistant(Employee labAssistant) {
         this.labAssistant = labAssistant;
+    }
+
+    public Enterprise getHospitalName() {
+        return hospitalName;
+    }
+
+    public void setHospitalName(Enterprise hospitalName) {
+        this.hospitalName = hospitalName;
     }
 
     @Override
