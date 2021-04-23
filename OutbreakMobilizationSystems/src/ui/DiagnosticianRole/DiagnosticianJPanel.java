@@ -18,7 +18,7 @@ import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import ui.PatientWorkArea.PatientRegistrationJPanel;
+
 
 /**
  * @author ajayp
