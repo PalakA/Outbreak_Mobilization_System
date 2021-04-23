@@ -71,7 +71,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         lblState.setText("State:");
         add(lblState, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, -1, -1));
 
-        txtState.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtState.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         add(txtState, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 190, 320, 40));
 
         btnAddNetwork.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -82,7 +82,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 btnAddNetworkActionPerformed(evt);
             }
         });
-        add(btnAddNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, -1, -1));
+        add(btnAddNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 200, 50));
 
         tblNetworkInformation.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblNetworkInformation.setModel(new javax.swing.table.DefaultTableModel(
@@ -121,7 +121,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 110, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/manageenterprise.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1920, 1080));

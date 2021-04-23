@@ -66,10 +66,15 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
         lblAssignLabAssistant = new javax.swing.JLabel();
         comboLabAssistant = new javax.swing.JComboBox();
         btnSubmit = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        lblManageAssistant.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblManageAssistant.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblManageAssistant.setText("Manage Lab Assistants");
+        add(lblManageAssistant, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 560, -1));
 
+        tblSamples.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblSamples.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -78,7 +83,7 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "id", "Patient Name", "Symptoms", "Assigned Lab Assistant", "Created Date", "Status", "Message"
+                "Id", "Patient Name", "Symptoms", "Assigned Lab Assistant", "Created Date", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -89,60 +94,32 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblSamples.setRowHeight(50);
+        tblSamples.setRowMargin(0);
         jScrollPane1.setViewportView(tblSamples);
 
-        lblAssignLabAssistant.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblAssignLabAssistant.setText("Assign Lab Assistant");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 1300, 172));
 
+        lblAssignLabAssistant.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblAssignLabAssistant.setText("Assign Lab Assistant :");
+        add(lblAssignLabAssistant, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 590, -1, -1));
+
+        comboLabAssistant.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         comboLabAssistant.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboLabAssistant.setOpaque(false);
+        add(comboLabAssistant, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 590, 390, -1));
 
-        btnSubmit.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnSubmit.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnSubmit.setText("Assign");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
             }
         });
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 710, 160, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(319, 319, 319)
-                        .addComponent(lblManageAssistant, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(229, 229, 229)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblAssignLabAssistant)
-                                .addGap(39, 39, 39)
-                                .addComponent(comboLabAssistant, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(129, 129, 129)
-                                .addComponent(btnSubmit)))))
-                .addContainerGap(133, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(lblManageAssistant)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAssignLabAssistant)
-                    .addComponent(comboLabAssistant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnSubmit)
-                .addContainerGap(166, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/diagnew.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
@@ -239,6 +216,7 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox comboLabAssistant;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAssignLabAssistant;
     private javax.swing.JLabel lblManageAssistant;

@@ -63,63 +63,40 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         time_txt = new javax.swing.JLabel();
         btnManageCaretaker = new javax.swing.JButton();
         btnPatientPrescription = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        lblANewEnterprise.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblANewEnterprise.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblANewEnterprise.setText("Welcome Doctor");
+        add(lblANewEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 410, -1));
 
-        date_txt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        date_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1081, 30, 160, 30));
 
-        time_txt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        time_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add(time_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 30, 120, 30));
 
-        btnManageCaretaker.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnManageCaretaker.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnManageCaretaker.setText("Manage Care Taker");
         btnManageCaretaker.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageCaretakerActionPerformed(evt);
             }
         });
+        add(btnManageCaretaker, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 340, 60));
 
-        btnPatientPrescription.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnPatientPrescription.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnPatientPrescription.setText("Manage Patient Prescriptions");
         btnPatientPrescription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPatientPrescriptionActionPerformed(evt);
             }
         });
+        add(btnPatientPrescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, 500, 60));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(220, 220, 220)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblANewEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(date_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(time_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnManageCaretaker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPatientPrescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(152, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblANewEnterprise)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(date_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(time_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(42, 42, 42)
-                .addComponent(btnManageCaretaker, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnPatientPrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(300, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/doctorprescnew.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageCaretakerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCaretakerActionPerformed
@@ -146,6 +123,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageCaretaker;
     private javax.swing.JButton btnPatientPrescription;
     private javax.swing.JLabel date_txt;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblANewEnterprise;
     private javax.swing.JLabel time_txt;
     // End of variables declaration//GEN-END:variables

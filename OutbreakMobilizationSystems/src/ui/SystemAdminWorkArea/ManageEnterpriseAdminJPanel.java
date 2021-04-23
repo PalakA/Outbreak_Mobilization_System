@@ -119,7 +119,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 comboNetworkActionPerformed(evt);
             }
         });
-        add(comboNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 280, -1));
+        add(comboNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 320, -1));
 
         lblEnterpriseType.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblEnterpriseType.setText("Enterprise Type:");
@@ -127,7 +127,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
         comboEnterpriseType.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         comboEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(comboEnterpriseType, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 280, -1));
+        add(comboEnterpriseType, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 320, -1));
 
         lblHospitalUsername1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblHospitalUsername1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -140,7 +140,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 txtAdminNameActionPerformed(evt);
             }
         });
-        add(txtAdminName, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 280, 40));
+        add(txtAdminName, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 320, 40));
 
         lblHospitalUsername.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblHospitalUsername.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -155,7 +155,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
-        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 520, -1, -1));
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 520, -1, 50));
 
         txtUsername.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +163,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 txtUsernameActionPerformed(evt);
             }
         });
-        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 280, 40));
+        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 320, 40));
 
         lblHospitalPassword.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblHospitalPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -171,7 +171,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         add(lblHospitalPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
 
         txtPassword.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 410, 280, 40));
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 410, 320, 40));
 
         btnBack.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnBack.setText("Back");
@@ -181,7 +181,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 100, 40));
 
         tblenterprise.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tblenterprise.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N

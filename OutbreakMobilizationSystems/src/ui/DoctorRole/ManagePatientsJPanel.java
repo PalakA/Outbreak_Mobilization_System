@@ -68,9 +68,13 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
         lblAssignCaretaker = new javax.swing.JLabel();
         comboCaretaker = new javax.swing.JComboBox();
         btnAssign = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        lblTreatment.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTreatment.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblTreatment.setText("Treatment to a Patient");
+        add(lblTreatment, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 580, -1));
 
         tblPatientDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,59 +95,33 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblPatientDetails.setRowHeight(50);
+        tblPatientDetails.setRowMargin(0);
         jScrollPane1.setViewportView(tblPatientDetails);
 
-        lblAssignCaretaker.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 360, 1220, 240));
+
+        lblAssignCaretaker.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblAssignCaretaker.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblAssignCaretaker.setText("Assign Care Taker");
+        lblAssignCaretaker.setText("Assign Care Taker :");
+        add(lblAssignCaretaker, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 680, -1, -1));
 
+        comboCaretaker.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         comboCaretaker.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item1" }));
+        add(comboCaretaker, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 680, 380, -1));
 
-        btnAssign.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnAssign.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnAssign.setText("Assign");
+        btnAssign.setOpaque(false);
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
             }
         });
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 770, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(281, 281, 281)
-                        .addComponent(lblTreatment))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(lblAssignCaretaker)
-                        .addGap(27, 27, 27)
-                        .addComponent(comboCaretaker, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(316, 316, 316)
-                        .addComponent(btnAssign)))
-                .addContainerGap(94, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(lblTreatment)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAssignCaretaker)
-                    .addComponent(comboCaretaker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnAssign)
-                .addContainerGap(279, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/doctorprescnew.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -235,6 +213,7 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
     private javax.swing.JComboBox comboCaretaker;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAssignCaretaker;
     private javax.swing.JLabel lblTreatment;

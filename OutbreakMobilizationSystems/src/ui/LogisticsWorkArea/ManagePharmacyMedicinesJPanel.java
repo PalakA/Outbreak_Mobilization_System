@@ -74,10 +74,15 @@ public class ManagePharmacyMedicinesJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPharmacyMedicines = new javax.swing.JTable();
         btnProcess = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        lblDeliverMedicines.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblDeliverMedicines.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblDeliverMedicines.setText("Manage Pharmacy Medicines");
+        add(lblDeliverMedicines, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 720, -1));
 
+        tblPharmacyMedicines.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblPharmacyMedicines.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -97,45 +102,24 @@ public class ManagePharmacyMedicinesJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblPharmacyMedicines.setRowHeight(50);
+        tblPharmacyMedicines.setRowMargin(0);
         jScrollPane1.setViewportView(tblPharmacyMedicines);
 
-        btnProcess.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 1170, 240));
+
+        btnProcess.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnProcess.setText("Process");
+        btnProcess.setOpaque(false);
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProcessActionPerformed(evt);
             }
         });
+        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 667, 180, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(317, 317, 317)
-                        .addComponent(lblDeliverMedicines))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(187, 187, 187)
-                                .addComponent(btnProcess)))))
-                .addContainerGap(207, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(lblDeliverMedicines)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnProcess)
-                .addContainerGap(271, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/presnew.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
@@ -157,6 +141,7 @@ public class ManagePharmacyMedicinesJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProcess;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDeliverMedicines;
     private javax.swing.JTable tblPharmacyMedicines;

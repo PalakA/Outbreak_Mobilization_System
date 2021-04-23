@@ -85,90 +85,58 @@ public class ManageWorkAreaJPanel extends javax.swing.JPanel {
         manageEmployeeJButton = new javax.swing.JButton();
         userJButton = new javax.swing.JButton();
         btnPatientActication = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        lblANewEnterprise.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblANewEnterprise.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblANewEnterprise.setText("Welcome Hospital Manager");
+        add(lblANewEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
 
-        date_txt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        date_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1111, 40, 130, 30));
 
-        time_txt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        time_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add(time_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 40, 150, 30));
 
-        btnManageOrganizations.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnManageOrganizations.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnManageOrganizations.setText("Manage Organizations");
         btnManageOrganizations.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageOrganizationsActionPerformed(evt);
             }
         });
+        add(btnManageOrganizations, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 427, 330, 50));
 
-        manageEmployeeJButton.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        manageEmployeeJButton.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         manageEmployeeJButton.setText("Manage Employee");
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageEmployeeJButtonActionPerformed(evt);
             }
         });
+        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 507, 330, 50));
 
-        userJButton.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        userJButton.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         userJButton.setText("Manage User");
         userJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userJButtonActionPerformed(evt);
             }
         });
+        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 587, 330, 50));
 
+        btnPatientActication.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnPatientActication.setText("Activate Patients");
         btnPatientActication.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPatientActicationActionPerformed(evt);
             }
         });
+        add(btnPatientActication, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 660, 330, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(188, 188, 188)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPatientActication, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnManageOrganizations)
-                            .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(userJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblANewEnterprise))
-                        .addGap(35, 35, 35)
-                        .addComponent(date_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(time_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnManageOrganizations, btnPatientActication, manageEmployeeJButton, userJButton});
-
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblANewEnterprise)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(date_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(time_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(61, 61, 61)
-                .addComponent(btnManageOrganizations, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(manageEmployeeJButton)
-                .addGap(28, 28, 28)
-                .addComponent(userJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(btnPatientActication)
-                .addContainerGap(96, Short.MAX_VALUE))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnManageOrganizations, btnPatientActication, manageEmployeeJButton, userJButton});
-
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/hospitalnew.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageOrganizationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageOrganizationsActionPerformed
@@ -211,6 +179,7 @@ public class ManageWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageOrganizations;
     private javax.swing.JButton btnPatientActication;
     private javax.swing.JLabel date_txt;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblANewEnterprise;
     private javax.swing.JButton manageEmployeeJButton;
     private javax.swing.JLabel time_txt;

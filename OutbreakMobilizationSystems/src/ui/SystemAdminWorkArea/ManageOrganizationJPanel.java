@@ -118,11 +118,11 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 addJButtonActionPerformed(evt);
             }
         });
-        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, -1, -1));
+        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 270, 50));
 
         organizationJComboBox.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 270, -1));
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 450, 40));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Organization Type : ");
@@ -136,7 +136,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 110, 40));
 
         lblANewNetwork.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblANewNetwork.setText("Add Organization");
