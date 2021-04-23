@@ -5,6 +5,7 @@
  */
 package ui.SystemAdminWorkArea;
 
+import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Network.Network;
 import java.awt.CardLayout;
@@ -12,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import static java.time.Clock.system;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -20,7 +22,7 @@ import javax.swing.Timer;
 
 /**
  *
- * @author ajayp
+ * @author nakul
  */
 public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
@@ -29,6 +31,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
      */
     
     JPanel userProcessContainer;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     EcoSystem ecosystem;
     Network network;
     Timer timer;
@@ -38,6 +41,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.network = network;
+       
         
         ActionListener actionListener = new ActionListener() {
         @Override
@@ -89,72 +93,40 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblANewEnterprise = new javax.swing.JLabel();
         date_txt = new javax.swing.JLabel();
         time_txt = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        btnManageNetwork.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnManageNetwork.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnManageNetwork.setText("Manage Network");
         btnManageNetwork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageNetworkActionPerformed(evt);
             }
         });
+        add(btnManageNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 400, 393, -1));
 
-        btnManageEnterprises.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnManageEnterprises.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnManageEnterprises.setText("Manage Enterprises");
         btnManageEnterprises.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageEnterprisesActionPerformed(evt);
             }
         });
+        add(btnManageEnterprises, new org.netbeans.lib.awtextra.AbsoluteConstraints(477, 520, 400, -1));
 
-        lblANewEnterprise.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblANewEnterprise.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblANewEnterprise.setText("Welcome System Admin");
+        add(lblANewEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, -1, -1));
 
-        date_txt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        date_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 184, 28));
 
-        time_txt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        time_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add(time_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 30, 206, 28));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(lblANewEnterprise)
-                        .addGap(18, 18, 18)
-                        .addComponent(date_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(time_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnManageNetwork)
-                            .addComponent(btnManageEnterprises))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnManageEnterprises, btnManageNetwork});
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {date_txt, time_txt});
-
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblANewEnterprise)
-                    .addComponent(date_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(time_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(btnManageNetwork)
-                .addGap(18, 18, 18)
-                .addComponent(btnManageEnterprises)
-                .addContainerGap(181, Short.MAX_VALUE))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnManageEnterprises, btnManageNetwork});
-
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/manageenterprise.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1920, 1090));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNetworkActionPerformed
@@ -177,6 +149,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageEnterprises;
     private javax.swing.JButton btnManageNetwork;
     private javax.swing.JLabel date_txt;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblANewEnterprise;
     private javax.swing.JLabel time_txt;
     // End of variables declaration//GEN-END:variables
