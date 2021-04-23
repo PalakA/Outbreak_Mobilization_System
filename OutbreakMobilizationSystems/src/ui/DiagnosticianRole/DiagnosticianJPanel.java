@@ -19,10 +19,6 @@ import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-<<<<<<< HEAD
-
-=======
->>>>>>> 074ae50cae266db2381fc3ee61288d8ff3d66e84
 
 /**
  * @author ajayp
