@@ -38,15 +38,10 @@ public class EcoSystem extends Organization{
     private CareTakerDirectory careTakerDirectory;
     private DoctorDirectory doctorDirectory;
     private HospitalRegistrationDirectory hospitalRegistrationDirectory;
-    private OrganizationDirectory pharmacyDir;
 
     private EcoSystem(){
         super(null);
         networkList=new ArrayList<Network>();
-        pharmacyDir = new OrganizationDirectory();
-        
-        this.pharmacyDir.getOrganizationList().add(new PharmacyCatalogOrganization("Boston Pharmacy", this));
-        
     }
         
     public HospitalRegistrationDirectory getHospitalRegistrationDirectory() {
@@ -67,14 +62,6 @@ public class EcoSystem extends Organization{
         }
         return business;
     }
-
-    public OrganizationDirectory getPharmacyDir() {
-        return pharmacyDir;
-    }
-
-    public void setPharmacyDir(OrganizationDirectory pharmacyDir) {
-        this.pharmacyDir = pharmacyDir;
-    } 
     
     public Network createAndAddNetwork(){
         Network network=new Network();

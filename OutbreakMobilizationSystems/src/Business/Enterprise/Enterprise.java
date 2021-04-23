@@ -5,8 +5,10 @@
  */
 package Business.Enterprise;
 
+import Business.Medicine.Medicine;
 import Business.Organizations.Organization;
 import Business.Organizations.OrganizationDirectory;
+import java.util.ArrayList;
 
 /**
  * @author ajayp
@@ -24,6 +26,7 @@ public abstract class Enterprise extends Organization{
     private EnterpriseType enterpriseType;
     private OrganizationDirectory organizationDirectory;
     private Organization organization;
+    private ArrayList<Medicine> medicineList;
 
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
@@ -58,10 +61,30 @@ public abstract class Enterprise extends Organization{
     public void setEnterpriseType(EnterpriseType enterpriseType) {
         this.enterpriseType = enterpriseType;
     }
+
+    public ArrayList<Medicine> getMedicineList() {
+        return medicineList;
+    }
+
+    public void setMedicineList(ArrayList<Medicine> medicineList) {
+        this.medicineList = medicineList;
+    }
     
     public Enterprise(String name,EnterpriseType type){
         super(name);
         this.enterpriseType=type;
+        this.medicineList =new ArrayList<>();
         organizationDirectory=new OrganizationDirectory();
+    }
+    
+        public Medicine createMedicineList(){
+        Medicine Medicine = new Medicine(); 
+        this.medicineList.add(Medicine);
+        return Medicine;
+}
+      
+    
+     public void deleteItem(Medicine medicine){
+        medicineList.remove(medicine); 
     }
 }

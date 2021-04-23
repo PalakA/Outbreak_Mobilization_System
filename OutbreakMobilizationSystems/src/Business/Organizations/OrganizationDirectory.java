@@ -50,10 +50,10 @@ public class OrganizationDirectory {
             organization = new ManufacturerOrganization();
             organizationList.add(organization);
         }
-//        else if (type.getValue().equals(Type.PharmacyCatalog.getValue())){
-//            organization = new PharmacyCatalogOrganization("",System);
-//            organizationList.add(organization);
-//        }
+        else if (type.getValue().equals(Type.PharmacyCatalog.getValue())){
+            organization = new PharmacyCatalogOrganization();
+            organizationList.add(organization);
+        }
         else if (type.getValue().equals(Type.PharmacyDistribution.getValue())){
             organization = new PharmacyDistributionOrganization();
             organizationList.add(organization);
@@ -67,18 +67,5 @@ public class OrganizationDirectory {
             organizationList.add(organization);
         }
         return organization;
-    }
-    
-        public PharmacyCatalogOrganization getPharmacyCatalogOrganization(UserAccount ua) {
-        PharmacyCatalogOrganization pharmacy = null;
-
-            for (Organization org : this.organizationList) {
-                if ((org instanceof PharmacyCatalogOrganization) && ((PharmacyCatalogOrganization) org).getUserAccountAssoc().equals(ua)) {
-                        pharmacy = (PharmacyCatalogOrganization) org;
-                        break;
-                }
-            }
-
-        return pharmacy;
     }
 }

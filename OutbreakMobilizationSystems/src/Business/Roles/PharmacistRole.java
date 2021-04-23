@@ -36,8 +36,7 @@ public class PharmacistRole extends Roles{
     }
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
-        PharmacyCatalogOrganization pharmacy = system.getPharmacyDir().getPharmacyCatalogOrganization(account);
-        return new ManagePharmacyJPanel(userProcessContainer, account, network, system, enterprise,pharmacy); 
+        return new ManagePharmacyJPanel(userProcessContainer, account, network, system, enterprise); 
     }
     
 }

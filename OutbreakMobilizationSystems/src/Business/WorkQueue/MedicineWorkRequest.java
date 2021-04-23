@@ -15,18 +15,18 @@ import java.util.List;
  * @author palak
  */
 public class MedicineWorkRequest extends WorkRequest{
-        List<Medicine> medicineList;
+        private ArrayList<Medicine> medicineList;
         private Employee patient;
 
     public MedicineWorkRequest() {
         this.medicineList = new ArrayList<>();
     }
 
-    public List<Medicine> getMedicineList() {
+    public ArrayList<Medicine> getMedicineList() {
         return medicineList;
     }
 
-    public void setMedicineList(List<Medicine> medicineList) {
+    public void setMedicineList(ArrayList<Medicine> medicineList) {
         this.medicineList = medicineList;
     }
 
