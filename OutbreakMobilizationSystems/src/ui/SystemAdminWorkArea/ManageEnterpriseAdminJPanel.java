@@ -322,6 +322,65 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         cardLayout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
        
+<<<<<<< HEAD
+=======
+    private void btnSubmitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMousePressed
+        // TODO add your handling code here:
+        Enterprise enterprise = (Enterprise) comboEnterpriseType.getSelectedItem();
+
+        String username = txtUsername.getText();
+        String password = String.valueOf(txtPassword.getPassword());
+        String name = txtAdminName.getText();
+        
+        if (!Validator.isValidUsername(username)) {
+            JOptionPane.showMessageDialog(null, "Username is in incorrect \nFormat. Should be 2 to 25 characters "
+                    + "and characters, numbers and the ., -, _ symbols");
+            return;
+        }
+        
+        if(!Validator.isValidPassword(password))
+        {
+            JOptionPane.showMessageDialog(null, "Password is in incorrect \nFormat. Should be minimum 8 in length "
+                    + "with one upper case, one lower case, one digit and one special character");
+            return;
+        }
+        
+        if(username.isEmpty() || password.isEmpty() || name.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter all fields", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else{
+            Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
+
+            if (ecosystem.checkIfUserIsUnique(username)) {
+                UserAccount account = null;
+                if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ManagerRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.DiagnosticCenter) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DiagnosticianRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalDeviceCompanies) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ManufacturerRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Pharmacy) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new PharmacistRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Laboratories) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new LabAssistantRole());
+                }
+                txtUsername.setText("");
+                txtPassword.setText("");
+                txtAdminName.setText("");
+                radioBtnDiagnostician.setSelected(false);
+                radioBtnLabAssistant.setSelected(false);
+                radioBtnManager.setSelected(false);
+                radioBtnManufacturer.setSelected(false);
+                radioBtnPharmacist.setSelected(false);
+                radioBtnSupplyChain.setSelected(false);
+                JOptionPane.showMessageDialog(null, "Account created sucessfully");
+                populateTable();
+            }else {
+                JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnSubmitMousePressed
+
+>>>>>>> 074ae50cae266db2381fc3ee61288d8ff3d66e84
     private void radioBtnManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnManagerActionPerformed
         // TODO add your handling code here:
         radioBtnDiagnostician.setSelected(false);

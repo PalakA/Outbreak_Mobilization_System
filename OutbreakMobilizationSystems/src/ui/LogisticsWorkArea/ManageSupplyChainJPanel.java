@@ -49,10 +49,65 @@ public class ManageSupplyChainJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         setLayout(new java.awt.BorderLayout());
+=======
+        lblManageSupplyChain = new javax.swing.JLabel();
+        btnMedicalDevices = new javax.swing.JButton();
+        btnMedicineDelivery = new javax.swing.JButton();
+
+        lblManageSupplyChain.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblManageSupplyChain.setText("Manage Logistics");
+
+        btnMedicalDevices.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnMedicalDevices.setText("Manage Medical Device");
+
+        btnMedicineDelivery.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnMedicineDelivery.setText("Manage Pharmacy Medicines");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(296, 296, 296)
+                        .addComponent(lblManageSupplyChain))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(257, 257, 257)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMedicalDevices)
+                            .addComponent(btnMedicineDelivery))))
+                .addContainerGap(276, Short.MAX_VALUE))
+        );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMedicalDevices, btnMedicineDelivery});
+
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(lblManageSupplyChain)
+                .addGap(38, 38, 38)
+                .addComponent(btnMedicineDelivery)
+                .addGap(36, 36, 36)
+                .addComponent(btnMedicalDevices)
+                .addContainerGap(310, Short.MAX_VALUE))
+        );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnMedicalDevices, btnMedicineDelivery});
+
+>>>>>>> 074ae50cae266db2381fc3ee61288d8ff3d66e84
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
+=======
+    private javax.swing.JButton btnMedicalDevices;
+    private javax.swing.JButton btnMedicineDelivery;
+    private javax.swing.JLabel lblManageSupplyChain;
+>>>>>>> 074ae50cae266db2381fc3ee61288d8ff3d66e84
     // End of variables declaration//GEN-END:variables
 }

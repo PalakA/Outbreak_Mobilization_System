@@ -8,9 +8,10 @@ package ui.DiagnosticianRole;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
-import Business.LabAssistant.LabAssistant;
+import Business.Enterprise.HospitalEnterprise;
 import Business.Network.Network;
 import Business.Organizations.Organization;
+import Business.Organizations.OrganizationDirectory;
 import Business.Roles.LabAssistantRole;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientRegistrationRequest;
@@ -18,7 +19,10 @@ import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 074ae50cae266db2381fc3ee61288d8ff3d66e84
 
 /**
  * @author ajayp
@@ -39,6 +43,7 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
     EcoSystem ecosystem;
     Network network;
     Enterprise enterprise;
+    private OrganizationDirectory directory;
 
     public DiagnosticianJPanel(JPanel userProcessContainer, EcoSystem ecosystem, Network network, Enterprise enterprise) {
         initComponents();
@@ -62,9 +67,6 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
         lblManageAssistant = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSamples = new javax.swing.JTable();
-        btnAssign = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
-        btnAccept = new javax.swing.JButton();
         lblAssignLabAssistant = new javax.swing.JLabel();
         comboLabAssistant = new javax.swing.JComboBox();
         btnSubmit = new javax.swing.JButton();
@@ -74,17 +76,17 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
 
         tblSamples.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Patient Name", "Symptoms", "Assigned Lab Assistant", "Created Date", "Status", "Message"
+                "id", "Patient Name", "Symptoms", "Assigned Lab Assistant", "Created Date", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                true, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -93,42 +95,13 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblSamples);
 
-        btnAssign.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnAssign.setText("Assign Samples");
-        btnAssign.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssignActionPerformed(evt);
-            }
-        });
-
-        btnCancel.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnCancel.setText("Cancel Samples");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
-
-        btnAccept.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnAccept.setText("Accept Samples");
-        btnAccept.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAcceptActionPerformed(evt);
-            }
-        });
-
         lblAssignLabAssistant.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblAssignLabAssistant.setText("Assign Lab Assistant");
 
         comboLabAssistant.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboLabAssistant.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboLabAssistantActionPerformed(evt);
-            }
-        });
 
         btnSubmit.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnSubmit.setText("Submit");
+        btnSubmit.setText("Assign");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
@@ -143,30 +116,22 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(113, 113, 113)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAccept)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCancel)
-                                .addGap(88, 88, 88)
-                                .addComponent(btnAssign))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(220, 220, 220)
-                        .addComponent(lblAssignLabAssistant)
-                        .addGap(39, 39, 39)
-                        .addComponent(comboLabAssistant, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(349, 349, 349)
-                        .addComponent(btnSubmit))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(319, 319, 319)
-                        .addComponent(lblManageAssistant, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblManageAssistant, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(229, 229, 229)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblAssignLabAssistant)
+                                .addGap(39, 39, 39)
+                                .addComponent(comboLabAssistant, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(129, 129, 129)
+                                .addComponent(btnSubmit)))))
                 .addContainerGap(133, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAccept, btnAssign, btnCancel});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -174,55 +139,52 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
                 .addComponent(lblManageAssistant)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancel)
-                    .addComponent(btnAccept)
-                    .addComponent(btnAssign))
-                .addGap(54, 54, 54)
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAssignLabAssistant)
                     .addComponent(comboLabAssistant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnSubmit)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAccept, btnAssign, btnCancel});
-
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAcceptActionPerformed
-
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelActionPerformed
-
-    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAssignActionPerformed
-
-    private void comboLabAssistantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboLabAssistantActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboLabAssistantActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblSamples.getSelectedRow();
-        PatientRegistrationRequest patientRegistrationRequest = new PatientRegistrationRequest();
+        boolean isResolved = true;
+        UserAccount empUserAccount = null;
+        PatientRegistrationRequest patientRegistrationRequest = (PatientRegistrationRequest) tblSamples.getValueAt(selectedRow, 0);
+        Employee labAssistant = (Employee) comboLabAssistant.getSelectedItem();
         if (selectedRow >= 0) {
-            if (patientRegistrationRequest.getDiagnostician() == null) {
-                Enterprise enterprise = (Enterprise) tblSamples.getValueAt(selectedRow, 0);
-                Employee employee = (Employee) tblSamples.getValueAt(selectedRow, 3);
-
-                patientRegistrationRequest.setLabAssistant(employee);
+            for (Network network : ecosystem.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+            for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
+                    if (u.getEmployee().getId() == (labAssistant.getId())) {
+                        empUserAccount = u;
+                        break;
+                    }
+                }
+            }
+            }
+            }
+            for (WorkRequest wr : empUserAccount.getWorkQueue().getWorkRequestList()) {
+                if (wr instanceof PatientRegistrationRequest) {
+                    if (!((PatientRegistrationRequest) wr).getStatus().equals("Resolved")) {
+                        isResolved = false;
+                        break;
+                    }
+                }
+            }
+            if (isResolved) {
+                String msg = JOptionPane.showInputDialog("Additional Information");
+                patientRegistrationRequest.setLabAssistant(labAssistant);
                 patientRegistrationRequest.setStatus("Assigned to Lab Assistant");
-
+                patientRegistrationRequest.setMessage(msg);
                 for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
                     for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
-                        if (u.getEmployee().getId() == (employee.getId())) {
+                        if (u.getEmployee().getId() == (labAssistant.getId())) {
                             u.getWorkQueue().getWorkRequestList().add(patientRegistrationRequest);
                         }
                     }
@@ -230,8 +192,7 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Lab Assistant is assigned successfully");
                 populateSamplesTable();
             } else {
-                JOptionPane.showMessageDialog(null, "Lab Assitant is already assigned!", "Warning", JOptionPane.WARNING_MESSAGE);
-                return;
+                JOptionPane.showMessageDialog(null, "This lab assistant is already processing tests in Lab. Please select a different Lab Assistant.");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Please select a Diadnostic Center to give your samples!", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -242,42 +203,45 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
     private void populateSamplesTable() {
         DefaultTableModel samplesModel = (DefaultTableModel) tblSamples.getModel();
         samplesModel.setRowCount(0);
-
-        for (WorkRequest wr : enterprise.getWorkQueue().getWorkRequestList()) {
-            if (wr instanceof PatientRegistrationRequest) {
-                Object[] row = new Object[samplesModel.getColumnCount()];
-                row[0] = ((PatientRegistrationRequest) wr).getPatientName();
-                row[1] = ((PatientRegistrationRequest) wr).getSymptom1();
-                row[2] = ((PatientRegistrationRequest) wr).getLabAssistant();
-                row[3] = ((PatientRegistrationRequest) wr).getRequestDate();
-                row[4] = ((PatientRegistrationRequest) wr).getStatus();
-                row[5] = ((PatientRegistrationRequest) wr).getMessage();
-                samplesModel.addRow(row);
+        System.out.println("enterprise" + enterprise);
+        for (Network network : ecosystem.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enterprise instanceof HospitalEnterprise) {
+                    for (WorkRequest wr : enterprise.getWorkQueue().getWorkRequestList()) {
+                        if (wr instanceof PatientRegistrationRequest) {
+                            Object[] row = new Object[samplesModel.getColumnCount()];
+                            row[0] = ((PatientRegistrationRequest) wr);
+                            row[1] = ((PatientRegistrationRequest) wr).getPatientName();
+                            row[2] = ((PatientRegistrationRequest) wr).getSymptom1();
+                            row[3] = ((PatientRegistrationRequest) wr).getLabAssistant();
+                            row[4] = ((PatientRegistrationRequest) wr).getRequestDate();
+                            row[5] = ((PatientRegistrationRequest) wr).getStatus();
+                            row[6] = ((PatientRegistrationRequest) wr).getMessage();
+                            samplesModel.addRow(row);
+                        }
+                    }
+                }
             }
         }
     }
 
     private void populateLabAssistantCombo() {
         comboLabAssistant.removeAllItems();
-        System.out.println("Started");
-        System.out.println(enterprise);
-        System.out.println(enterprise.getOrganizationDirectory());
-        System.out.println(enterprise.getOrganizationDirectory().getOrganizationList());
-        for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            System.out.println();
-            for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
-                System.out.println(u);
-                if (u.getRole() instanceof LabAssistantRole) {
-                    comboLabAssistant.addItem(u.getEmployee());
+        for (Network network : ecosystem.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
+                        System.out.println(o.getUserAccountDirectory().getUserAccountList());
+                        if (u.getRole() instanceof LabAssistantRole) {
+                            comboLabAssistant.addItem(u.getEmployee());
+                        }
+                    }
                 }
             }
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAccept;
-    private javax.swing.JButton btnAssign;
-    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox comboLabAssistant;
     private javax.swing.JScrollPane jScrollPane1;

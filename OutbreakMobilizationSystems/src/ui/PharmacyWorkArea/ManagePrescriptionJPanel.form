@@ -19,49 +19,49 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
-                      <Component id="lblGetMedicines" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="360" max="-2" attributes="0"/>
+                      <Component id="lblMedicinesToPatients" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="btnProcess" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
-                              <Component id="btnDelivered" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnProcess" linkSize="1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnComplete" linkSize="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane1" min="-2" pref="558" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="791" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="123" max="32767" attributes="0"/>
+              <EmptySpace pref="87" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Component id="lblGetMedicines" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="140" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <Component id="lblMedicinesToPatients" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="125" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnProcess" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnDelivered" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnProcess" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnComplete" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="229" max="32767" attributes="0"/>
+              <EmptySpace pref="268" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lblGetMedicines">
+    <Component class="javax.swing.JLabel" name="lblMedicinesToPatients">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Get Prescribed Medicines"/>
+        <Property name="text" type="java.lang.String" value="Process the Medicines to Patients"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -71,20 +71,26 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tblMedicines">
+        <Component class="javax.swing.JTable" name="tblProcessMedicines">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="6" rowCount="4">
-                <Column editable="false" title="Pharmacy Name" type="java.lang.Object"/>
+              <Table columnCount="7" rowCount="4">
                 <Column editable="false" title="Patient Name" type="java.lang.Object"/>
                 <Column editable="false" title="Doctor Name" type="java.lang.Object"/>
+                <Column editable="false" title="Care Taker Name" type="java.lang.Object"/>
                 <Column editable="false" title="Prescription" type="java.lang.Object"/>
+                <Column editable="false" title="Quantity" type="java.lang.Object"/>
                 <Column editable="false" title="Status" type="java.lang.Object"/>
                 <Column editable="false" title="Message" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -132,12 +138,12 @@
         <Property name="text" type="java.lang.String" value="Process"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnDelivered">
+    <Component class="javax.swing.JButton" name="btnComplete">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="13" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Delivered"/>
+        <Property name="text" type="java.lang.String" value="Complete"/>
       </Properties>
     </Component>
   </SubComponents>

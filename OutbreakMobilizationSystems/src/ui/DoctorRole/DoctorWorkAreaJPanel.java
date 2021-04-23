@@ -6,9 +6,17 @@
 package ui.DoctorRole;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Enterprise.PharmacyEnterprise;
 import Business.Network.Network;
+import Business.Organizations.Organization;
+import Business.Roles.CareTakerRole;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.PatientDetailsRequest;
+import Business.WorkQueue.PatientRegistrationRequest;
+import Business.WorkQueue.WorkRequest;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * @author ajayp
@@ -32,14 +40,18 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     EcoSystem ecosystem;
     UserAccount user;
     Network network;
+    Enterprise enterprise;
     
-    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount user, Network network, EcoSystem ecosystem) {
+    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount user, Network network, EcoSystem ecosystem, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.user = user;
         this.network = network;
         this.ecosystem=ecosystem;
-        //populateTree();
+        this.enterprise = enterprise;
+        populatePatientsTable();
+        populateCaretakerCombo();
+        populateOrganizationCombo();
     }
 
     /**
@@ -51,19 +63,171 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblTreatment = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblPatientDetails = new javax.swing.JTable();
+        lblAssignCaretaker = new javax.swing.JLabel();
+        lblAssignPharmacy = new javax.swing.JLabel();
+        comboCaretaker = new javax.swing.JComboBox();
+        comboPharmacy = new javax.swing.JComboBox();
+        btnAssign = new javax.swing.JButton();
+
+        lblTreatment.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTreatment.setText("Treatment to a Patient");
+
+        tblPatientDetails.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Patient ID", "Hospital Name", "Diagnostic Center", "Diagnostician", "Lab Assistant", "Samples", "Patient Name", "Prescription", "Status", "Message"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblPatientDetails);
+
+        lblAssignCaretaker.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblAssignCaretaker.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblAssignCaretaker.setText("Assign Care Taker");
+
+        lblAssignPharmacy.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblAssignPharmacy.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblAssignPharmacy.setText("Assign Pharmacy");
+
+        comboCaretaker.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item1" }));
+
+        comboPharmacy.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", " " }));
+
+        btnAssign.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnAssign.setText("Assign");
+        btnAssign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(281, 281, 281)
+                        .addComponent(lblTreatment))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAssignCaretaker)
+                            .addComponent(lblAssignPharmacy))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboPharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboCaretaker, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(36, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnAssign)
+                .addGap(334, 334, 334))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblAssignCaretaker, lblAssignPharmacy});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(lblTreatment)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAssignCaretaker)
+                    .addComponent(comboCaretaker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAssignPharmacy)
+                    .addComponent(comboPharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnAssign)
+                .addContainerGap(143, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblAssignCaretaker, lblAssignPharmacy});
+
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAssignActionPerformed
+
+    private void populatePatientsTable() {
+        DefaultTableModel enterpriseModel = (DefaultTableModel) tblPatientDetails.getModel();
+        enterpriseModel.setRowCount(0);
+        for (WorkRequest wr : enterprise.getWorkQueue().getWorkRequestList()) {
+            if (wr instanceof PatientRegistrationRequest) {
+                Object[] row = new Object[enterpriseModel.getColumnCount()];
+                row[0] = ((PatientRegistrationRequest) wr);
+                row[1] = ((PatientRegistrationRequest) wr).getHospitalName();
+                row[2] = ((PatientRegistrationRequest) wr).getDiagnosticCenter();
+                row[3] = ((PatientRegistrationRequest) wr).getDiagnostician();
+                row[4] = ((PatientRegistrationRequest) wr).getLabAssistant();
+                row[5] = ((PatientRegistrationRequest) wr).getSampleId();
+                row[6] = ((PatientRegistrationRequest) wr).getPatientName();
+                row[7] = ((PatientRegistrationRequest) wr).getPrescription();
+                row[8] = ((PatientRegistrationRequest) wr).getStatus();
+                row[9] = ((PatientRegistrationRequest) wr).getMessage();
+                enterpriseModel.addRow(row);
+            }
+        }
+    }
+    
+    private void populateCaretakerCombo() {
+        comboCaretaker.removeAllItems();
+        for (Network network : ecosystem.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
+                        if (u.getRole() instanceof CareTakerRole) {
+                            comboCaretaker.addItem(u.getEmployee());
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void populateOrganizationCombo() {
+        comboPharmacy.removeAllItems();
+        for (Network network : ecosystem.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if(enterprise instanceof PharmacyEnterprise)
+                comboPharmacy.addItem(enterprise);
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAssign;
+    private javax.swing.JComboBox comboCaretaker;
+    private javax.swing.JComboBox comboPharmacy;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAssignCaretaker;
+    private javax.swing.JLabel lblAssignPharmacy;
+    private javax.swing.JLabel lblTreatment;
+    private javax.swing.JTable tblPatientDetails;
     // End of variables declaration//GEN-END:variables
 }
