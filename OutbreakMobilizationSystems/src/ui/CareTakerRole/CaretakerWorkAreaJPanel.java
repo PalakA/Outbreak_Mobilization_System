@@ -108,9 +108,19 @@ public class CaretakerWorkAreaJPanel extends javax.swing.JPanel {
 
         btnProcess.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnProcess.setText("Process");
+        btnProcess.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcessActionPerformed(evt);
+            }
+        });
 
         btnDelivered.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnDelivered.setText("Delivered");
+        btnDelivered.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeliveredActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -145,6 +155,15 @@ public class CaretakerWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(229, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnProcessActionPerformed
+
+    private void btnDeliveredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeliveredActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeliveredActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
