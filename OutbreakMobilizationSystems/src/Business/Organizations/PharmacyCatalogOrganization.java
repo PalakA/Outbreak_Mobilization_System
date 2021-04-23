@@ -5,9 +5,12 @@
  */
 package Business.Organizations;
 
+import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.Medicine.MedicineDirectory;
 import Business.Roles.PharmacistRole;
 import Business.Roles.Roles;
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -24,6 +27,8 @@ import java.util.ArrayList;
 public class PharmacyCatalogOrganization extends Organization{
     
     private MedicineDirectory medicineDirectory;
+    private UserAccount userAccountAssoc;
+    private String pharmacyName;
     
     public MedicineDirectory getMedicineDirectory() {
         return medicineDirectory;
@@ -32,9 +37,23 @@ public class PharmacyCatalogOrganization extends Organization{
     public void setMedicineDirectory(MedicineDirectory medicineDirectory) {
         this.medicineDirectory = medicineDirectory;
     }
+
+    public UserAccount getUserAccountAssoc() {
+        return userAccountAssoc;
+    }
+
+    public void setUserAccountAssoc(UserAccount userAccountAssoc) {
+        this.userAccountAssoc = userAccountAssoc;
+    }
     
-    public PharmacyCatalogOrganization() {
+    public PharmacyCatalogOrganization(String pharmacyName, EcoSystem system) {
         super(Organization.Type.PharmacyCatalog.getValue());
+        this.pharmacyName = pharmacyName;
+        
+        Employee employee = system.getEmployeeDirectory().createEmployee(pharmacyName);
+        this.userAccountAssoc = system.getUserAccountDirectory().createUserAccount(pharmacyName.replaceAll("\\s", ""), "pharmacyCatalog", employee, new PharmacistRole());
+        
+        this.medicineDirectory = medicineDirectory;
     }
     
     @Override

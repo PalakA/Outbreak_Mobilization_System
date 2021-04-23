@@ -26,11 +26,13 @@ public class ManageMedicinesJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
+    PharmacyCatalogOrganization pharmacy;
     
-    public ManageMedicinesJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
+    public ManageMedicinesJPanel(JPanel userProcessContainer, EcoSystem ecosystem, PharmacyCatalogOrganization pharmacy) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
+        this.pharmacy = pharmacy;
         populateMedicinetbl();
     }
 
@@ -43,19 +45,11 @@ public class ManageMedicinesJPanel extends javax.swing.JPanel {
     private void populateMedicinetbl(){
         DefaultTableModel enterpriseModel = (DefaultTableModel) tblMedicine.getModel();
         enterpriseModel.setRowCount(0);
-        for (Network network : ecosystem.getNetworkList()) {
-            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                    if(o instanceof PharmacyCatalogOrganization)
-                    for (Medicine medicine : ((PharmacyCatalogOrganization) o).getMedicineDirectory().getMedicineList()) {
-                    Object row[] = new Object[2];
-                    row[0] = medicine;
-                    row[1] = medicine.getMedName();
-                    }
-                }
-            }
+        for (Medicine medicine : this.pharmacy.getMedicineDirectory().getMedicineList()) {
+        Object row[] = new Object[2];
+        row[0] = medicine;
+        row[1] = medicine.getMedName();
         }
-        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -144,15 +138,10 @@ public class ManageMedicinesJPanel extends javax.swing.JPanel {
         Medicine medicine = new Medicine();
         medicine.setMedName(txtMedName.getText());
         
-        for (Network network : ecosystem.getNetworkList()) {
-            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                    ((PharmacyCatalogOrganization) o).getMedicineDirectory().getMedicineList().add(medicine);
-                }
-            }
-        }
+        this.pharmacy.getMedicineDirectory().getMedicineList().add(medicine);
 
         JOptionPane.showMessageDialog(null, "Added Medicine Successfully");
+        populateMedicinetbl();
     }//GEN-LAST:event_btnAddActionPerformed
 
 
