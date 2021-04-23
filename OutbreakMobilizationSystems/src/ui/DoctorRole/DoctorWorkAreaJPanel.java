@@ -61,7 +61,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         lblANewEnterprise = new javax.swing.JLabel();
         date_txt = new javax.swing.JLabel();
         time_txt = new javax.swing.JLabel();
-        btnManagePrescriptions = new javax.swing.JButton();
+        btnManageCaretaker = new javax.swing.JButton();
         btnPatientPrescription = new javax.swing.JButton();
 
         lblANewEnterprise.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -71,11 +71,11 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
         time_txt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        btnManagePrescriptions.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnManagePrescriptions.setText("Manage Prescriptions");
-        btnManagePrescriptions.addActionListener(new java.awt.event.ActionListener() {
+        btnManageCaretaker.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnManageCaretaker.setText("Manage Care Taker");
+        btnManageCaretaker.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManagePrescriptionsActionPerformed(evt);
+                btnManageCaretakerActionPerformed(evt);
             }
         });
 
@@ -101,7 +101,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(time_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnManagePrescriptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnManageCaretaker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnPatientPrescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(152, Short.MAX_VALUE))
         );
@@ -115,21 +115,21 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(date_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(time_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(42, 42, 42)
-                .addComponent(btnManagePrescriptions, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManageCaretaker, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(btnPatientPrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(300, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnManagePrescriptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePrescriptionsActionPerformed
+    private void btnManageCaretakerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCaretakerActionPerformed
         // TODO add your handling code here:
-        ManageMedicinesJPanel managePrescriptionsJPanel = new ManageMedicinesJPanel(userProcessContainer, ecosystem);
-        userProcessContainer.add("ManagePrescriptionsJPanel", managePrescriptionsJPanel);
+        ManagePatientsJPanel managePatientsJPanel = new ManagePatientsJPanel(userProcessContainer, user, network, ecosystem, enterprise);
+        userProcessContainer.add("ManagePatients", managePatientsJPanel);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnManagePrescriptionsActionPerformed
+    }//GEN-LAST:event_btnManageCaretakerActionPerformed
 
     private void btnPatientPrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientPrescriptionActionPerformed
         // TODO add your handling code here:
@@ -143,7 +143,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnManagePrescriptions;
+    private javax.swing.JButton btnManageCaretaker;
     private javax.swing.JButton btnPatientPrescription;
     private javax.swing.JLabel date_txt;
     private javax.swing.JLabel lblANewEnterprise;
