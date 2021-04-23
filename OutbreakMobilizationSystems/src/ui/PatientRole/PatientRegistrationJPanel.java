@@ -6,18 +6,12 @@
 package ui.PatientRole;
 
 import Business.EcoSystem;
-import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
-import Business.Organizations.HospitalInvetoryOrganization;
 import Business.Organizations.Organization;
-import Business.Roles.PatientRole;
-import Business.Roles.Roles;
-import Business.UserAccount.UserAccount;
 import Business.Utils.Validator;
 import Business.WorkQueue.PatientRegistrationRequest;
 import Business.WorkQueue.WorkQueue;
-import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;

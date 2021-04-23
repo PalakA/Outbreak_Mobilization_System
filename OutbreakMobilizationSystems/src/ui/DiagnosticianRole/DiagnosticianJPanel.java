@@ -199,7 +199,6 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
     private void populateSamplesTable() {
         DefaultTableModel samplesModel = (DefaultTableModel) tblSamples.getModel();
         samplesModel.setRowCount(0);
-        System.out.println("enterprise" + enterprise);
         for (Network network : ecosystem.getNetworkList()) {
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                 if (enterprise instanceof HospitalEnterprise) {
