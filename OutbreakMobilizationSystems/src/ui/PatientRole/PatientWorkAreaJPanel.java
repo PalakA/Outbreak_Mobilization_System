@@ -50,7 +50,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer=userProcessContainer;
         this.user = user;
         this.network = network;
-        this.ecosystem=ecosystem;
+        this.ecosystem = ecosystem;
         this.enterprise = enterprise;
         this.organization = organization;
         
@@ -159,8 +159,8 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnDrPrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDrPrescriptionActionPerformed
         // TODO add your handling code here:
-        DoctorPrescriptionJPanel doctorPrescriptionJPanel = new DoctorPrescriptionJPanel(userProcessContainer, ecosystem);
-        userProcessContainer.add("DoctorPrescriptionJPanel", doctorPrescriptionJPanel);
+        DoctorPrescriptionJPanel doctorPrescriptionJPanel = new DoctorPrescriptionJPanel(userProcessContainer, ecosystem, enterprise);
+        userProcessContainer.add("DoctorPrescription", doctorPrescriptionJPanel);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

@@ -47,16 +47,29 @@ public class PatientRegistrationRequest extends WorkRequest {
     private Enterprise diagnosticCenter;
     private Organization Pharmacy;
     private String prescription;
+    private int quantity;
     int min = 100;
     int max = 999;
+    int medicineMin = 1;
+    int medicineMax = 30;
 
     public PatientRegistrationRequest() {
         int randomNum = (int)(Math.random() * (max - min + 1) + min);
         patientId = "PATIENT"+randomNum;
         int randomNum1 = (int)(Math.random() * (max - min + 1) + min);
         this.setSampleId("SAMPLE"+randomNum1);
+        int randomQuantityNum = (int)(Math.random() * (medicineMax - medicineMin + 1) + medicineMin);
+        quantity = randomQuantityNum;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
     public String getPrescription() {
         return prescription;
     }

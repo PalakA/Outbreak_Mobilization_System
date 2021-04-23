@@ -5,6 +5,13 @@
  */
 package ui.PharmacyWorkArea;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ajayp
@@ -14,8 +21,20 @@ public class ManagePharmacyJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManagePharmacyJPanel
      */
-    public ManagePharmacyJPanel() {
+    
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount user;
+    Network network;
+    Enterprise enterprise;
+    
+    public ManagePharmacyJPanel(JPanel userProcessContainer, UserAccount user,Network network, EcoSystem ecosystem, Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.user = user;
+        this.network = network;
+        this.ecosystem = ecosystem;
+        this.enterprise = enterprise;
     }
 
     /**
@@ -36,9 +55,19 @@ public class ManagePharmacyJPanel extends javax.swing.JPanel {
 
         btnManageMedicines.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnManageMedicines.setText("Manage Medicines");
+        btnManageMedicines.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageMedicinesActionPerformed(evt);
+            }
+        });
 
         btnManagePrescription.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnManagePrescription.setText("Manage Prescription");
+        btnManagePrescription.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManagePrescriptionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -74,6 +103,18 @@ public class ManagePharmacyJPanel extends javax.swing.JPanel {
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnManageMedicines, btnManagePrescription});
 
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnManageMedicinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageMedicinesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnManageMedicinesActionPerformed
+
+    private void btnManagePrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePrescriptionActionPerformed
+        // TODO add your handling code here:
+        ManagePrescriptionJPanel managePrescriptionJPanel = new ManagePrescriptionJPanel(userProcessContainer, ecosystem, enterprise);
+        userProcessContainer.add("ManagePrescription", managePrescriptionJPanel);
+        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+        cardLayout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManagePrescriptionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
