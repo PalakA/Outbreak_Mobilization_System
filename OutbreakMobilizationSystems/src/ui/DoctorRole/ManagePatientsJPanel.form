@@ -18,59 +18,55 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="593" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="281" max="-2" attributes="0"/>
+                      <Component id="lblTreatment" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="319" max="-2" attributes="0"/>
-                      <Component id="lblManageAssistant" min="-2" pref="168" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="679" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="229" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblAssignLabAssistant" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Component id="comboLabAssistant" min="-2" pref="162" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
-                              <Component id="btnSubmit" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
+                      <Component id="lblAssignCaretaker" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="comboCaretaker" min="-2" pref="160" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="316" max="-2" attributes="0"/>
+                      <Component id="btnAssign" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="133" max="32767" attributes="0"/>
+              <EmptySpace pref="94" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-              <Component id="lblManageAssistant" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Component id="lblTreatment" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="172" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblAssignLabAssistant" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="comboLabAssistant" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="160" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblAssignCaretaker" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboCaretaker" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnSubmit" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="166" max="32767" attributes="0"/>
+              <Component id="btnAssign" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="279" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lblManageAssistant">
+    <Component class="javax.swing.JLabel" name="lblTreatment">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Manage Lab Assistants"/>
+        <Property name="text" type="java.lang.String" value="Treatment to a Patient"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -80,21 +76,33 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tblSamples">
+        <Component class="javax.swing.JTable" name="tblPatientDetails">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="7" rowCount="4">
-                <Column editable="false" title="id" type="java.lang.Object"/>
+              <Table columnCount="9" rowCount="4">
+                <Column editable="false" title="Patient ID" type="java.lang.Object"/>
+                <Column editable="false" title="Hospital Name" type="java.lang.Object"/>
+                <Column editable="false" title="Diagnostic Center" type="java.lang.Object"/>
+                <Column editable="false" title="Diagnostician" type="java.lang.Object"/>
+                <Column editable="false" title="Assigned Care Taker" type="java.lang.Object"/>
+                <Column editable="false" title="Samples" type="java.lang.Object"/>
                 <Column editable="false" title="Patient Name" type="java.lang.Object"/>
-                <Column editable="false" title="Symptoms" type="java.lang.Object"/>
-                <Column editable="false" title="Assigned Lab Assistant" type="java.lang.Object"/>
-                <Column editable="false" title="Created Date" type="java.lang.Object"/>
                 <Column editable="false" title="Status" type="java.lang.Object"/>
                 <Column editable="false" title="Message" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -139,22 +147,20 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lblAssignLabAssistant">
+    <Component class="javax.swing.JLabel" name="lblAssignCaretaker">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="13" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Assign Lab Assistant"/>
+        <Property name="horizontalAlignment" type="int" value="4"/>
+        <Property name="text" type="java.lang.String" value="Assign Care Taker"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="comboLabAssistant">
+    <Component class="javax.swing.JComboBox" name="comboCaretaker">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="1">
+            <StringItem index="0" value="Item1"/>
           </StringArray>
         </Property>
       </Properties>
@@ -162,7 +168,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSubmit">
+    <Component class="javax.swing.JButton" name="btnAssign">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="13" style="1"/>
@@ -170,7 +176,7 @@
         <Property name="text" type="java.lang.String" value="Assign"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubmitActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAssignActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

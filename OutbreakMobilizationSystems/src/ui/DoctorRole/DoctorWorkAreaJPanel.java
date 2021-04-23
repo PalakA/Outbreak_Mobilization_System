@@ -7,16 +7,10 @@ package ui.DoctorRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Enterprise.PharmacyEnterprise;
 import Business.Network.Network;
-import Business.Organizations.Organization;
-import Business.Roles.CareTakerRole;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.PatientDetailsRequest;
-import Business.WorkQueue.PatientRegistrationRequest;
-import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  * @author ajayp
@@ -49,9 +43,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         this.network = network;
         this.ecosystem=ecosystem;
         this.enterprise = enterprise;
-        populatePatientsTable();
-        populateCaretakerCombo();
-        populateOrganizationCombo();
     }
 
     /**
@@ -63,56 +54,41 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTreatment = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblPatientDetails = new javax.swing.JTable();
-        lblAssignCaretaker = new javax.swing.JLabel();
-        lblAssignPharmacy = new javax.swing.JLabel();
-        comboCaretaker = new javax.swing.JComboBox();
-        comboPharmacy = new javax.swing.JComboBox();
-        btnAssign = new javax.swing.JButton();
+        lblANewEnterprise = new javax.swing.JLabel();
+        date_txt = new javax.swing.JLabel();
+        time_txt = new javax.swing.JLabel();
+        btnManagePrescriptions = new javax.swing.JButton();
+        btnPatientPrescription = new javax.swing.JButton();
+        btnAssignCareTaker = new javax.swing.JButton();
 
-        lblTreatment.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblTreatment.setText("Treatment to a Patient");
+        lblANewEnterprise.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblANewEnterprise.setText("Welcome Doctor");
 
-        tblPatientDetails.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Patient ID", "Hospital Name", "Diagnostic Center", "Diagnostician", "Lab Assistant", "Samples", "Patient Name", "Prescription", "Status", "Message"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
-            };
+        date_txt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        time_txt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        btnManagePrescriptions.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnManagePrescriptions.setText("Manage Prescriptions");
+        btnManagePrescriptions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManagePrescriptionsActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(tblPatientDetails);
 
-        lblAssignCaretaker.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblAssignCaretaker.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblAssignCaretaker.setText("Assign Care Taker");
-
-        lblAssignPharmacy.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblAssignPharmacy.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblAssignPharmacy.setText("Assign Pharmacy");
-
-        comboCaretaker.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item1" }));
-
-        comboPharmacy.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", " " }));
-
-        btnAssign.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnAssign.setText("Assign");
-        btnAssign.addActionListener(new java.awt.event.ActionListener() {
+        btnPatientPrescription.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnPatientPrescription.setText("Manage Patient Prescriptions");
+        btnPatientPrescription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssignActionPerformed(evt);
+                btnPatientPrescriptionActionPerformed(evt);
+            }
+        });
+
+        btnAssignCareTaker.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnAssignCareTaker.setText("Manage Patients");
+        btnAssignCareTaker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignCareTakerActionPerformed(evt);
             }
         });
 
@@ -121,113 +97,74 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(220, 220, 220)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(281, 281, 281)
-                        .addComponent(lblTreatment))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAssignCaretaker)
-                            .addComponent(lblAssignPharmacy))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboPharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboCaretaker, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(36, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAssign)
-                .addGap(334, 334, 334))
+                        .addComponent(lblANewEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(date_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(time_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnManagePrescriptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPatientPrescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAssignCareTaker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblAssignCaretaker, lblAssignPharmacy});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(lblTreatment)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAssignCaretaker)
-                    .addComponent(comboCaretaker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAssignPharmacy)
-                    .addComponent(comboPharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnAssign)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addGap(82, 82, 82)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblANewEnterprise)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(date_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(time_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(42, 42, 42)
+                .addComponent(btnManagePrescriptions, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(btnPatientPrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(btnAssignCareTaker, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(240, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblAssignCaretaker, lblAssignPharmacy});
-
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
+    private void btnManagePrescriptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePrescriptionsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAssignActionPerformed
+        ManagePrescriptionsJPanel managePrescriptionsJPanel = new ManagePrescriptionsJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("ManagePrescriptionsJPanel", managePrescriptionsJPanel);
 
-    private void populatePatientsTable() {
-        DefaultTableModel enterpriseModel = (DefaultTableModel) tblPatientDetails.getModel();
-        enterpriseModel.setRowCount(0);
-        for (WorkRequest wr : enterprise.getWorkQueue().getWorkRequestList()) {
-            if (wr instanceof PatientRegistrationRequest) {
-                Object[] row = new Object[enterpriseModel.getColumnCount()];
-                row[0] = ((PatientRegistrationRequest) wr);
-                row[1] = ((PatientRegistrationRequest) wr).getHospitalName();
-                row[2] = ((PatientRegistrationRequest) wr).getDiagnosticCenter();
-                row[3] = ((PatientRegistrationRequest) wr).getDiagnostician();
-                row[4] = ((PatientRegistrationRequest) wr).getLabAssistant();
-                row[5] = ((PatientRegistrationRequest) wr).getSampleId();
-                row[6] = ((PatientRegistrationRequest) wr).getPatientName();
-                row[7] = ((PatientRegistrationRequest) wr).getPrescription();
-                row[8] = ((PatientRegistrationRequest) wr).getStatus();
-                row[9] = ((PatientRegistrationRequest) wr).getMessage();
-                enterpriseModel.addRow(row);
-            }
-        }
-    }
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManagePrescriptionsActionPerformed
+
+    private void btnPatientPrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientPrescriptionActionPerformed
+        // TODO add your handling code here:
+        ManagePatientPrescriptionJPanel managePatientPrescriptionJPanel = new ManagePatientPrescriptionJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("ManagePatientPrescriptionJPanel", managePatientPrescriptionJPanel);
+
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnPatientPrescriptionActionPerformed
+
+    private void btnAssignCareTakerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignCareTakerActionPerformed
+        // TODO add your handling code here:
+        ManagePatientsJPanel managePatientsJPanel = new ManagePatientsJPanel(userProcessContainer, user, network, ecosystem, enterprise);
+        userProcessContainer.add("ManagePatientsJPanel", managePatientsJPanel);
+
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnAssignCareTakerActionPerformed
+
     
-    private void populateCaretakerCombo() {
-        comboCaretaker.removeAllItems();
-        for (Network network : ecosystem.getNetworkList()) {
-            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                    for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
-                        if (u.getRole() instanceof CareTakerRole) {
-                            comboCaretaker.addItem(u.getEmployee());
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private void populateOrganizationCombo() {
-        comboPharmacy.removeAllItems();
-        for (Network network : ecosystem.getNetworkList()) {
-            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                if(enterprise instanceof PharmacyEnterprise)
-                comboPharmacy.addItem(enterprise);
-            }
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAssign;
-    private javax.swing.JComboBox comboCaretaker;
-    private javax.swing.JComboBox comboPharmacy;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblAssignCaretaker;
-    private javax.swing.JLabel lblAssignPharmacy;
-    private javax.swing.JLabel lblTreatment;
-    private javax.swing.JTable tblPatientDetails;
+    private javax.swing.JButton btnAssignCareTaker;
+    private javax.swing.JButton btnManagePrescriptions;
+    private javax.swing.JButton btnPatientPrescription;
+    private javax.swing.JLabel date_txt;
+    private javax.swing.JLabel lblANewEnterprise;
+    private javax.swing.JLabel time_txt;
     // End of variables declaration//GEN-END:variables
 }

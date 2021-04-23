@@ -82,7 +82,7 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -176,7 +176,7 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
             if (isResolved) {
                 String msg = JOptionPane.showInputDialog("Additional Information");
                 patientRegistrationRequest.setLabAssistant(labAssistant);
-                patientRegistrationRequest.setStatus("Assigned to Lab Assistant");
+                patientRegistrationRequest.setStatus("Assigned Lab Assistant");
                 patientRegistrationRequest.setMessage(msg);
                 for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
                     for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
