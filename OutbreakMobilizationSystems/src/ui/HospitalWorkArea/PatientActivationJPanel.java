@@ -175,7 +175,7 @@ public class PatientActivationJPanel extends javax.swing.JPanel {
                 Employee emp = org.getEmployeeDirectory().createEmployee(request.getPatientName());
                 UserAccount ua1 = org.getUserAccountDirectory().createUserAccount(request.getPatientUsername(), request.getPatientPassword(), emp, new PatientRole());
 
-            request.setStatus("Completed");
+            request.setStatus("Activated");
             JOptionPane.showMessageDialog(null, "User account has been activated successfully");
             populateTable();
         } else {

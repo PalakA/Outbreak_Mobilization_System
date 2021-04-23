@@ -8,8 +8,8 @@ package ui.DiagnosticianRole;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.HospitalEnterprise;
 import Business.Network.Network;
-import Business.Organizations.LaboratoriesOrganization;
 import Business.Organizations.Organization;
 import Business.Organizations.OrganizationDirectory;
 import Business.Roles.LabAssistantRole;
@@ -153,13 +153,17 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
         PatientRegistrationRequest patientRegistrationRequest = (PatientRegistrationRequest) tblSamples.getValueAt(selectedRow, 0);
         Employee labAssistant = (Employee) comboLabAssistant.getSelectedItem();
         if (selectedRow >= 0) {
-            for(Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            for (Network network : ecosystem.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+            for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
                 for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
                     if (u.getEmployee().getId() == (labAssistant.getId())) {
                         empUserAccount = u;
                         break;
                     }
                 }
+            }
+            }
             }
             for (WorkRequest wr : empUserAccount.getWorkQueue().getWorkRequestList()) {
                 if (wr instanceof PatientRegistrationRequest) {
@@ -170,8 +174,10 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
                 }
             }
             if (isResolved) {
+                String msg = JOptionPane.showInputDialog("Additional Information");
                 patientRegistrationRequest.setLabAssistant(labAssistant);
                 patientRegistrationRequest.setStatus("Assigned to Lab Assistant");
+                patientRegistrationRequest.setMessage(msg);
                 for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
                     for (UserAccount u : o.getUserAccountDirectory().getUserAccountList()) {
                         if (u.getEmployee().getId() == (labAssistant.getId())) {
@@ -193,18 +199,24 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
     private void populateSamplesTable() {
         DefaultTableModel samplesModel = (DefaultTableModel) tblSamples.getModel();
         samplesModel.setRowCount(0);
-
-        for (WorkRequest wr : enterprise.getWorkQueue().getWorkRequestList()) {
-            if (wr instanceof PatientRegistrationRequest) {
-                Object[] row = new Object[samplesModel.getColumnCount()];
-                row[0] = ((PatientRegistrationRequest) wr);
-                row[1] = ((PatientRegistrationRequest) wr).getPatientName();
-                row[2] = ((PatientRegistrationRequest) wr).getSymptom1();
-                row[3] = ((PatientRegistrationRequest) wr).getLabAssistant();
-                row[4] = ((PatientRegistrationRequest) wr).getRequestDate();
-                row[5] = ((PatientRegistrationRequest) wr).getStatus();
-                row[6] = ((PatientRegistrationRequest) wr).getMessage();
-                samplesModel.addRow(row);
+        System.out.println("enterprise" + enterprise);
+        for (Network network : ecosystem.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enterprise instanceof HospitalEnterprise) {
+                    for (WorkRequest wr : enterprise.getWorkQueue().getWorkRequestList()) {
+                        if (wr instanceof PatientRegistrationRequest) {
+                            Object[] row = new Object[samplesModel.getColumnCount()];
+                            row[0] = ((PatientRegistrationRequest) wr);
+                            row[1] = ((PatientRegistrationRequest) wr).getPatientName();
+                            row[2] = ((PatientRegistrationRequest) wr).getSymptom1();
+                            row[3] = ((PatientRegistrationRequest) wr).getLabAssistant();
+                            row[4] = ((PatientRegistrationRequest) wr).getRequestDate();
+                            row[5] = ((PatientRegistrationRequest) wr).getStatus();
+                            row[6] = ((PatientRegistrationRequest) wr).getMessage();
+                            samplesModel.addRow(row);
+                        }
+                    }
+                }
             }
         }
     }
