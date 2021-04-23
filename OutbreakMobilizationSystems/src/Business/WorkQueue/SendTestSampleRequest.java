@@ -16,7 +16,8 @@ import Business.Organizations.Organization;
  */
 public class SendTestSampleRequest extends WorkRequest {
     
-    private String patientName;
+    private String sampleId;
+    private Employee patientName;
     private String samples;
     private Enterprise hospitalName;
     private Network network;
@@ -24,12 +25,27 @@ public class SendTestSampleRequest extends WorkRequest {
     private Organization.Type orgType;
     private Employee diagnostician;
     private Employee labAssistant;
+    int min = 100;
+    int max = 999;
 
-    public String getPatientName() {
+    public SendTestSampleRequest() {
+        int randomNum = (int)(Math.random() * (max - min + 1) + min);
+        sampleId = "SAMPLE"+randomNum;
+    }
+
+    public String getSampleId() {
+        return sampleId;
+    }
+
+    public void setSampleId(String sampleId) {
+        this.sampleId = sampleId;
+    }
+
+    public Employee getPatientName() {
         return patientName;
     }
 
-    public void setPatientName(String patientName) {
+    public void setPatientName(Employee patientName) {
         this.patientName = patientName;
     }
 
@@ -89,8 +105,8 @@ public class SendTestSampleRequest extends WorkRequest {
         this.hospitalName = hospitalName;
     }
 
-    @Override
-    public String toString() {
-        return patientName;
-    }
+//    @Override
+//    public String toString() {
+//        return patientName;
+//    }
 }

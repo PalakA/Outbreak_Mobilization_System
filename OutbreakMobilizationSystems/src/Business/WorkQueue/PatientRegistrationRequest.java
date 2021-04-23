@@ -42,14 +42,61 @@ public class PatientRegistrationRequest extends WorkRequest {
     private Employee diagnostician;
     private Employee careTaker;
     private Employee labAssistant;
+    private String hospitalName;
+    private String sampleId;
+    private Enterprise diagnosticCenter;
+    private Organization Pharmacy;
+    private String prescription;
     int min = 100;
     int max = 999;
 
     public PatientRegistrationRequest() {
         int randomNum = (int)(Math.random() * (max - min + 1) + min);
         patientId = "PATIENT"+randomNum;
+        int randomNum1 = (int)(Math.random() * (max - min + 1) + min);
+        this.setSampleId("SAMPLE"+randomNum1);
     }
 
+    public String getPrescription() {
+        return prescription;
+    }
+
+    public void setPrescription(String prescription) {
+        this.prescription = prescription;
+    }
+
+    public Enterprise getDiagnosticCenter() {
+        return diagnosticCenter;
+    }
+
+    public void setDiagnosticCenter(Enterprise diagnosticCenter) {
+        this.diagnosticCenter = diagnosticCenter;
+    }
+
+    public Organization getPharmacy() {
+        return Pharmacy;
+    }
+
+    public void setPharmacy(Organization Pharmacy) {
+        this.Pharmacy = Pharmacy;
+    }
+    
+    public String getHospitalName() {
+        return hospitalName;
+    }
+
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
+    }
+
+    public String getSampleId() {
+        return sampleId;
+    }
+
+    public void setSampleId(String sampleId) {
+        this.sampleId = sampleId;
+    }
+    
     public String getPatientName() {
         return patientName;
     }
@@ -188,6 +235,6 @@ public class PatientRegistrationRequest extends WorkRequest {
     
     @Override
     public String toString() {
-        return patientName;
+        return patientId;
     }
 }

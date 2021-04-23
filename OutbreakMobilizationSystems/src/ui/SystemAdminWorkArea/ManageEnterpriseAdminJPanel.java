@@ -419,19 +419,20 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 UserAccount account = null;
                 if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
                     account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ManagerRole());
-                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.DiagnosticCenter && radioBtnDiagnostician.isSelected()) {
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.DiagnosticCenter) {
                     account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DiagnosticianRole());
-                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.DiagnosticCenter && radioBtnLabAssistant.isSelected()) {
-                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new LabAssistantRole());
                 } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalDeviceCompanies) {
                     account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ManufacturerRole());
                 } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Pharmacy) {
                     account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new PharmacistRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Laboratories) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new LabAssistantRole());
                 }
                 txtUsername.setText("");
                 txtPassword.setText("");
                 txtAdminName.setText("");
                 radioBtnDiagnostician.setSelected(false);
+                radioBtnLabAssistant.setSelected(false);
                 radioBtnManager.setSelected(false);
                 radioBtnManufacturer.setSelected(false);
                 radioBtnPharmacist.setSelected(false);
