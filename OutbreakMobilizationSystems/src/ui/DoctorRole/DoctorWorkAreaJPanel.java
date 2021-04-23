@@ -5,9 +5,11 @@
  */
 package ui.DoctorRole;
 
+import ui.PharmacyWorkArea.ManageMedicinesJPanel;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -35,14 +37,16 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     UserAccount user;
     Network network;
     Enterprise enterprise;
+    Organization organization;
     
-    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount user, Network network, EcoSystem ecosystem, Enterprise enterprise) {
+    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount user, Network network, EcoSystem ecosystem, Enterprise enterprise, Organization organization) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.user = user;
         this.network = network;
         this.ecosystem=ecosystem;
         this.enterprise = enterprise;
+        this.organization = organization;
     }
 
     /**
@@ -59,7 +63,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         time_txt = new javax.swing.JLabel();
         btnManagePrescriptions = new javax.swing.JButton();
         btnPatientPrescription = new javax.swing.JButton();
-        btnAssignCareTaker = new javax.swing.JButton();
 
         lblANewEnterprise.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblANewEnterprise.setText("Welcome Doctor");
@@ -84,14 +87,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnAssignCareTaker.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnAssignCareTaker.setText("Manage Patients");
-        btnAssignCareTaker.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssignCareTakerActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,8 +102,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(time_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnManagePrescriptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPatientPrescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAssignCareTaker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnPatientPrescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -124,15 +118,13 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnManagePrescriptions, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(btnPatientPrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(btnAssignCareTaker, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addContainerGap(300, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManagePrescriptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePrescriptionsActionPerformed
         // TODO add your handling code here:
-        ManagePrescriptionsJPanel managePrescriptionsJPanel = new ManagePrescriptionsJPanel(userProcessContainer, ecosystem);
+        ManageMedicinesJPanel managePrescriptionsJPanel = new ManageMedicinesJPanel(userProcessContainer, ecosystem);
         userProcessContainer.add("ManagePrescriptionsJPanel", managePrescriptionsJPanel);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -141,26 +133,16 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnPatientPrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientPrescriptionActionPerformed
         // TODO add your handling code here:
-        ManagePatientPrescriptionJPanel managePatientPrescriptionJPanel = new ManagePatientPrescriptionJPanel(userProcessContainer, ecosystem);
+        ManagePatientPrescriptionJPanel managePatientPrescriptionJPanel = new ManagePatientPrescriptionJPanel(userProcessContainer, ecosystem, organization, enterprise);
         userProcessContainer.add("ManagePatientPrescriptionJPanel", managePatientPrescriptionJPanel);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnPatientPrescriptionActionPerformed
 
-    private void btnAssignCareTakerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignCareTakerActionPerformed
-        // TODO add your handling code here:
-        ManagePatientsJPanel managePatientsJPanel = new ManagePatientsJPanel(userProcessContainer, user, network, ecosystem, enterprise);
-        userProcessContainer.add("ManagePatientsJPanel", managePatientsJPanel);
-
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnAssignCareTakerActionPerformed
-
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAssignCareTaker;
     private javax.swing.JButton btnManagePrescriptions;
     private javax.swing.JButton btnPatientPrescription;
     private javax.swing.JLabel date_txt;

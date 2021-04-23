@@ -33,7 +33,7 @@ public class DoctorRole extends Roles{
     }
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
-        return new DoctorWorkAreaJPanel(userProcessContainer, account, network, system, enterprise);
+        return new DoctorWorkAreaJPanel(userProcessContainer, account, network, system, enterprise, organization);
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package Business.Organizations;
 
+import Business.Medicine.MedicineDirectory;
 import Business.Roles.CareTakerRole;
 import Business.Roles.DoctorRole;
 import Business.Roles.ManagerRole;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
  */
 
 public class HospitalInvetoryOrganization extends Organization{
-        
+ 
     public HospitalInvetoryOrganization() {
         super(Organization.Type.Hospital.getValue());
     }

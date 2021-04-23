@@ -5,6 +5,7 @@
  */
 package Business.Organizations;
 
+import Business.Medicine.MedicineDirectory;
 import Business.Roles.PharmacistRole;
 import Business.Roles.Roles;
 import java.util.ArrayList;
@@ -21,6 +22,17 @@ import java.util.ArrayList;
  */
 
 public class PharmacyCatalogOrganization extends Organization{
+    
+    private MedicineDirectory medicineDirectory;
+    
+    
+    public MedicineDirectory getMedicineDirectory() {
+        return medicineDirectory;
+    }
+
+    public void setMedicineDirectory(MedicineDirectory medicineDirectory) {
+        this.medicineDirectory = medicineDirectory;
+    }
     
     public PharmacyCatalogOrganization() {
         super(Organization.Type.PharmacyCatalog.getValue());
