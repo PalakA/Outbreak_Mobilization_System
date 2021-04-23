@@ -7,6 +7,8 @@ package ui.PharmacyWorkArea;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.HospitalEnterprise;
+import Business.Network.Network;
 import Business.WorkQueue.PatientRegistrationRequest;
 import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
@@ -50,19 +52,24 @@ public class ManagePrescriptionJPanel extends javax.swing.JPanel {
     private void populatePharmacistTable() {
         DefaultTableModel medicinesModel = (DefaultTableModel) tblProcessMedicines.getModel();
         medicinesModel.setRowCount(0);
-        System.out.println("enterprise" + enterprise);
-        for (WorkRequest wr : enterprise.getWorkQueue().getWorkRequestList()) {
-            if (wr instanceof PatientRegistrationRequest) {
-                Object[] row = new Object[medicinesModel.getColumnCount()];
-                row[0] = ((PatientRegistrationRequest) wr);
-                row[1] = ((PatientRegistrationRequest) wr).getPatientName();
-                row[2] = ((PatientRegistrationRequest) wr).getDoctor();
-                row[3] = ((PatientRegistrationRequest) wr).getCareTaker();
-                row[4] = ((PatientRegistrationRequest) wr).getPrescription();
-                row[5] = ((PatientRegistrationRequest) wr).getQuantity();
-                row[6] = ((PatientRegistrationRequest) wr).getStatus();
-                row[7] = ((PatientRegistrationRequest) wr).getMessage();
-                medicinesModel.addRow(row);
+        
+        for (Network network : ecosystem.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enterprise instanceof HospitalEnterprise) {
+                    for (WorkRequest wr : enterprise.getWorkQueue().getWorkRequestList()) {
+                        if (wr instanceof PatientRegistrationRequest) {
+                            Object[] row = new Object[medicinesModel.getColumnCount()];
+                            row[0] = ((PatientRegistrationRequest) wr);
+                            row[1] = ((PatientRegistrationRequest) wr).getPatientName();
+                            row[2] = ((PatientRegistrationRequest) wr).getDoctor();
+                            row[3] = ((PatientRegistrationRequest) wr).getCareTaker();
+                            row[4] = ((PatientRegistrationRequest) wr).getQuantity();
+                            row[5] = ((PatientRegistrationRequest) wr).getStatus();
+                            row[6] = ((PatientRegistrationRequest) wr).getMessage();
+                            medicinesModel.addRow(row);
+                        }
+                    }
+                }
             }
         }
     }
@@ -80,17 +87,17 @@ public class ManagePrescriptionJPanel extends javax.swing.JPanel {
 
         tblProcessMedicines.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Patient ID", "Patient Name", "Doctor Name", "Care Taker Name", "Prescription", "Quantity", "Status", "Message"
+                "Patient ID", "Patient Name", "Doctor Name", "Care Taker Name", "Quantity", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

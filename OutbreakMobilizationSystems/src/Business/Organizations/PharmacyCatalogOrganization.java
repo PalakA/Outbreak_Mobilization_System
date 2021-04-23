@@ -25,7 +25,6 @@ public class PharmacyCatalogOrganization extends Organization{
     
     private MedicineDirectory medicineDirectory;
     
-    
     public MedicineDirectory getMedicineDirectory() {
         return medicineDirectory;
     }

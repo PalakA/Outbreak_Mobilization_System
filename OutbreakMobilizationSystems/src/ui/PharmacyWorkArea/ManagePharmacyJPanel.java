@@ -106,6 +106,10 @@ public class ManagePharmacyJPanel extends javax.swing.JPanel {
 
     private void btnManageMedicinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageMedicinesActionPerformed
         // TODO add your handling code here:
+        ManageMedicinesJPanel manageMedicinesJPanel = new ManageMedicinesJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("ManageMedicines", manageMedicinesJPanel);
+        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+        cardLayout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageMedicinesActionPerformed
 
     private void btnManagePrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePrescriptionActionPerformed
