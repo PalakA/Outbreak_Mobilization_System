@@ -83,7 +83,7 @@ public class DoctorPrescriptionJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblPrescription);
 
         btnRequestCaretaker.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnRequestCaretaker.setText("Request Care Taker");
+        btnRequestCaretaker.setText("Request Care Taker to deliver medicines");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -101,9 +101,9 @@ public class DoctorPrescriptionJPanel extends javax.swing.JPanel {
                         .addGap(103, 103, 103)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(270, 270, 270)
+                        .addGap(201, 201, 201)
                         .addComponent(btnRequestCaretaker)))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,7 +116,7 @@ public class DoctorPrescriptionJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(btnRequestCaretaker)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
