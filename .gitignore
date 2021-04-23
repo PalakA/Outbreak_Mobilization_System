@@ -2,3 +2,4 @@ OutbreakMobilizationSystems/nbproject/private/*
 OutbreakMobilizationSystems/build/*
 OutbreakMobilizationSystems/dist/*
 *.jar
+!OutbreakMobilizationSystems/lib/*.jar

@@ -13,6 +13,13 @@ import Business.Utils.Validator;
 import Business.WorkQueue.PatientRegistrationRequest;
 import Business.WorkQueue.WorkQueue;
 import java.util.Date;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -375,6 +382,7 @@ public class PatientRegistrationJPanel extends javax.swing.JPanel {
             registrationRequest.setSymptom1(patientSymptoms);
             registrationRequest.setRequestDate(new Date());
             registrationRequest.setMessage(msg);
+            sendEmailMessage(patientEmailId);
 
             for (Network network1 : ecosystem.getNetworkList()) {
                 for (Enterprise enterprise : network1.getEnterpriseDirectory().getEnterpriseList()) {
@@ -416,7 +424,52 @@ public class PatientRegistrationJPanel extends javax.swing.JPanel {
         radioBtnFemale.setSelected(false);
     }//GEN-LAST:event_radioBtnMaleActionPerformed
 
+public static void sendEmailMessage(String emailId) {
+        // Recipient's email ID needs to be mentioned.
+        String to = emailId;
+        String from = "donotreplymobilization@gmail.com";
+        String pass = "outbreakMobileSystem";
+        // Assuming you are sending email from localhost
+        // String host = "192.168.0.16";
 
+        // Get system properties
+        Properties properties = System.getProperties();
+        String host = "smtp.gmail.com";
+
+        properties.put("mail.smtp.starttls.enable", "true");
+
+        properties.put("mail.smtp.ssl.trust", host);
+        properties.put("mail.smtp.user", from);
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "true");
+
+        Session session = Session.getDefaultInstance(properties);
+
+        try {
+            // Create a default MimeMessage object.
+            MimeMessage message = new MimeMessage(session);
+
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress(from));
+
+            // Set To: header field of the header.
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+
+            // Set Subject: header field
+            message.setSubject("Patient Registration");
+            message.setText("Thank you for registering with us. Your account will be activated within 24 hours.");
+             message.setText("After account activation, Please submit your samples to a Diagnostic Center");
+            // Send message
+            Transport transport = session.getTransport("smtp");
+            transport.connect(host, from, pass);
+            transport.sendMessage(message, message.getAllRecipients());
+            transport.close();
+            System.out.println("Sent message successfully....");
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Invalid email id");
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox comboNetwork;
