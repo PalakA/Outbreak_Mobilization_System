@@ -24,6 +24,7 @@ import ui.HospitalWorkArea.ManageWorkAreaJPanel;
  * 04/13/2021            @author nakul       Added Manager role
  * 04/14/2021            @author palak       Added UserAccount, network and constructor
  * 04/20/2021            @author palak       Added enterprise
+ * 04/22/2021            @author palak       Added UserAccount
  */
 
 public class ManagerRole extends Roles{
@@ -34,7 +35,7 @@ public class ManagerRole extends Roles{
     }
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Network network, EcoSystem system) {
-        return new ManageWorkAreaJPanel(userProcessContainer, system, enterprise);
+        return new ManageWorkAreaJPanel(userProcessContainer, system, enterprise, account);
     }
     
 }

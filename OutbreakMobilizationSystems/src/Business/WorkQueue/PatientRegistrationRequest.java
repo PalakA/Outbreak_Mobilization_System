@@ -25,6 +25,7 @@ import Business.Organizations.Organization;
 
 public class PatientRegistrationRequest extends WorkRequest {
     
+    private String patientId;
     private String patientName;
     private String patientAge;
     private String patientUsername;
@@ -41,6 +42,13 @@ public class PatientRegistrationRequest extends WorkRequest {
     private Employee diagnostician;
     private Employee careTaker;
     private Employee labAssistant;
+    int min = 100;
+    int max = 999;
+
+    public PatientRegistrationRequest() {
+        int randomNum = (int)(Math.random() * (max - min + 1) + min);
+        patientId = "PATIENT"+randomNum;
+    }
 
     public String getPatientName() {
         return patientName;
@@ -168,6 +176,14 @@ public class PatientRegistrationRequest extends WorkRequest {
 
     public void setLabAssistant(Employee labAssistant) {
         this.labAssistant = labAssistant;
+    }
+
+    public String getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
     }
     
     @Override

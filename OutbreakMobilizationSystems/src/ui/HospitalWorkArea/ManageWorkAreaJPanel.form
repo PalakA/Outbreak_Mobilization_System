@@ -19,15 +19,20 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnManageOrganizations" linkSize="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="manageEmployeeJButton" linkSize="3" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="userJButton" linkSize="3" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="lblANewEnterprise" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPatientActication" linkSize="3" min="-2" pref="150" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnManageOrganizations" linkSize="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="manageEmployeeJButton" linkSize="3" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="userJButton" linkSize="3" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="lblANewEnterprise" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="date_txt" min="-2" pref="101" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="time_txt" min="-2" pref="79" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-              <Component id="date_txt" min="-2" pref="101" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="time_txt" min="-2" pref="79" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -49,7 +54,9 @@
               <Component id="manageEmployeeJButton" linkSize="4" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="userJButton" linkSize="4" min="-2" pref="23" max="-2" attributes="0"/>
-              <EmptySpace pref="153" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <Component id="btnPatientActication" linkSize="4" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="96" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -108,6 +115,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userJButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPatientActication">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Activate Patients"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPatientActicationActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
