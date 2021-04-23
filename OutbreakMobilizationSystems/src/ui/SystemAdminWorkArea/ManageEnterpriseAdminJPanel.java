@@ -29,8 +29,8 @@ import javax.swing.table.DefaultTableModel;
  * Revision History:
  * 
  * Date(MM/DD/YYYY)      Author              Comment
- * 04/19/2021            @author palak      Added ManageEnterpriseAdminJPanel
- * 04/22/2021            @author palak      Added lab assistant role
+ * 04/23/2021            @author nakul      UI
+ * 
  */
 
 public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
@@ -70,13 +70,13 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         lblHospitalUsername1 = new javax.swing.JLabel();
         txtAdminName = new javax.swing.JTextField();
         lblHospitalUsername = new javax.swing.JLabel();
+        btnSubmit = new javax.swing.JButton();
         txtUsername = new javax.swing.JTextField();
         lblHospitalPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         btnBack = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblenterprise = new javax.swing.JTable();
-        btnSubmit = new javax.swing.JLabel();
         radioBtnManager = new javax.swing.JRadioButton();
         lblRole = new javax.swing.JLabel();
         radioBtnDiagnostician = new javax.swing.JRadioButton();
@@ -84,6 +84,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         radioBtnManufacturer = new javax.swing.JRadioButton();
         radioBtnSupplyChain = new javax.swing.JRadioButton();
         radioBtnLabAssistant = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -98,58 +99,92 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Manage Enterprise Admin");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 690, -1));
 
-        lblNetwork.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblNetwork.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblNetwork.setText("Network:");
+        add(lblNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, -1));
 
+        comboNetwork.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         comboNetwork.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboNetwork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboNetworkActionPerformed(evt);
             }
         });
+        add(comboNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 280, -1));
 
-        lblEnterpriseType.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblEnterpriseType.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblEnterpriseType.setText("Enterprise Type:");
+        add(lblEnterpriseType, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
 
+        comboEnterpriseType.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         comboEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(comboEnterpriseType, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 280, -1));
 
-        lblHospitalUsername1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblHospitalUsername1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblHospitalUsername1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblHospitalUsername1.setText("Name:");
+        add(lblHospitalUsername1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, -1, -1));
 
+        txtAdminName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         txtAdminName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAdminNameActionPerformed(evt);
             }
         });
+        add(txtAdminName, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 280, 40));
 
-        lblHospitalUsername.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblHospitalUsername.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblHospitalUsername.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblHospitalUsername.setText("Username:");
+        add(lblHospitalUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, -1));
 
+        btnSubmit.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnSubmit.setText("Create Enterprise Admin");
+        btnSubmit.setOpaque(false);
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 520, -1, -1));
+
+        txtUsername.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsernameActionPerformed(evt);
             }
         });
+        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 280, 40));
 
-        lblHospitalPassword.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblHospitalPassword.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblHospitalPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblHospitalPassword.setText("Password:");
+        add(lblHospitalPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
 
-        btnBack.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        txtPassword.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 410, 280, 40));
+
+        btnBack.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnBack.setText("Back");
+        btnBack.setOpaque(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
 
-        tblenterprise.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        tblenterprise.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tblenterprise.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblenterprise.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -169,174 +204,72 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblenterprise.setRowHeight(50);
         jScrollPane3.setViewportView(tblenterprise);
 
-        btnSubmit.setBackground(new java.awt.Color(255, 255, 255));
-        btnSubmit.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
-        btnSubmit.setForeground(new java.awt.Color(25, 56, 82));
-        btnSubmit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnSubmit.setText("Create Enterprise Admin");
-        btnSubmit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnSubmit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnSubmitMousePressed(evt);
-            }
-        });
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 650, 1190, 230));
 
+        radioBtnManager.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         radioBtnManager.setText("Hospital Manager");
         radioBtnManager.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioBtnManagerActionPerformed(evt);
             }
         });
+        add(radioBtnManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 210, 250, -1));
 
-        lblRole.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblRole.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblRole.setText("Role:");
+        add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 150, -1, -1));
 
+        radioBtnDiagnostician.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         radioBtnDiagnostician.setText("Diagnostician");
         radioBtnDiagnostician.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioBtnDiagnosticianActionPerformed(evt);
             }
         });
+        add(radioBtnDiagnostician, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 260, -1, -1));
 
+        radioBtnPharmacist.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         radioBtnPharmacist.setText("Pharmacist");
         radioBtnPharmacist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioBtnPharmacistActionPerformed(evt);
             }
         });
+        add(radioBtnPharmacist, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 350, 200, 30));
 
+        radioBtnManufacturer.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         radioBtnManufacturer.setText("Manufacturer");
         radioBtnManufacturer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioBtnManufacturerActionPerformed(evt);
             }
         });
+        add(radioBtnManufacturer, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 400, 210, 30));
 
+        radioBtnSupplyChain.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         radioBtnSupplyChain.setText("Supply Chain");
         radioBtnSupplyChain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioBtnSupplyChainActionPerformed(evt);
             }
         });
+        add(radioBtnSupplyChain, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 440, 200, 40));
 
+        radioBtnLabAssistant.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         radioBtnLabAssistant.setText("Lab Assistant");
         radioBtnLabAssistant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioBtnLabAssistantActionPerformed(evt);
             }
         });
+        add(radioBtnLabAssistant, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 200, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblHospitalUsername1)
-                                    .addComponent(lblEnterpriseType)
-                                    .addComponent(lblNetwork))
-                                .addGap(33, 33, 33)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(comboEnterpriseType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(comboNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtAdminName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblHospitalPassword)
-                                    .addComponent(lblHospitalUsername))
-                                .addGap(33, 33, 33)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                                    .addComponent(txtPassword)
-                                    .addComponent(btnSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblRole, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(radioBtnManager, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(radioBtnDiagnostician, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(radioBtnPharmacist, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(radioBtnManufacturer, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(radioBtnSupplyChain, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(radioBtnLabAssistant, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnBack))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(133, Short.MAX_VALUE))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {comboEnterpriseType, comboNetwork});
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtPassword, txtUsername});
-
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnBack)
-                .addGap(9, 9, 9)
-                .addComponent(jLabel1)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNetwork)
-                    .addComponent(comboNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblRole))
-                .addGap(3, 3, 3)
-                .addComponent(radioBtnManager)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblEnterpriseType)
-                            .addComponent(comboEnterpriseType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(13, 13, 13)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblHospitalUsername1)
-                            .addComponent(txtAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblHospitalUsername)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblHospitalPassword)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
-                        .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(radioBtnDiagnostician)
-                        .addGap(7, 7, 7)
-                        .addComponent(radioBtnLabAssistant)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(radioBtnPharmacist)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(radioBtnManufacturer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(radioBtnSupplyChain)))
-                .addGap(49, 49, 49)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/manageenterprise.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1950, 1000));
     }// </editor-fold>//GEN-END:initComponents
 
         private void populateTable() {
@@ -389,61 +322,6 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         cardLayout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
        
-    private void btnSubmitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMousePressed
-        // TODO add your handling code here:
-        Enterprise enterprise = (Enterprise) comboEnterpriseType.getSelectedItem();
-
-        String username = txtUsername.getText();
-        String password = String.valueOf(txtPassword.getPassword());
-        String name = txtAdminName.getText();
-        
-        if (!Validator.isValidUsername(username)) {
-            JOptionPane.showMessageDialog(null, "Username is in incorrect \nFormat. Should be 2 to 25 characters "
-                    + "and characters, numbers and the ., -, _ symbols");
-            return;
-        }
-        
-        if(!Validator.isValidPassword(password))
-        {
-            JOptionPane.showMessageDialog(null, "Password is in incorrect \nFormat. Should be minimum 8 in length "
-                    + "with one upper case, one lower case, one digit and one special character");
-            return;
-        }
-        
-        if(username.isEmpty() || password.isEmpty() || name.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please enter all fields", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else{
-            Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
-
-            if (ecosystem.checkIfUserIsUnique(username)) {
-                UserAccount account = null;
-                if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
-                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ManagerRole());
-                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.DiagnosticCenter) {
-                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DiagnosticianRole());
-                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalDeviceCompanies) {
-                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ManufacturerRole());
-                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Pharmacy) {
-                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new PharmacistRole());
-                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Laboratories) {
-                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new LabAssistantRole());
-                }
-                txtUsername.setText("");
-                txtPassword.setText("");
-                txtAdminName.setText("");
-                radioBtnDiagnostician.setSelected(false);
-                radioBtnLabAssistant.setSelected(false);
-                radioBtnManager.setSelected(false);
-                radioBtnManufacturer.setSelected(false);
-                radioBtnPharmacist.setSelected(false);
-                radioBtnSupplyChain.setSelected(false);
-                JOptionPane.showMessageDialog(null, "Account created sucessfully");
-                populateTable();
-            }else {
-                JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_btnSubmitMousePressed
 
     private void radioBtnManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnManagerActionPerformed
         // TODO add your handling code here:
@@ -507,13 +385,69 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         radioBtnSupplyChain.setSelected(false);
     }//GEN-LAST:event_radioBtnLabAssistantActionPerformed
 
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+        Enterprise enterprise = (Enterprise) comboEnterpriseType.getSelectedItem();
+
+        String username = txtUsername.getText();
+        String password = String.valueOf(txtPassword.getPassword());
+        String name = txtAdminName.getText();
+        
+        if (!Validator.isValidUsername(username)) {
+            JOptionPane.showMessageDialog(null, "Username is in incorrect \nFormat. Should be 2 to 25 characters "
+                    + "and characters, numbers and the ., -, _ symbols");
+            return;
+        }
+        
+        if(!Validator.isValidPassword(password))
+        {
+            JOptionPane.showMessageDialog(null, "Password is in incorrect \nFormat. Should be minimum 8 in length "
+                    + "with one upper case, one lower case, one digit and one special character");
+            return;
+        }
+        
+        if(username.isEmpty() || password.isEmpty() || name.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter all fields", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else{
+            Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
+
+            if (ecosystem.checkIfUserIsUnique(username)) {
+                UserAccount account = null;
+                if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ManagerRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.DiagnosticCenter && radioBtnDiagnostician.isSelected()) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DiagnosticianRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.DiagnosticCenter && radioBtnLabAssistant.isSelected()) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new LabAssistantRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalDeviceCompanies) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ManufacturerRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Pharmacy) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new PharmacistRole());
+                }
+                txtUsername.setText("");
+                txtPassword.setText("");
+                txtAdminName.setText("");
+                radioBtnDiagnostician.setSelected(false);
+                radioBtnManager.setSelected(false);
+                radioBtnManufacturer.setSelected(false);
+                radioBtnPharmacist.setSelected(false);
+                radioBtnSupplyChain.setSelected(false);
+                JOptionPane.showMessageDialog(null, "Account created sucessfully");
+                populateTable();
+            }else {
+                JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JLabel btnSubmit;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox comboEnterpriseType;
     private javax.swing.JComboBox comboNetwork;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
