@@ -5,6 +5,11 @@
  */
 package ui.LogisticsWorkArea;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organizations.Organization;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ajayp
@@ -14,7 +19,12 @@ public class ManagePharmacyMedicinesJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManagePharmacyMedicinesJPanel
      */
-    public ManagePharmacyMedicinesJPanel() {
+    private JPanel userProcessContainer;
+    private EcoSystem ecosystem;
+    Enterprise enterprise;
+    Organization organization;
+    
+    public ManagePharmacyMedicinesJPanel(JPanel userProcessContainer, EcoSystem ecosystem, Enterprise enterprise, Organization organization) {
         initComponents();
     }
 
@@ -59,6 +69,11 @@ public class ManagePharmacyMedicinesJPanel extends javax.swing.JPanel {
 
         btnProcess.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnProcess.setText("Process");
+        btnProcess.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcessActionPerformed(evt);
+            }
+        });
 
         btnDeliver.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnDeliver.setText("Deliver");
@@ -96,6 +111,10 @@ public class ManagePharmacyMedicinesJPanel extends javax.swing.JPanel {
                 .addContainerGap(261, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProcessActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

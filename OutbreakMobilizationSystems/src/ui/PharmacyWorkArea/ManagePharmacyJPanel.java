@@ -24,15 +24,11 @@ public class ManagePharmacyJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-    UserAccount user;
-    Network network;
     Enterprise enterprise;
     
-    public ManagePharmacyJPanel(JPanel userProcessContainer, UserAccount user,Network network, EcoSystem ecosystem, Enterprise enterprise) {
+    public ManagePharmacyJPanel(JPanel userProcessContainer, EcoSystem ecosystem, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.user = user;
-        this.network = network;
         this.ecosystem = ecosystem;
         this.enterprise = enterprise;
     }
@@ -106,7 +102,7 @@ public class ManagePharmacyJPanel extends javax.swing.JPanel {
 
     private void btnManageMedicinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageMedicinesActionPerformed
         // TODO add your handling code here:
-        ManageMedicinesJPanel manageMedicinesJPanel = new ManageMedicinesJPanel(userProcessContainer, ecosystem,enterprise);
+        ManageMedicinesJPanel manageMedicinesJPanel = new ManageMedicinesJPanel(userProcessContainer, ecosystem, enterprise);
         userProcessContainer.add("ManageMedicines", manageMedicinesJPanel);
         CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
         cardLayout.next(userProcessContainer);

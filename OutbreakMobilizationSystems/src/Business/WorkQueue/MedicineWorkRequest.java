@@ -8,15 +8,15 @@ package Business.WorkQueue;
 import Business.Employee.Employee;
 import Business.Medicine.Medicine;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author palak
  */
-public class MedicineWorkRequest extends WorkRequest{
-        private ArrayList<Medicine> medicineList;
-        private Employee patient;
+public class MedicineWorkRequest extends WorkRequest {
+
+    private ArrayList<Medicine> medicineList;
+    private Employee patient;
 
     public MedicineWorkRequest() {
         this.medicineList = new ArrayList<>();
@@ -37,5 +37,4 @@ public class MedicineWorkRequest extends WorkRequest{
     public void setPatient(Employee patient) {
         this.patient = patient;
     }
-
 }

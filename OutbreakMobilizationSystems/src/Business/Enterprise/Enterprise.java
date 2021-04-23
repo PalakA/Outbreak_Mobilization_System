@@ -14,15 +14,14 @@ import java.util.ArrayList;
  * @author ajayp
  * @author nakul
  * @author palak
- * 
+ *
  * Revision History:
- * 
- * Date(MM/DD/YYYY)      Author              Comment
- * 04/14/2021            @author palak       Updated package names
+ *
+ * Date(MM/DD/YYYY) Author Comment 04/14/2021 @author palak Updated package
+ * names
  */
+public abstract class Enterprise extends Organization {
 
-public abstract class Enterprise extends Organization{
-    
     private EnterpriseType enterpriseType;
     private OrganizationDirectory organizationDirectory;
     private Organization organization;
@@ -31,27 +30,29 @@ public abstract class Enterprise extends Organization{
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
     }
-    
-    public enum EnterpriseType{
+
+    public enum EnterpriseType {
         Hospital("Hospital"),
         DiagnosticCenter("DiagnosticCenter"),
         Logistics("Logistics"),
         MedicalDeviceCompanies("MedicalDeviceCompanies"),
         Pharmacy("Pharmacy"),
         Laboratories("Laboratories");
-        
+
         private String value;
-        
-        private EnterpriseType(String value){
-            this.value=value;
+
+        private EnterpriseType(String value) {
+            this.value = value;
         }
+
         public String getValue() {
             return value;
         }
+
         @Override
-        public String toString(){
-        return value;
-    }
+        public String toString() {
+            return value;
+        }
     }
 
     public EnterpriseType getEnterpriseType() {
@@ -63,28 +64,30 @@ public abstract class Enterprise extends Organization{
     }
 
     public ArrayList<Medicine> getMedicineList() {
+        if (medicineList == null) {
+            medicineList = new ArrayList<Medicine>();
+        }
         return medicineList;
     }
 
     public void setMedicineList(ArrayList<Medicine> medicineList) {
         this.medicineList = medicineList;
     }
-    
-    public Enterprise(String name,EnterpriseType type){
+
+    public Enterprise(String name, EnterpriseType type) {
         super(name);
-        this.enterpriseType=type;
-        this.medicineList =new ArrayList<>();
-        organizationDirectory=new OrganizationDirectory();
+        this.enterpriseType = type;
+        this.medicineList = new ArrayList<>();
+        organizationDirectory = new OrganizationDirectory();
     }
-    
-        public Medicine createMedicineList(){
-        Medicine Medicine = new Medicine(); 
-        this.medicineList.add(Medicine);
-        return Medicine;
-}
-      
-    
-     public void deleteItem(Medicine medicine){
-        medicineList.remove(medicine); 
+
+    public Medicine createMedicineList() {
+        Medicine medicine = new Medicine();
+        this.medicineList.add(medicine);
+        return medicine;
+    }
+
+    public void deleteItem(Medicine medicine) {
+        medicineList.remove(medicine);
     }
 }
