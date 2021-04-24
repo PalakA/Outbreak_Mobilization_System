@@ -16,8 +16,14 @@ import Business.Roles.LabAssistantRole;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientRegistrationRequest;
 import Business.WorkQueue.WorkRequest;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -40,6 +46,7 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
     Network network;
     Enterprise enterprise;
     private OrganizationDirectory directory;
+    Timer timer;
 
     public DiagnosticianJPanel(JPanel userProcessContainer, EcoSystem ecosystem, Network network, Enterprise enterprise) {
         initComponents();
@@ -49,6 +56,26 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         populateSamplesTable();
         populateLabAssistantCombo();
+        
+        ActionListener actionListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+                //Time in 12Hrs Format
+                Date date1 = new Date();
+                DateFormat timeFormat1 = new SimpleDateFormat("hh:mm:ss");
+                String time1 = timeFormat1.format(date1);
+                time_txt.setText(time1);
+                
+                //Todays Date
+                Date date2 = new Date();
+                DateFormat timeFormat2 = new SimpleDateFormat("MM/dd/yyyy");
+                String time2 = timeFormat2.format(date2);
+                date_txt.setText(time2);
+            }
+        };
+        timer = new Timer(1000, actionListener);
+        timer.setInitialDelay(0);
+        timer.start();
     }
 
     /**
@@ -67,6 +94,8 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
         comboLabAssistant = new javax.swing.JComboBox();
         btnSubmit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        date_txt = new javax.swing.JLabel();
+        time_txt = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -120,6 +149,12 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/diagnew.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
+
+        date_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 30, 180, 28));
+
+        time_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add(time_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1256, 30, 160, 28));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
@@ -216,10 +251,12 @@ public class DiagnosticianJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox comboLabAssistant;
+    private javax.swing.JLabel date_txt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAssignLabAssistant;
     private javax.swing.JLabel lblManageAssistant;
     private javax.swing.JTable tblSamples;
+    private javax.swing.JLabel time_txt;
     // End of variables declaration//GEN-END:variables
 }

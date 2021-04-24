@@ -90,6 +90,8 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         btnSampleTesting = new javax.swing.JButton();
         btnDrPrescription = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        date_txt1 = new javax.swing.JLabel();
+        time_txt1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -98,7 +100,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         add(lblANewEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 460, -1));
 
         date_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1031, 50, 190, 30));
+        add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 50, 190, 30));
 
         time_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         add(time_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 50, 180, 30));
@@ -125,6 +127,12 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/diagnew.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
+
+        date_txt1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add(date_txt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 30, 180, 28));
+
+        time_txt1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add(time_txt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1256, 30, 160, 28));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSampleTestingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSampleTestingActionPerformed
@@ -138,7 +146,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnDrPrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDrPrescriptionActionPerformed
         // TODO add your handling code here:
-        DoctorPrescriptionJPanel doctorPrescriptionJPanel = new DoctorPrescriptionJPanel(userProcessContainer, ecosystem, enterprise);
+        DoctorPrescriptionJPanel doctorPrescriptionJPanel = new DoctorPrescriptionJPanel(userProcessContainer, ecosystem, enterprise,user);
         userProcessContainer.add("DoctorPrescription", doctorPrescriptionJPanel);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -150,8 +158,10 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDrPrescription;
     private javax.swing.JButton btnSampleTesting;
     private javax.swing.JLabel date_txt;
+    private javax.swing.JLabel date_txt1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblANewEnterprise;
     private javax.swing.JLabel time_txt;
+    private javax.swing.JLabel time_txt1;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,6 +11,7 @@ import Business.Enterprise.HospitalEnterprise;
 import Business.Network.Network;
 import Business.WorkQueue.PatientRegistrationRequest;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -78,16 +79,28 @@ public class ManagePrescriptionJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblMedicinesToPatients = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProcessMedicines = new javax.swing.JTable();
         btnProcess = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblMedicinesToPatients.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblMedicinesToPatients.setText("Process the Medicines to Patients");
         add(lblMedicinesToPatients, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 850, 70));
+
+        btnBack.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.setOpaque(false);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 110, 50));
 
         tblProcessMedicines.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblProcessMedicines.setModel(new javax.swing.table.DefaultTableModel(
@@ -98,7 +111,7 @@ public class ManagePrescriptionJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Patient ID", "Patient Name", "Doctor Name", "Care Taker Name", "Quantity", "Status", "Message"
+                "Patient ID", "Patient Name", "Doctor Name", "Care Taker Name", "No of Tablets", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -127,30 +140,39 @@ public class ManagePrescriptionJPanel extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/presnew.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/diagnew.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblProcessMedicines.getSelectedRow();
-        PatientRegistrationRequest patientRegistrationRequest = (PatientRegistrationRequest) tblProcessMedicines.getValueAt(selectedRow, 0);
+        
         if (selectedRow >= 0) {
-            if (patientRegistrationRequest.getStatus().equalsIgnoreCase("Pick up for Delivery")) {
+            PatientRegistrationRequest patientRegistrationRequest = (PatientRegistrationRequest) tblProcessMedicines.getValueAt(selectedRow, 0);
                 String msg = JOptionPane.showInputDialog("Additional Information");
                 patientRegistrationRequest.setStatus("Medicines given to the Care Taker");
                 patientRegistrationRequest.setMessage(msg);
                 populatePharmacistTable();
-            } else {
-                JOptionPane.showMessageDialog(null, "The medicines already given.");
-            }
         } else {
             JOptionPane.showMessageDialog(null, "Please select the prescription to given the medicines.");
         }
     }//GEN-LAST:event_btnProcessActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+        cardLayout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnProcess;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMedicinesToPatients;
     private javax.swing.JTable tblProcessMedicines;

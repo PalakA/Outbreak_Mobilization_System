@@ -38,30 +38,58 @@ public class PatientRegistrationRequest extends WorkRequest {
     private Network network;
     private Enterprise enterprise;
     private Organization.Type orgType;
-    private Employee doctor;
+    private String doctor;
     private Employee diagnostician;
     private Employee careTaker;
     private Employee labAssistant;
     private String hospitalName;
     private String sampleId;
     private Enterprise diagnosticCenter;
-    private Organization Pharmacy;
+    private Enterprise Pharmacy;
     private String prescription;
     private int quantity;
+    private String logisticsId;
+    private String pharmacyId;
     int min = 100;
     int max = 999;
     int medicineMin = 1;
     int medicineMax = 30;
+    int sampleMin = 10;
+    int sampleMax = 300;
+    int logisticMin = 10;
+    int logisticMax = 300;
+    int pharmacyMin = 10;
+    int pharmacyMax = 300;
 
     public PatientRegistrationRequest() {
         int randomNum = (int)(Math.random() * (max - min + 1) + min);
-        patientId = "PATIENT"+randomNum;
-        int randomNum1 = (int)(Math.random() * (max - min + 1) + min);
-        this.setSampleId("SAMPLE"+randomNum1);
+        patientId = "PATIENT "+randomNum;
+        int randomNum1 = (int)(Math.random() * (sampleMax - sampleMin + 1) + sampleMin);
+        sampleId = "SAMPLE "+randomNum1;
         int randomQuantityNum = (int)(Math.random() * (medicineMax - medicineMin + 1) + medicineMin);
         quantity = randomQuantityNum;
+        int randomLogistics = (int)(Math.random() * (logisticMax - logisticMin + 1) + logisticMin);
+        logisticsId = "LOGISTICS "+randomLogistics;
+        int randomPharmacy = (int)(Math.random() * (pharmacyMax - pharmacyMin + 1) + pharmacyMin);
+        pharmacyId = "PHARMACY "+randomPharmacy;
     }
 
+    public String getLogisticsId() {
+        return logisticsId;
+    }
+
+    public void setLogisticsId(String logisticsId) {
+        this.logisticsId = logisticsId;
+    }
+
+    public String getPharmacyId() {
+        return pharmacyId;
+    }
+
+    public void setPharmacyId(String pharmacyId) {
+        this.pharmacyId = pharmacyId;
+    }
+    
     public int getQuantity() {
         return quantity;
     }
@@ -86,11 +114,11 @@ public class PatientRegistrationRequest extends WorkRequest {
         this.diagnosticCenter = diagnosticCenter;
     }
 
-    public Organization getPharmacy() {
+    public Enterprise getPharmacy() {
         return Pharmacy;
     }
 
-    public void setPharmacy(Organization Pharmacy) {
+    public void setPharmacy(Enterprise Pharmacy) {
         this.Pharmacy = Pharmacy;
     }
     
@@ -206,11 +234,11 @@ public class PatientRegistrationRequest extends WorkRequest {
         this.orgType = orgType;
     }
 
-    public Employee getDoctor() {
+    public String getDoctor() {
         return doctor;
     }
 
-    public void setDoctor(Employee doctor) {
+    public void setDoctor(String doctor) {
         this.doctor = doctor;
     }
 

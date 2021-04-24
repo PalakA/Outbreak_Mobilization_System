@@ -6,10 +6,15 @@
 package ui.PatientRole;
 
 import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Organizations.Organization;
+import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientRegistrationRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,28 +22,28 @@ import javax.swing.table.DefaultTableModel;
  * @author ajayp
  * @author nakul
  * @author palak
- * 
+ *
  * Revision History:
- * 
- * Date(MM/DD/YYYY)      Author              Comment
- * 04/21/2021            @author palak       Added DoctorPrescriptionJPanel
+ *
+ * Date(MM/DD/YYYY) Author Comment 04/21/2021 @author palak Added
+ * DoctorPrescriptionJPanel
  */
-
 public class DoctorPrescriptionJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form DoctorPrescriptionJPanel
      */
-    
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     Enterprise enterprise;
-    
-    public DoctorPrescriptionJPanel(JPanel userProcessContainer, EcoSystem ecosystem, Enterprise enterprise) {
+    UserAccount userAccount;
+
+    public DoctorPrescriptionJPanel(JPanel userProcessContainer, EcoSystem ecosystem, Enterprise enterprise, UserAccount userAccount) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.enterprise = enterprise;
+        this.userAccount = userAccount;
         populateDoctorPrescriptionTable();
     }
 
@@ -56,14 +61,13 @@ public class DoctorPrescriptionJPanel extends javax.swing.JPanel {
                 row[0] = ((PatientRegistrationRequest) wr);
                 row[1] = ((PatientRegistrationRequest) wr).getDoctor();
                 row[2] = ((PatientRegistrationRequest) wr).getCareTaker();
-                row[3] = ((PatientRegistrationRequest) wr).getPrescription();
-                row[4] = ((PatientRegistrationRequest) wr).getStatus();
-                row[5] = ((PatientRegistrationRequest) wr).getMessage();
+                row[3] = ((PatientRegistrationRequest) wr).getStatus();
+                row[4] = ((PatientRegistrationRequest) wr).getMessage();
                 prescriptionModel.addRow(row);
             }
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -94,17 +98,17 @@ public class DoctorPrescriptionJPanel extends javax.swing.JPanel {
         tblPrescription.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblPrescription.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Prescription ID", "Doctor Name", "Care Taker", "Precription given", "Status", "Message"
+                "Prescription ID", "Doctor Name", "Care Taker", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -140,6 +144,20 @@ public class DoctorPrescriptionJPanel extends javax.swing.JPanel {
 
     private void btnRequestCaretakerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestCaretakerActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblPrescription.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            PatientRegistrationRequest patientRegistrationRequest = (PatientRegistrationRequest) tblPrescription.getValueAt(selectedRow, 0);
+
+            String msg = JOptionPane.showInputDialog("Additional Information");
+            patientRegistrationRequest.setStatus("Request for medicines");
+            patientRegistrationRequest.setMessage(msg);
+            JOptionPane.showMessageDialog(null, "Request sent successfully");
+            populateDoctorPrescriptionTable();
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row to requesrt care taker!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
     }//GEN-LAST:event_btnRequestCaretakerActionPerformed
 
 

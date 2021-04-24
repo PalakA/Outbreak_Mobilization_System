@@ -10,24 +10,22 @@ package Business.Medicine;
  * @author palak
  */
 public class Medicine {
-    private int MedId;
+    private String MedId;
     private String MedName;
-    private static int count = 1;
-
-    public Medicine() {
-        MedId = count;
-        count++;
-    }
+    int min = 100;
+    int max = 999;
     
     public Medicine(String medName) {
         this.MedName = medName;
+        int randomNum = (int)(Math.random() * (max - min + 1) + min);
+        MedId = "MEDICINE "+randomNum;
     }
 
-    public int getMedId() {
+    public String getMedId() {
         return MedId;
     }
 
-    public void setMedId(int MedId) {
+    public void setMedId(String MedId) {
         this.MedId = MedId;
     }
 

@@ -11,8 +11,14 @@ import Business.Network.Network;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientRegistrationRequest;
 import Business.WorkQueue.WorkRequest;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -36,6 +42,7 @@ public class CaretakerWorkAreaJPanel extends javax.swing.JPanel {
     UserAccount user;
     Network network;
     Enterprise enterprise;
+    Timer timer;
 
     public CaretakerWorkAreaJPanel(JPanel userProcessContainer, UserAccount user, Network network, EcoSystem ecosystem, Enterprise enterprise) {
         initComponents();
@@ -45,6 +52,26 @@ public class CaretakerWorkAreaJPanel extends javax.swing.JPanel {
         this.ecosystem = ecosystem;
         this.enterprise = enterprise;
         populateMedicinesTable();
+        
+        ActionListener actionListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+                //Time in 12Hrs Format
+                Date date1 = new Date();
+                DateFormat timeFormat1 = new SimpleDateFormat("hh:mm:ss");
+                String time1 = timeFormat1.format(date1);
+                time_txt.setText(time1);
+                
+                //Todays Date
+                Date date2 = new Date();
+                DateFormat timeFormat2 = new SimpleDateFormat("MM/dd/yyyy");
+                String time2 = timeFormat2.format(date2);
+                date_txt.setText(time2);
+            }
+        };
+        timer = new Timer(1000, actionListener);
+        timer.setInitialDelay(0);
+        timer.start();
     }
 
     /**
@@ -80,6 +107,8 @@ public class CaretakerWorkAreaJPanel extends javax.swing.JPanel {
         btnProcess = new javax.swing.JButton();
         btnDelivered = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        date_txt = new javax.swing.JLabel();
+        time_txt = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -135,21 +164,24 @@ public class CaretakerWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/caretakerNew.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1440, 1080));
+
+        date_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 30, 180, 28));
+
+        time_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add(time_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1256, 30, 160, 28));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblMedicines.getSelectedRow();
-        PatientRegistrationRequest patientRegistrationRequest = (PatientRegistrationRequest) tblMedicines.getValueAt(selectedRow, 0);
+        
         if (selectedRow >= 0) {
-            if (patientRegistrationRequest.getStatus().equalsIgnoreCase("Hospital Assigned")) {
+            PatientRegistrationRequest patientRegistrationRequest = (PatientRegistrationRequest) tblMedicines.getValueAt(selectedRow, 0);
                 String msg = JOptionPane.showInputDialog("Additional Information");
                 patientRegistrationRequest.setStatus("Pick up the prescribed medicines");
                 patientRegistrationRequest.setMessage(msg);
                 populateMedicinesTable();
-            } else {
-                JOptionPane.showMessageDialog(null, "The medicines already picked up.");
-            }
         } else {
             JOptionPane.showMessageDialog(null, "Please select the pharmacy to pickup the medicines.");
         }
@@ -158,8 +190,9 @@ public class CaretakerWorkAreaJPanel extends javax.swing.JPanel {
     private void btnDeliveredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeliveredActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblMedicines.getSelectedRow();
-        PatientRegistrationRequest patientRegistrationRequest = (PatientRegistrationRequest) tblMedicines.getValueAt(selectedRow, 0);
+        
         if (selectedRow >= 0) {
+            PatientRegistrationRequest patientRegistrationRequest = (PatientRegistrationRequest) tblMedicines.getValueAt(selectedRow, 0);
             if (patientRegistrationRequest.getStatus().equalsIgnoreCase("Pick up the prescribed medicines")) {
                 String msg = JOptionPane.showInputDialog("Additional Information");
                 patientRegistrationRequest.setStatus("Medicines delivered");
@@ -175,9 +208,11 @@ public class CaretakerWorkAreaJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelivered;
     private javax.swing.JButton btnProcess;
+    private javax.swing.JLabel date_txt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblGetMedicines;
     private javax.swing.JTable tblMedicines;
+    private javax.swing.JLabel time_txt;
     // End of variables declaration//GEN-END:variables
 }

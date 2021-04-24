@@ -14,6 +14,7 @@ import Business.Roles.CareTakerRole;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientRegistrationRequest;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -63,12 +64,14 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblTreatment = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPatientDetails = new javax.swing.JTable();
         lblAssignCaretaker = new javax.swing.JLabel();
         comboCaretaker = new javax.swing.JComboBox();
         btnAssign = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -76,19 +79,30 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
         lblTreatment.setText("Treatment to a Patient");
         add(lblTreatment, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 580, -1));
 
+        btnBack.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.setOpaque(false);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 110, 50));
+
+        tblPatientDetails.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblPatientDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Patient ID", "Hospital Name", "Diagnostic Center", "Diagnostician", "Assigned Care Taker", "Samples", "Patient Name", "Status", "Message"
+                "Patient ID", "Hospital Name", "Diagnostician", "Assigned Care Taker", "Samples", "Patient Name", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -122,6 +136,9 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/doctorprescnew.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/diagnew.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -155,6 +172,7 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
             if (isResolved) {
                 String msg = JOptionPane.showInputDialog("Additional Information");
                 patientRegistrationRequest.setCareTaker(careTaker);
+                patientRegistrationRequest.setDoctor(user.getEmployee().getName());
                 patientRegistrationRequest.setStatus("Assigned Care Taker");
                 patientRegistrationRequest.setMessage(msg);
                 for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
@@ -175,6 +193,13 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAssignActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+        cardLayout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
     private void populatePatientsTable() {
         DefaultTableModel enterpriseModel = (DefaultTableModel) tblPatientDetails.getModel();
         enterpriseModel.setRowCount(0);
@@ -183,13 +208,12 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
                 Object[] row = new Object[enterpriseModel.getColumnCount()];
                 row[0] = ((PatientRegistrationRequest) wr);
                 row[1] = ((PatientRegistrationRequest) wr).getHospitalName();
-                row[2] = ((PatientRegistrationRequest) wr).getDiagnosticCenter();
-                row[3] = ((PatientRegistrationRequest) wr).getDiagnostician();
-                row[4] = ((PatientRegistrationRequest) wr).getCareTaker();
-                row[5] = ((PatientRegistrationRequest) wr).getSampleId();
-                row[6] = ((PatientRegistrationRequest) wr).getPatientName();
-                row[7] = ((PatientRegistrationRequest) wr).getStatus();
-                row[8] = ((PatientRegistrationRequest) wr).getMessage();
+                row[2] = ((PatientRegistrationRequest) wr).getDiagnostician();
+                row[3] = ((PatientRegistrationRequest) wr).getCareTaker();
+                row[4] = ((PatientRegistrationRequest) wr).getSampleId();
+                row[5] = ((PatientRegistrationRequest) wr).getPatientName();
+                row[6] = ((PatientRegistrationRequest) wr).getStatus();
+                row[7] = ((PatientRegistrationRequest) wr).getMessage();
                 enterpriseModel.addRow(row);
             }
         }
@@ -212,8 +236,10 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
+    private javax.swing.JButton btnBack;
     private javax.swing.JComboBox comboCaretaker;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAssignCaretaker;
     private javax.swing.JLabel lblTreatment;

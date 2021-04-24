@@ -88,9 +88,10 @@ public class PatientSampleJPanel extends javax.swing.JPanel {
             if (workRequest instanceof PatientRegistrationRequest) {
                 Object[] row = new Object[model.getColumnCount()];
                 row[0] = ((PatientRegistrationRequest) workRequest);
-                row[1] = ((PatientRegistrationRequest) workRequest).getDiagnostician();
-                row[2] = ((PatientRegistrationRequest) workRequest).getStatus();
-                row[3] = ((PatientRegistrationRequest) workRequest).getMessage();
+                row[1] = ((PatientRegistrationRequest) workRequest).getPatientName();
+                row[2] = ((PatientRegistrationRequest) workRequest).getDiagnostician();
+                row[3] = ((PatientRegistrationRequest) workRequest).getStatus();
+                row[4] = ((PatientRegistrationRequest) workRequest).getMessage();
                 model.addRow(row);
             }
         }
@@ -163,17 +164,17 @@ public class PatientSampleJPanel extends javax.swing.JPanel {
         tblPopulatePatientStatus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblPopulatePatientStatus.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Id", "Assigned Diagnostician", "Status", "Message"
+                "Id", "Patient Name", "Assigned Diagnostician", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

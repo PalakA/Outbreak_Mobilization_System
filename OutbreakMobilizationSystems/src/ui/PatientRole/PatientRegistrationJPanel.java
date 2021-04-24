@@ -12,6 +12,7 @@ import Business.Organizations.Organization;
 import Business.Utils.Validator;
 import Business.WorkQueue.PatientRegistrationRequest;
 import Business.WorkQueue.WorkQueue;
+import java.awt.CardLayout;
 import java.util.Date;
 import java.util.Properties;
 import javax.mail.Message;
@@ -74,6 +75,7 @@ public class PatientRegistrationJPanel extends javax.swing.JPanel {
         radioBtnFemale = new javax.swing.JRadioButton();
         lblPatientUsername = new javax.swing.JLabel();
         txtPatientUsername = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
         lblPatientPassword = new javax.swing.JLabel();
         txtPatientPassword = new javax.swing.JTextField();
         lblPatientAddress = new javax.swing.JLabel();
@@ -89,22 +91,41 @@ public class PatientRegistrationJPanel extends javax.swing.JPanel {
         comboNetwork = new javax.swing.JComboBox();
         comboOrganization = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Patient Registration Panel");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 690, -1));
 
-        lblPatientName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblPatientName.setText("Name:");
+        lblPatientName.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblPatientName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPatientName.setText("Name : ");
+        add(lblPatientName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 100, -1));
 
-        lblPatientAge.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientAge.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblPatientAge.setText("Age:");
+        txtPatientName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(txtPatientName, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 220, 440, 30));
 
-        lblPatientGender.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientGender.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPatientAge.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblPatientAge.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPatientAge.setText("Age :");
+        add(lblPatientAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 100, -1));
+
+        txtPatientAge.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtPatientAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+            }
+        });
+        add(txtPatientAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, 440, 30));
+
+        lblPatientGender.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblPatientGender.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPatientGender.setText("Gender:");
+        add(lblPatientGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 130, -1));
 
         radioBtnMale.setText("Male");
         radioBtnMale.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +133,7 @@ public class PatientRegistrationJPanel extends javax.swing.JPanel {
                 radioBtnMaleActionPerformed(evt);
             }
         });
+        add(radioBtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, 70, -1));
 
         radioBtnFemale.setText("Female");
         radioBtnFemale.addActionListener(new java.awt.event.ActionListener() {
@@ -119,175 +141,99 @@ public class PatientRegistrationJPanel extends javax.swing.JPanel {
                 radioBtnFemaleActionPerformed(evt);
             }
         });
+        add(radioBtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 320, 80, -1));
 
-        lblPatientUsername.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientUsername.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblPatientUsername.setText("Username:");
+        lblPatientUsername.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblPatientUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPatientUsername.setText("Username :");
+        add(lblPatientUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 150, -1));
 
-        lblPatientPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblPatientPassword.setText("Password:");
+        txtPatientUsername.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(txtPatientUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 450, 440, 30));
 
-        lblPatientAddress.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientAddress.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblPatientAddress.setText("Address:");
+        btnBack.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.setOpaque(false);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 110, 50));
 
-        lblPatientNumber.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientNumber.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblPatientNumber.setText("Phone Number:");
+        lblPatientPassword.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblPatientPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPatientPassword.setText("Password :");
+        add(lblPatientPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, 150, -1));
 
-        lblPatientSymptoms1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientSymptoms1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblPatientSymptoms1.setText("Symptoms:");
+        txtPatientPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(txtPatientPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 492, 440, 30));
 
+        lblPatientAddress.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblPatientAddress.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPatientAddress.setText("Address :");
+        add(lblPatientAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 580, 160, -1));
+
+        txtPatientAddress.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(txtPatientAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 590, 440, 30));
+
+        lblPatientNumber.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblPatientNumber.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPatientNumber.setText("Phone Number :");
+        add(lblPatientNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 630, -1, -1));
+
+        txtPatientNumber.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(txtPatientNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 640, 440, 30));
+
+        lblPatientSymptoms1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblPatientSymptoms1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPatientSymptoms1.setText("Symptoms :");
+        add(lblPatientSymptoms1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 680, 190, -1));
+
+        txtPatientSymptoms1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(txtPatientSymptoms1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 690, 440, 30));
+
+        btnSubmit.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnSubmit.setText("Submit");
+        btnSubmit.setOpaque(false);
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
             }
         });
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 780, 210, 50));
 
-        lblPatientEmailId.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPatientEmailId.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblPatientEmailId.setText("Email Address:");
+        lblPatientEmailId.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblPatientEmailId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPatientEmailId.setText("Email Address :");
+        add(lblPatientEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 530, 190, -1));
 
-        lblNetwork.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblNetwork.setText("Network:");
+        txtPatientEmailId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(txtPatientEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 540, 440, 30));
 
+        lblNetwork.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblNetwork.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNetwork.setText(" Network :");
+        add(lblNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, -1, -1));
+
+        comboNetwork.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         comboNetwork.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(comboNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 352, 440, 30));
 
+        comboOrganization.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         comboOrganization.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(comboOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 400, 440, 30));
 
-        jLabel1.setText("Organization Type: ");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Organization Type : ");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPatientName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblPatientAge, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPatientGender, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(4, 4, 4)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblPatientUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblPatientPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(4, 4, 4)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(lblPatientAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                                                .addComponent(lblPatientEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(34, 34, 34)
-                                            .addComponent(txtPatientEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(lblPatientNumber)
-                                                .addComponent(lblPatientSymptoms1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(38, 38, 38)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txtPatientSymptoms1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtPatientNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtPatientAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(47, 47, 47)
-                                                    .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtPatientUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtPatientPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtPatientAge, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(radioBtnMale, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(radioBtnFemale, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(comboNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(comboOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(lblNetwork))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel1)))
-                .addContainerGap(117, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/diagnew.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblPatientAddress, lblPatientAge, lblPatientGender, lblPatientName, lblPatientNumber, lblPatientPassword, lblPatientSymptoms1, lblPatientUsername});
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {comboNetwork, comboOrganization, txtPatientAddress, txtPatientAge, txtPatientName, txtPatientNumber, txtPatientPassword, txtPatientSymptoms1, txtPatientUsername});
-
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(lblTitle)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPatientName)
-                    .addComponent(txtPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPatientAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPatientAge))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioBtnFemale)
-                    .addComponent(radioBtnMale)
-                    .addComponent(lblPatientGender))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNetwork)
-                    .addComponent(comboNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPatientUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPatientUsername))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPatientPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPatientPassword))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPatientEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPatientEmailId))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPatientAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPatientAddress))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPatientNumber)
-                    .addComponent(txtPatientNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPatientSymptoms1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPatientSymptoms1))
-                .addGap(18, 18, 18)
-                .addComponent(btnSubmit)
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblPatientAddress, lblPatientAge, lblPatientGender, lblPatientName, lblPatientNumber, lblPatientPassword, lblPatientSymptoms1, lblPatientUsername});
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtPatientAddress, txtPatientAge, txtPatientName, txtPatientNumber, txtPatientPassword, txtPatientSymptoms1, txtPatientUsername});
-
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/diagnew.jpg"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
     }// </editor-fold>//GEN-END:initComponents
 
     private void populateOrganizationCombo(){
@@ -424,6 +370,13 @@ public class PatientRegistrationJPanel extends javax.swing.JPanel {
         radioBtnFemale.setSelected(false);
     }//GEN-LAST:event_radioBtnMaleActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+        cardLayout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
 public static void sendEmailMessage(String emailId) {
         // Recipient's email ID needs to be mentioned.
         String to = emailId;
@@ -457,8 +410,7 @@ public static void sendEmailMessage(String emailId) {
 
             // Set Subject: header field
             message.setSubject("Patient Registration");
-            message.setText("Thank you for registering with us. Your account will be activated within 24 hours.");
-             message.setText("After account activation, Please submit your samples to a Diagnostic Center");
+            message.setText("Thank you for registering with us. Your account will be activated within 24 hours.\n After account activation, Please submit your samples to a Diagnostic Center.");
             // Send message
             Transport transport = session.getTransport("smtp");
             transport.connect(host, from, pass);
@@ -471,10 +423,13 @@ public static void sendEmailMessage(String emailId) {
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox comboNetwork;
     private javax.swing.JComboBox comboOrganization;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblNetwork;
     private javax.swing.JLabel lblPatientAddress;
     private javax.swing.JLabel lblPatientAge;

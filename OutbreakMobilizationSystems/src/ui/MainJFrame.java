@@ -23,6 +23,7 @@ import Business.Roles.SupplyChainRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import static java.time.Clock.system;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import ui.PatientRole.PatientRegistrationJPanel;
@@ -84,7 +85,7 @@ public class MainJFrame extends javax.swing.JFrame {
         btnSignUp = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         container = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -152,8 +153,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         container.setLayout(new java.awt.CardLayout());
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Mainbk.jpg"))); // NOI18N
-        container.add(jLabel4, "card2");
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Mainbk1.jpg"))); // NOI18N
+        container.add(jLabel5, "card3");
 
         jSplitPane1.setRightComponent(container);
 
@@ -233,6 +234,7 @@ public class MainJFrame extends javax.swing.JFrame {
         CardLayout crdLyt = (CardLayout) container.getLayout();
         crdLyt.next(container);
         dB4OUtil.storeSystem(system);
+        logoutJButton.setIcon(new ImageIcon("Mainbk1.jpg"));
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
@@ -334,7 +336,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton loginJButton;

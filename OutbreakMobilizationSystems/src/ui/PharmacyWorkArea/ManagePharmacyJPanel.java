@@ -10,7 +10,15 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  *
@@ -21,16 +29,36 @@ public class ManagePharmacyJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManagePharmacyJPanel
      */
-    
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     Enterprise enterprise;
-    
+    Timer timer;
+
     public ManagePharmacyJPanel(JPanel userProcessContainer, EcoSystem ecosystem, Enterprise enterprise) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
+        this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.enterprise = enterprise;
+
+        ActionListener actionListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Time in 12Hrs Format
+                Date date1 = new Date();
+                DateFormat timeFormat1 = new SimpleDateFormat("hh:mm:ss");
+                String time1 = timeFormat1.format(date1);
+                time_txt.setText(time1);
+
+                //Todays Date
+                Date date2 = new Date();
+                DateFormat timeFormat2 = new SimpleDateFormat("MM/dd/yyyy");
+                String time2 = timeFormat2.format(date2);
+                date_txt.setText(time2);
+            }
+        };
+        timer = new Timer(1000, actionListener);
+        timer.setInitialDelay(0);
+        timer.start();
     }
 
     /**
@@ -46,6 +74,8 @@ public class ManagePharmacyJPanel extends javax.swing.JPanel {
         btnManageMedicines = new javax.swing.JButton();
         btnManagePrescription = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        date_txt = new javax.swing.JLabel();
+        time_txt = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -73,8 +103,27 @@ public class ManagePharmacyJPanel extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/presnew.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
-    }// </editor-fold>//GEN-END:initComponents
 
+        date_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 30, 180, 28));
+
+        time_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add(time_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1256, 30, 160, 28));
+    }// </editor-fold>//GEN-END:initComponents
+    public void CurrentDate()
+    {
+        Calendar cal = new GregorianCalendar();
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        date_txt.setText(year+"/"+(month+1)+"/"+day);
+        
+        int second = cal.get(Calendar.SECOND);
+        int minute = cal.get(Calendar.MINUTE);
+        int hour = cal.get(Calendar.HOUR);
+        time_txt.setText(hour+":"+minute+":"+second);
+    }
+    
     private void btnManageMedicinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageMedicinesActionPerformed
         // TODO add your handling code here:
         ManageMedicinesJPanel manageMedicinesJPanel = new ManageMedicinesJPanel(userProcessContainer, ecosystem, enterprise);
@@ -95,7 +144,9 @@ public class ManagePharmacyJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnManageMedicines;
     private javax.swing.JButton btnManagePrescription;
+    private javax.swing.JLabel date_txt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblManagePharmacy;
+    private javax.swing.JLabel time_txt;
     // End of variables declaration//GEN-END:variables
 }
