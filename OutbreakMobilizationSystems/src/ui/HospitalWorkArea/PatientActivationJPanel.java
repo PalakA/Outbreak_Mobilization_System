@@ -15,6 +15,7 @@ import Business.Roles.PatientRole;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientRegistrationRequest;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -84,16 +85,28 @@ public class PatientActivationJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblManageAssistant = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
         btnSubmit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblManageAssistant.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblManageAssistant.setText("Manage Patient Registration Requests");
         add(lblManageAssistant, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 950, -1));
+
+        btnBack.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.setOpaque(false);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 110, 50));
 
         workRequestJTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         workRequestJTable.setForeground(new java.awt.Color(25, 56, 82));
@@ -145,6 +158,9 @@ public class PatientActivationJPanel extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/hospitalnew.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/diagnew.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
@@ -167,10 +183,19 @@ public class PatientActivationJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+        cardLayout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblManageAssistant;
     private javax.swing.JTable workRequestJTable;

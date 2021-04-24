@@ -8,6 +8,7 @@ package ui.PharmacyWorkArea;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Medicine.Medicine;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -54,18 +55,30 @@ public class ManageMedicinesJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblTitle = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
         lblMedName = new javax.swing.JLabel();
         txtMedName = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMedicine = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblTitle.setText("Manage Medicine");
         add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 430, -1));
+
+        btnBack.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.setOpaque(false);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 110, 50));
 
         lblMedName.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblMedName.setText("Medicine Name:");
@@ -112,21 +125,38 @@ public class ManageMedicinesJPanel extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/presnew.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/diagnew.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         String medicineName = txtMedName.getText();
-        Medicine medicine = new Medicine(medicineName);
-        enterprise.getMedicineList().add(medicine);
-        JOptionPane.showMessageDialog(null, "Added Medicine Successfully");
-        populateMedicinetbl();
+        if (medicineName.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Medicine Name cannot be empty", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else {
+            Medicine medicine = new Medicine(medicineName);
+            enterprise.getMedicineList().add(medicine);
+            JOptionPane.showMessageDialog(null, "Added Medicine Successfully");
+            populateMedicinetbl();
+        }
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+        cardLayout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMedName;
     private javax.swing.JLabel lblTitle;

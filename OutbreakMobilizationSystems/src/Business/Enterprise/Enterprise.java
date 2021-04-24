@@ -81,8 +81,8 @@ public abstract class Enterprise extends Organization {
         organizationDirectory = new OrganizationDirectory();
     }
 
-    public Medicine createMedicineList() {
-        Medicine medicine = new Medicine();
+    public Medicine createMedicineList(String medicineName) {
+        Medicine medicine = new Medicine(medicineName);
         this.medicineList.add(medicine);
         return medicine;
     }

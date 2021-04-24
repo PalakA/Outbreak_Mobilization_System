@@ -94,7 +94,7 @@ public class ManageWorkAreaJPanel extends javax.swing.JPanel {
         add(lblANewEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
 
         date_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1111, 40, 130, 30));
+        add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1081, 40, 160, 30));
 
         time_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         add(time_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 40, 150, 30));

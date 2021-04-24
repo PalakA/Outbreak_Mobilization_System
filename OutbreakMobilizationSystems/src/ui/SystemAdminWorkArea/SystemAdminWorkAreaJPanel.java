@@ -120,10 +120,10 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         add(lblANewEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, -1, -1));
 
         date_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 184, 28));
+        add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 30, 180, 28));
 
         time_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        add(time_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 30, 206, 28));
+        add(time_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1256, 30, 160, 28));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/manageenterprise.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1920, 1090));

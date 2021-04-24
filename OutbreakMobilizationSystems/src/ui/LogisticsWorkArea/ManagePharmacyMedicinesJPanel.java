@@ -7,14 +7,23 @@ package ui.LogisticsWorkArea;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.HospitalEnterprise;
 import Business.Enterprise.LogisticsEnterprise;
 import Business.Network.Network;
 import Business.Organizations.Organization;
 import Business.WorkQueue.MedicineWorkRequest;
 import Business.WorkQueue.PatientRegistrationRequest;
 import Business.WorkQueue.WorkRequest;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,6 +39,7 @@ public class ManagePharmacyMedicinesJPanel extends javax.swing.JPanel {
     private EcoSystem ecosystem;
     Enterprise enterprise;
     Organization organization;
+    Timer timer;
 
     public ManagePharmacyMedicinesJPanel(JPanel userProcessContainer, EcoSystem ecosystem, Enterprise enterprise, Organization organization) {
         initComponents();
@@ -37,6 +47,27 @@ public class ManagePharmacyMedicinesJPanel extends javax.swing.JPanel {
         this.ecosystem = ecosystem;
         this.enterprise = enterprise;
         populateLogisticsTable();
+        
+        ActionListener actionListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+                //Time in 12Hrs Format
+                Date date1 = new Date();
+                DateFormat timeFormat1 = new SimpleDateFormat("hh:mm:ss");
+                String time1 = timeFormat1.format(date1);
+                time_txt.setText(time1);
+                
+                //Todays Date
+                Date date2 = new Date();
+                DateFormat timeFormat2 = new SimpleDateFormat("MM/dd/yyyy");
+                String time2 = timeFormat2.format(date2);
+                date_txt.setText(time2);
+            }
+        };
+        timer = new Timer(1000, actionListener);
+        timer.setInitialDelay(0);
+        timer.start();
+
     }
 
     /**
@@ -49,15 +80,16 @@ public class ManagePharmacyMedicinesJPanel extends javax.swing.JPanel {
         logisticsModel.setRowCount(0);
         for (Network network : ecosystem.getNetworkList()) {
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                if (enterprise instanceof LogisticsEnterprise) {
+                if (enterprise instanceof HospitalEnterprise) {
                     for (WorkRequest wr : enterprise.getWorkQueue().getWorkRequestList()) {
                         if (wr instanceof PatientRegistrationRequest) {
                             Object[] row = new Object[logisticsModel.getColumnCount()];
                             row[0] = ((PatientRegistrationRequest) wr);
-                            row[1] = ((PatientRegistrationRequest) wr).getPharmacy();
-                            row[2] = ((PatientRegistrationRequest) wr).getQuantity();
-                            row[3] = ((MedicineWorkRequest) wr).getStatus();
-                            row[4] = ((MedicineWorkRequest) wr).getMessage();
+                            row[1] = ((PatientRegistrationRequest) wr).getLogisticsId();
+                            row[2] = ((PatientRegistrationRequest) wr).getPharmacyId();
+                            row[3] = ((PatientRegistrationRequest) wr).getQuantity();
+                            row[4] = ((PatientRegistrationRequest) wr).getStatus();
+                            row[5] = ((PatientRegistrationRequest) wr).getMessage();
                             logisticsModel.addRow(row);
                         }
                     }
@@ -75,6 +107,8 @@ public class ManagePharmacyMedicinesJPanel extends javax.swing.JPanel {
         tblPharmacyMedicines = new javax.swing.JTable();
         btnProcess = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        date_txt = new javax.swing.JLabel();
+        time_txt = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -85,17 +119,17 @@ public class ManagePharmacyMedicinesJPanel extends javax.swing.JPanel {
         tblPharmacyMedicines.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblPharmacyMedicines.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Logistics ID", "Pharmacy Name", "Quantity", "Status", "Message"
+                "Patient ID", "Logistics ID", "Pharmacy ID", "Quantity", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -120,15 +154,22 @@ public class ManagePharmacyMedicinesJPanel extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/presnew.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1080));
+
+        date_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add(date_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 30, 180, 28));
+
+        time_txt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add(time_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1256, 30, 160, 28));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblPharmacyMedicines.getSelectedRow();
-        PatientRegistrationRequest patientRegistrationRequest = (PatientRegistrationRequest) tblPharmacyMedicines.getValueAt(selectedRow, 0);
+        
         if (selectedRow >= 0) {
+            PatientRegistrationRequest patientRegistrationRequest = (PatientRegistrationRequest) tblPharmacyMedicines.getValueAt(selectedRow, 0);
             String msg = JOptionPane.showInputDialog("Additional Information");
-            patientRegistrationRequest.setStatus("Medicines Processed");
+            patientRegistrationRequest.setStatus("Medicines Delivered");
             patientRegistrationRequest.setMessage(msg);
             JOptionPane.showMessageDialog(null, "Medicines Delivered");
             populateLogisticsTable();
@@ -141,9 +182,11 @@ public class ManagePharmacyMedicinesJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProcess;
+    private javax.swing.JLabel date_txt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDeliverMedicines;
     private javax.swing.JTable tblPharmacyMedicines;
+    private javax.swing.JLabel time_txt;
     // End of variables declaration//GEN-END:variables
 }

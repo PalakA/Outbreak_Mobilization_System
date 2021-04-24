@@ -12,7 +12,13 @@ import Business.Network.Network;
 import Business.Organizations.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  * @author ajayp
@@ -38,6 +44,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     Network network;
     Enterprise enterprise;
     Organization organization;
+    Timer timer;
     
     public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount user, Network network, EcoSystem ecosystem, Enterprise enterprise, Organization organization) {
         initComponents();
@@ -47,6 +54,26 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         this.ecosystem=ecosystem;
         this.enterprise = enterprise;
         this.organization = organization;
+        
+        ActionListener actionListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+                //Time in 12Hrs Format
+                Date date1 = new Date();
+                DateFormat timeFormat1 = new SimpleDateFormat("hh:mm:ss");
+                String time1 = timeFormat1.format(date1);
+                time_txt.setText(time1);
+                
+                //Todays Date
+                Date date2 = new Date();
+                DateFormat timeFormat2 = new SimpleDateFormat("MM/dd/yyyy");
+                String time2 = timeFormat2.format(date2);
+                date_txt.setText(time2);
+            }
+        };
+        timer = new Timer(1000, actionListener);
+        timer.setInitialDelay(0);
+        timer.start();
     }
 
     /**
